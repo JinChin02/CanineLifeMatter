@@ -20,6 +20,12 @@ public class CannineLifeMatterApplication {
 	@Bean
 	ApplicationRunner init(DogRepository dogRepository, UserRepository userRepository) {
 		return args->{
+			
+			userRepository.deleteAll();
+			dogRepository.deleteAll();
+
+			
+			
 			User user1= new User();
 			user1.setUsername("Aria");
 			userRepository.save(user1);	

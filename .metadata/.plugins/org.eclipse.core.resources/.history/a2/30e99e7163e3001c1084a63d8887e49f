@@ -1,0 +1,33 @@
+package com.example.CSIS4495.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.CSIS4495.model.User;
+import com.example.CSIS4495.model.UserRepository;
+
+@CrossOrigin(origins= "https://localhost:3000")
+@RestController
+@RequestMapping("/api")
+public class RegisterController {
+
+	@Autowired
+	UserRepository userRepository;
+	
+	@PostMapping("/register")
+	public ResponseEntity<User> registerNewUser(@RequestBody User user){
+		
+		for(User userInRepo: userRepository.findAll()) {
+			if (userInRepo.getUsername().equalsIgnoreCase(user.getUsername())) {
+				return new ResponseEntity<User>(HttpStatus.NOT_ACCEPTABLE);
+			}
+		}
+		userRepository.save(user);
+	}
+}

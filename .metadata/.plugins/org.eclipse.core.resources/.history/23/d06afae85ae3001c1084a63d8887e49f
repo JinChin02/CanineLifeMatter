@@ -1,0 +1,9 @@
+package com.example.CSIS4495.model;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import antlr.collections.List;
+
+public interface UserRepository extends JpaRepository<User, Long> {
+	List<User>
+}
