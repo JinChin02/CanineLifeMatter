@@ -1,28 +1,36 @@
 import React, { Component } from 'react'
+import CanineLogo from '../images/logo/CanineLogo.png'
 
-
-export class header extends Component {
+export class Header extends Component {
   render() {
     return (
-    <header className='header'>
-      <table className='headerTable'>
-          <tr><td className='tableElement1'>Canine life Matter</td><td className='tableElement2'>
-            <nav>
-              <table className='navigationBarTable'>
-                <tr>
-                  <td><a href="" className='navigationTableElement1'>Canine</a></td>
-                  <td><a href="" className='navigationTableElement2'>Map</a></td>
-                  <td><a href="" className='navigationTableElement3'>Donation</a></td>
-                  <td><a href=""  className='navigationTableElement4'>Login</a></td>
-                  <td><a href=""  className='navigationTableElement5'></a></td>
-                </tr>
-              </table>
-            </nav>
-              </td></tr>
-      </table>
-    </header>
+      <header className='header' >
+                {/* <nav className="navbar navbar-expand-md cus ">
+                 <div><a href="http://localhost:3000"><img className='logo' src={CanineLogo} alt="Logo" /></a></div>
+                    <ul className="navbar-nav">
+                      <li className='nav-link'> Canine</li>
+                      <li className='nav-link'>Map</li>
+                      <li className='nav-link'>Donation</li>
+                    </ul>
+                    <ul className="navbar-nav navbar-collapse justify-content-end">
+                      <li className='nav-link'>Login</li>
+                      <li className='nav-link'>Logout</li>
+                    </ul>
+                </nav> */}
+        <table className='headerTable'>
+          <tr>
+            <td><img className='logo' src={CanineLogo} alt="Logo" /></td>
+            <td className='nav'>Cannine</td>
+            <td >Map</td>
+            <td>Donation</td> 
+            <td/><td/><td/><td/> 
+            <td>Login</td> 
+            <td>Logout</td>
+          </tr>
+        </table>
+      </header>
     )
   }
 }
 
-export default header
+export default Header

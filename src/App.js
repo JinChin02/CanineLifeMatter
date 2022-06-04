@@ -1,8 +1,10 @@
 import './App.css';
-import Header from "./components/header";
-import Footer from "./components/footer";
+import Header from './components/Header.jsx';
+import Footer from './components/Footer.jsx';
+import WithNavigation from './components/WithNavigation';
 
 function App() {
+  
   return (
     <div className="App">
       <Header/>
