@@ -1,18 +1,9 @@
-.logo{
-  padding-left: 1vw;
-  width: 10vw;
-  height: 8vh;
-  padding-right: 2vw;
-  justify-content: left;
+/****** general *****/ 
+.paddingTop{
+  padding-top: 10vh;
 }
-
-.navbar-nav{
-  padding-top: 7vh;
-}
-
 
 /**footer**/
-
 .footer{
   position: absolute;
   bottom:0;
@@ -26,44 +17,36 @@
 
 /** header **/
 .header{
-  background-color:rgba(51, 185, 194, 0.651);
-  height: 17vh;
-  text-align: left;
+  height: 20vh;
   /* scrollbar-shadow-color: black; */
 }
 
+.logo{
+  padding-left: 1vw;
+  width: 10vw;
+  height: 8vh;
+  padding-right: 2vw;
+  justify-content: left;
+}
+
 .headerTable{
+  background-color:rgba(51, 185, 194, 0.651);
   width:100%;
-  height: 100%;
+  height: 20vh;
   table-layout: fixed;
+  color:rgb(95, 95, 95);
 }
-.headerTableElement1{
-  text-align: left;
-  background-color: aliceblue;
 
-}
-/* .headerTableElement2{
-  width: 50%;
-  height: 100%;
-  font-size: 1.5vw;
+
+.headerTable tr td{
+  
   text-align:center;
-} */
-.headerTableElement2 a{
-  text-decoration: none;
-  color: whitesmoke;
-}
-.headerTableElement2 nav{
-  width: 100%;
+  font-size: 1.5vw;
 }
 
-.headerTableElement2 nav .navigationBarTable{
-  width:100%;
-  table-layout: fixed;
+.try{
+  background-color: aqua;
 }
 
-.nav{
-  padding-top: 11vh;
-  background-color: blue;
-}
 
 
