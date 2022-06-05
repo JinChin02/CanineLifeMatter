@@ -20,7 +20,7 @@ export class Header extends Component {
         <table className='headerTable'>
           <tr>
             <td><img className='logo' src={CanineLogo} alt="Logo" /></td>
-            <td className='paddingTop'>Cannie</td>
+            <td className='paddingTop'>Cannine</td>
             <td className='paddingTop'>Map</td> 
             <td className='paddingTop'>Donation</td> 
             <td/><td/><td/><td/> 

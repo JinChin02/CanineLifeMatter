@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 class Login extends Component{
     constructor(props){
@@ -16,7 +17,7 @@ class Login extends Component{
         console.log(this.state.password);
 
         var user = {"username":this.state.username, "password":this.state.password}
-        axios.post("http://localhost:8080/login",user)
+        axios.post("http://localhost:8080/login" , user)
         .then(response => this.abc(response.status)) 
         
     }   
@@ -32,39 +33,32 @@ class Login extends Component{
     render(){
         return (
             <div>
-                <div className="container">
-                <h3 className="loginTitle">SIGN IN TO CONTINUE</h3><hr />
-                <form action="" >
-                    <label>Username</label><br />   
-                    <input type="text" name="username" onChange={evt => this.setState({username: evt.target.value})}/>
+                <div className="container formBody">
+                    <h3 className="Title">Sign In To Continue</h3>
                     <br />
-                    <label>Password</label><br />
-                    <input type="password" name="password" onChange={evt => this.setState({password: evt.target.value})}/>
-                    <br /><br />
-                    <button type="button" className="btn btn-success" onClick={this.userLogin}>Login</button>
+                    <form action="" >
+                        <div className="form-group">
+                            <label>Username</label><br />   
+                            <input type="text" name="username" required className="form-control" onChange={evt => this.setState({username: evt.target.value})}/>
+                        </div>
+                        <br />
+                        <div className="form-group">
+                            <label>Password</label><br />
+                            <input type="password" name="password" required className="form-control" onChange={evt => this.setState({password: evt.target.value})}/>
+                        </div>
+                        <br /><br />
+                        <div className="form-group">
+                            <button type="button" className="btn btn-success form-control" onClick={this.userLogin}>Login</button>
+                        </div>
+                    </form>
+                    <br /><br /><br />
+                    <div className=" alignCenter">
+                        Need an account ? <Link to="/register">Sign Up</Link>
+                    </div>
 
-                </form>
-                    {/* <Formik>
-                        {
-                            (props) => (
-    
-                                <Form>
-                                    <fieldset className="form-group"> 
-                                        <label><strong>Username</strong></label>
-                                        <Field className="form-control" type="text" name="username"/>
-                                    </fieldset>
-                                    <br />
-                                    <fieldset className="form-group">
-                                        <label><strong>Password</strong></label>
-                                        <Field className="form-control" type="password" name="password"/>
-                                    </fieldset>
-                                    <br />
-                                    <button className="btn btn-success" type="submit">Login</button>
-                                </Form>
-                            )
-                        }
-                    </Formik> */}
                 </div>
+                
+               
             </div>
         )
     }
