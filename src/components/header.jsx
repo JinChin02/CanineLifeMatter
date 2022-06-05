@@ -20,12 +20,12 @@ export class Header extends Component {
         <table className='headerTable'>
           <tr>
             <td><img className='logo' src={CanineLogo} alt="Logo" /></td>
-            <td className='nav'>Cannine</td>
-            <td >Map</td>
-            <td>Donation</td> 
+            <td className='paddingTop'>Cannie</td>
+            <td className='paddingTop'>Map</td> 
+            <td className='paddingTop'>Donation</td> 
             <td/><td/><td/><td/> 
-            <td>Login</td> 
-            <td>Logout</td>
+            <td className='paddingTop'>Login</td>  
+            <td className='paddingTop'>Logout</td>
           </tr>
         </table>
       </header>
