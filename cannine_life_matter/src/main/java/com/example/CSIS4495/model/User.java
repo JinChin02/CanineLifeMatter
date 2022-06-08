@@ -7,6 +7,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -17,31 +18,34 @@ import java.util.Set;
 import javax.persistence.OneToMany;
 
 @Entity
-@Table(name="User")
+@Table(name = "User")
 public class User {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
-	@Column(name="username")
+
+	@Column(name = "username")
 	private String username;
-	
-	@Column(name="password")
+
+	@Column(name = "password")
 	private String password;
-	
-	@Column(name="phoneNumber")
+
+	@Column(name = "phoneNumber")
 	private String phoneNumber;
-	
-	@Column(name="email")
+
+	@Column(name = "email")
 	private String email;
-	
-	@Column(name="address")
+
+	@Column(name = "address")
 	private String address;
-	
+
+	@Column(name = "userurl", length = 10000000)
+	private String userURL;
+
 	@JsonIgnore
-	@OneToMany(mappedBy= "owner", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Set<Dog>dogs= new HashSet<>();
+	@OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Set<Dog> dogs = new HashSet<>();
 
 	public User() {
 		super();
@@ -102,12 +106,18 @@ public class User {
 	public void setDogs(Set<Dog> dogs) {
 		this.dogs = dogs;
 	}
-	
+
 	public void addDog(Dog dog) {
 		this.dogs.add(dog);
 		dog.setOwner(this);
 	}
-	
 
+	public String getUserURL() {
+		return userURL;
+	}
+
+	public void setUserURL(String userURL) {
+		this.userURL = userURL;
+	}
 
 }

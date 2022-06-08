@@ -1,5 +1,7 @@
 package com.example.CSIS4495.model;
 
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -39,6 +41,9 @@ public class Dog {
 	
 	@Column(name="dogDescription")
 	private String dogDescription;
+	
+	@Column(name = "dogurl",columnDefinition = "VARCHAR(500)")
+	private String dogURL;
 
 	public Dog() {
 		super();
@@ -107,8 +112,13 @@ public class Dog {
 	public void setDogDescription(String dogDescription) {
 		this.dogDescription = dogDescription;
 	}
-	
-	
-	
+
+	public String getDogURL() {
+		return dogURL;
+	}
+
+	public void setDogURL(String dogURL) {
+		this.dogURL = dogURL;
+	}
 	
 }
