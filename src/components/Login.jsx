@@ -27,7 +27,6 @@ class Login extends Component{
             console.log(res)
             this.setState({signinSuccess: true},() => console.log(this.state.signinSuccess))
         }
-        
     }
 
     render(){
