@@ -23,9 +23,9 @@ public class DogSearchController {
 	DogRepository dogRepository;
 
 	@PostMapping("/searchDog")
-	public ResponseEntity<List<Dog>> searchDog(@RequestBody String dogBread) {
+	public ResponseEntity<List<Dog>> searchDog(@RequestBody String dogBreed) {
 		List<Dog> dogList = dogRepository.findAll();
-		List<Dog> tmp_arrayDogs = serialSearchDog(dogList, dogBread);
+		List<Dog> tmp_arrayDogs = serialSearchDog(dogList, dogBreed);
 		if (tmp_arrayDogs.isEmpty()) {
 			return new ResponseEntity<List<Dog>>(tmp_arrayDogs, HttpStatus.OK); // null array
 		} else
@@ -34,10 +34,10 @@ public class DogSearchController {
 
 	
 	
-	private static List<Dog> serialSearchDog(List<Dog> array, String inputDogBreaad) {
+	private static List<Dog> serialSearchDog(List<Dog> array, String inputDogBreed) {
 		List<Dog> tempArray = new ArrayList<Dog>();
 		for (int i = 0; i < array.size(); i++) {
-			if (array.get(i).getBreed().toLowerCase().contains(inputDogBreaad.toLowerCase())) {
+			if (array.get(i).getBreed().toLowerCase().contains(inputDogBreed.toLowerCase())) {
 				tempArray.add(array.get(i));
 			}
 		}
