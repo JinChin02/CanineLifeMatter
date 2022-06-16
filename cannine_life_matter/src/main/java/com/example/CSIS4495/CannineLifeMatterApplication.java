@@ -33,8 +33,23 @@ public class CannineLifeMatterApplication {
 			
 			Dog dog1= new Dog();
 			dog1.setDogname("James");
+			dog1.setBreed("Poodle");
 			dog1.setOwner(user1);
 			dogRepository.save(dog1);
+			
+			Dog dog2= new Dog();
+			dog2.setDogname("James2");
+			dog2.setBreed("Poodle");
+			dog2.setOwner(user1);
+			dogRepository.save(dog2);
+			
+			Dog dog3= new Dog();
+			dog3.setDogname("James3");
+			dog3.setBreed("Golden Retriever");
+			dog3.setOwner(user1);
+			dogRepository.save(dog3);
+			
+			
 			dogRepository.findAll().forEach(System.out::println);
 			
 			
