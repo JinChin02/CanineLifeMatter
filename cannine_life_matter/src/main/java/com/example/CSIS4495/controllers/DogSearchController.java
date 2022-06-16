@@ -27,7 +27,7 @@ public class DogSearchController {
 		List<Dog> dogList = dogRepository.findAll();
 		List<Dog> tmp_arrayDogs = serialSearchDog(dogList, dogBreed);
 		if (tmp_arrayDogs.isEmpty()) {
-			return new ResponseEntity<List<Dog>>(tmp_arrayDogs, HttpStatus.OK); // null array
+			return new ResponseEntity<List<Dog>>(HttpStatus.NOT_FOUND);
 		} else
 			return new ResponseEntity<List<Dog>>(tmp_arrayDogs, HttpStatus.OK);
 	}
