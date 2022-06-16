@@ -62,3 +62,38 @@
   padding-top: 5vh;
   padding-bottom: 15.5vh;
 }
+
+.searchBody{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  background-color: rgb(199, 193, 193);
+  border-radius: 25px;
+  width: 30vw;
+  text-align: center;
+}
+
+.searchBody input{
+  background-color: rgb(199, 193, 193);
+  width: 70%;
+  border-width:0px;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  padding-left: 3vh;
+  border-radius: 25px;
+  border:none;
+  outline:none;
+  position: inline;
+}
+
+.searchBody button{
+  background-color: rgb(119, 115, 115);
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  width: 30%;
+  border-radius: 25px;
+  border-width:0px;
+  border:none;
+  outline:none;
+  position:inherit;
+}
