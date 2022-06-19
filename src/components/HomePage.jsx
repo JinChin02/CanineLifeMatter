@@ -39,7 +39,6 @@ class HomePage extends Component{
     }
 
     render(){
-
         return(
             <div>
                 <div className="searchBody">
@@ -48,7 +47,6 @@ class HomePage extends Component{
                             <input type="text" name="searchString" className="searchBar" placeholder="Search here" onChange={evt => this.setState({searchBar: evt.target.value})} onKeyPress={this.handleKeyPress} />
                             <button type="button" name="submit" className="searchButton"  onClick={this.handleSearch}>GO !</button>
                         </div>
-       
                     </form>
                 </div>
                 <div>
@@ -57,9 +55,6 @@ class HomePage extends Component{
                     
                 </div>
             </div>
-            
-
-            
         )
     }
 }

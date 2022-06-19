@@ -3,6 +3,13 @@
   padding-top: 7vh;
 }
 
+.mainGrey{
+  color:rgb(95, 95, 95);
+}
+.hideButtonLine{
+  text-decoration: none;
+}
+
 /**footer**/
 .footer{
   position:relative;

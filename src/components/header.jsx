@@ -1,7 +1,16 @@
 import React, { Component } from 'react'
 import CanineLogo from '../images/logo/CanineLogo.png'
+import {Link} from 'react-router-dom';
+
+
 
 export class Header extends Component {
+
+  cleanSession= ()=>{
+    sessionStorage.clear();
+    window.location.reload(false);
+  }
+
   render() {
     return (
       <header className='header' >
@@ -18,15 +27,19 @@ export class Header extends Component {
                     </ul>
                 </nav> */}
         <table className='headerTable'>
-          <tr>
-            <td><img className='logo' src={CanineLogo} alt="Logo" /></td>
-            <td className='paddingTop'>Cannine</td>
-            <td className='paddingTop'>Map</td> 
-            <td className='paddingTop'>Donation</td> 
-            <td/><td/><td/><td/> 
-            <td className='paddingTop'>Login</td>  
-            <td className='paddingTop'>Logout</td>
-          </tr>
+          <tbody>
+            <tr>
+                <td> <img className='logo' src={CanineLogo} alt="Logo" /></td>
+                <td className='paddingTop'><Link to= '../' className='mainGrey hideButtonLine'>Cannine</Link></td>
+                <td className='paddingTop'>Map</td> 
+                <td className='paddingTop'>Donation</td> 
+                <td/><td/><td/><td/> 
+                {/* {!sessionStorage.getItem("userlogin")&& <td className='paddingTop'><Link to= '../Login' className='mainGrey hideButtonLine'>Login</Link></td>}
+                {sessionStorage.getItem("userlogin")&& <td className='paddingTop' onClick={this.cleanSession}>Logout</td>} */}
+                <td className='paddingTop'><Link to= '../Login' className='mainGrey hideButtonLine'>Login</Link></td>
+                <td className='paddingTop' onClick={this.cleanSession}>Logout</td>
+            </tr>
+          </tbody>
         </table>
       </header>
     )
