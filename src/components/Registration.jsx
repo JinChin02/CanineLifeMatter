@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import axios from "axios";
+import Header from "./Header";
+
 
 class Registration extends Component{
     constructor(props){
@@ -24,6 +26,7 @@ class Registration extends Component{
     render(){
         return (
             <div>
+                <Header/>
                 <div className="container formBody">
                 <h3 className="Title">Create A New Account</h3>
                 <br />

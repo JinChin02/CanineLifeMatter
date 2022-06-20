@@ -1,13 +1,12 @@
 import React, {Component} from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+import Header from "./Header"
+import Authentication from './Authentication';
 
 
 
 class Login extends Component{
-
-
     
     constructor(props){
         super(props)
@@ -19,8 +18,6 @@ class Login extends Component{
         }
     }
 
-
-
     userLogin = async () => {
         console.log(this.state.username);
         console.log(this.state.password);
@@ -29,9 +26,6 @@ class Login extends Component{
         await axios.post("http://localhost:8080/login" , user)
         .then(response =>  this.abc(response.status,response)) 
         .catch(e => this.abc(e))
-
-        // let navigate = useNavigate();
-        // navigate('/');
     }   
 
     abc = (res,response) => {
@@ -39,21 +33,21 @@ class Login extends Component{
             console.log(res)
             console.log(response.data.id)
             this.setState({signinSuccess: true},() => console.log(this.state.signinSuccess))    
-            sessionStorage.setItem("userlogin",response.data.id);
-            // success, redirect to other page 
-           
+            Authentication.registerSuccess(response.data.id);
+            this.props.navigate('/');  
         } else {
             this.setState({warningStatement:"This account is not existed or password is wrong"})
         }
     }
 
-
     render(){
         if (sessionStorage.getItem("userlogin")){
-            return (<div> You cannot login two times</div>);
+         
+            return (<div><Header/>You cannot login two times</div>);
         } else {
             return (
                 <div>
+                 <Header/>
                     <div className="container formBody">
                         <h3 className="Title">Sign In To Continue</h3>
                         <br />

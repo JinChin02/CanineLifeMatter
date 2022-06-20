@@ -1,12 +1,11 @@
 import React, {Component} from "react";
 
-
 class HomeSearchDisplay extends Component{
 
     render(){
         return(
             <div>
-                <h1>STH JBBKBKNKN</h1>
+                <h1>hello my friend</h1>
             </div>
         )
     }

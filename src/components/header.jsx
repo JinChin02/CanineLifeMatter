@@ -1,31 +1,30 @@
 import React, { Component } from 'react'
 import CanineLogo from '../images/logo/CanineLogo.png'
 import {Link} from 'react-router-dom';
+import Authentication from './Authentication';
 
 
 
 export class Header extends Component {
 
-  cleanSession= ()=>{
-    sessionStorage.clear();
-    window.location.reload(false);
+  constructor(props){
+    super(props)
+    this.state = {
+      isLoggin :sessionStorage.getItem('userlogin')
+    }
+  }
+
+  logoutOut = () => {
+    Authentication.logout();
+    this.setState({isLoggin:""})
   }
 
   render() {
+  //  const IsLoggedIn =  Authentication.isLoggedIn();
+  
     return (
       <header className='header' >
-                {/* <nav className="navbar navbar-expand-md cus ">
-                 <div><a href="http://localhost:3000"><img className='logo' src={CanineLogo} alt="Logo" /></a></div>
-                    <ul className="navbar-nav">
-                      <li className='nav-link'> Canine</li>
-                      <li className='nav-link'>Map</li>
-                      <li className='nav-link'>Donation</li>
-                    </ul>
-                    <ul className="navbar-nav navbar-collapse justify-content-end">
-                      <li className='nav-link'>Login</li>
-                      <li className='nav-link'>Logout</li>
-                    </ul>
-                </nav> */}
+              
         <table className='headerTable'>
           <tbody>
             <tr>
@@ -34,10 +33,8 @@ export class Header extends Component {
                 <td className='paddingTop'>Map</td> 
                 <td className='paddingTop'>Donation</td> 
                 <td/><td/><td/><td/> 
-                {/* {!sessionStorage.getItem("userlogin")&& <td className='paddingTop'><Link to= '../Login' className='mainGrey hideButtonLine'>Login</Link></td>}
-                {sessionStorage.getItem("userlogin")&& <td className='paddingTop' onClick={this.cleanSession}>Logout</td>} */}
-                <td className='paddingTop'><Link to= '../Login' className='mainGrey hideButtonLine'>Login</Link></td>
-                <td className='paddingTop' onClick={this.cleanSession}>Logout</td>
+                {this.state.isLoggin==null&& <td className='paddingTop'><Link to= '../Login' className='mainGrey hideButtonLine'>Login</Link></td>}
+                {this.state.isLoggin!=null && <td className='paddingTop' onClick={this.logoutOut}><Link to= '../LogoutMessage' className='mainGrey hideButtonLine'>Logout</Link></td>}
             </tr>
           </tbody>
         </table>

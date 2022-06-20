@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 
 class HomeMainDisplay extends Component{
+  
 
     render(){
         return(
