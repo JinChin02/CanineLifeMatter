@@ -1,8 +1,10 @@
 package com.example.CSIS4495.controllers;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +34,18 @@ public class ImageProcessingController {
 
 	@Autowired
 	DogRepository dogRepository;
+	
+	
+	@GetMapping("/getAllDogs")
+	public ResponseEntity <List<Dog>> getAllDog(){
+		List<Dog> dogList= dogRepository.findAll();
+		if (dogList.isEmpty()) {
+			return new ResponseEntity<List<Dog>>(HttpStatus.NOT_FOUND);
+		} else {
+			return new ResponseEntity<List<Dog>>(dogList,HttpStatus.OK);
+		}
+	}	
+	
 
 	@PutMapping("/uploadImage/user/{id}")
 	public ResponseEntity<User> uploadImage(@PathVariable("id") long id, @RequestBody String imageUrl)
