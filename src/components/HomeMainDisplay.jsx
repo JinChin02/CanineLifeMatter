@@ -11,7 +11,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useContext, useEffect } from 'react'
+
 
 
 
@@ -40,14 +40,6 @@ class HomeMainDisplay extends Component{
         const theme = createTheme();
         return(
             <div>            
-                {/* <h1>STH JBBKBKNKN</h1>
-                <div className="mainDisplay">
-                    {this.state.DogList.map(dogname=>(
-                        <div key={dogname.id}><img src={decodeURIComponent(dogname.dogURL)}></img></div>
-                    ))}
-                </div> */}
-
-
                 <ThemeProvider theme={theme}>
                     <CssBaseline />
                     

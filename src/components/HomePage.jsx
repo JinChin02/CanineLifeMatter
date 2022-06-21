@@ -17,7 +17,7 @@ class HomePage extends Component{
 
     handleSearch = async() =>{
         await axios.post("http://localhost:8080/searchDog",this.state.searchString)
-        .then(response=> this.setState({returnedData:response.data, returnedStatus:response.status}))
+        .then(response=>this.setState({returnedData:response.data, returnedStatus:response.status}))
         .catch(e=>this.setState({returnedStatus:e.response.status}))
     }
 
@@ -27,7 +27,7 @@ class HomePage extends Component{
         //     return <HomeMainDisplay by={this.state.returnedStatus}/>
         // }
         if (this.state.returnedStatus === 200){
-            return <HomeSearchDisplay by={this.state.returnedData}/>
+            return <HomeSearchDisplay data={this.state.returnedData}/>
         }
         else if (this.state.returnedStatus===404){
             return <HomeNotFound />
