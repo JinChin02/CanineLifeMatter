@@ -61,14 +61,14 @@ public class CannineLifeMatterApplication {
 			
 			Dog dog4= new Dog();
 			dog4.setDogname("James4");
-			dog4.setBreed("American Bulldog");
+			dog4.setBreed("American Bully");
 			dog4.setDogURL("https%3A%2F%2Fres.cloudinary.com%2Fdlbwhvhsg%2Fimage%2Fupload%2Fv1655763268%2FAmerican_Bully1_e1yykr.jpg");	
 			dog4.setOwner(user1);
 			dogRepository.save(dog4);		
 			
 			Dog dog5= new Dog();
 			dog5.setDogname("James4");
-			dog5.setBreed("American Bulldog");
+			dog5.setBreed("American Bully");
 			dog5.setDogURL("https%3A%2F%2Fres.cloudinary.com%2Fdlbwhvhsg%2Fimage%2Fupload%2Fv1655763268%2FAmerican_Bully1_e1yykr.jpg");	
 			dog5.setOwner(user1);
 			dogRepository.save(dog5);	
