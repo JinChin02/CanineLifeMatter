@@ -26,7 +26,6 @@ class HomePage extends Component{
     }
 
     someFunction = () => {
-      
         if (this.state.returnedStatus === 200){
             return <HomeSearchDisplay data={this.state.returnedData}/>
         }
@@ -40,7 +39,6 @@ class HomePage extends Component{
 
     render(){
         return(
-            
             <div>
                 <Header/>
                 <div className="searchBody">
