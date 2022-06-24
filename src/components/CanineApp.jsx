@@ -10,7 +10,6 @@ import LogoutMessage from './LogoutMessage';
 import Map from './Map';
 import Adoption from './Adoption';
 import {LoadScript} from '@react-google-maps/api';
-import Adoption from './Adoption';
 
 class CanineApp extends Component {
 
