@@ -15,17 +15,18 @@ class HomePage extends Component{
         
     }
 
-    handleSearch = async() =>{
+    handleSearch = async(event) =>{
+        event.preventDefault();
         await axios.post("http://localhost:8080/searchDog",this.state.searchString)
-        .then(response=>this.setState({returnedData:response.data, returnedStatus:response.status}))
-        .catch(e=>this.setState({returnedStatus:e.response.status}))
+        .then(response=>{
+            this.setState({returnedData:response.data, returnedStatus:response.status})
+        })
+        // .catch(e=>this.setState({returnedStatus:e.response.status}))
+        .catch(e=>this.setState({returnedStatus:404}))
     }
 
     someFunction = () => {
-        console.log(this.state.returnedStatus);
-        // if(this.state.returnedStatus === 0){
-        //     return <HomeMainDisplay by={this.state.returnedStatus}/>
-        // }
+      
         if (this.state.returnedStatus === 200){
             return <HomeSearchDisplay data={this.state.returnedData}/>
         }
@@ -43,18 +44,15 @@ class HomePage extends Component{
             <div>
                 <Header/>
                 <div className="searchBody">
-                    <form action="">
+                    <form action="" onSubmit={this.handleSearch}>
                         <div className="abc">
-                            <input type="text" name="searchString" className="searchBar" placeholder="Search here" onChange={evt => this.setState({searchString: evt.target.value})} />
-                            <button type="button" name="submit" className="searchButton"  onClick={this.handleSearch}>GO !</button>
+                            <input type="text" name="searchString" className="searchBar" placeholder="Search here" onChange={evt => this.setState({searchString: evt.target.value})} required/>
+                            <button type="submit" name="submit" className="searchButton"  onClick={this.handleSearch} >GO !</button>
                         </div>
                     </form>
                 </div>
                 <div>
-                    {this.someFunction()}
-                    {/* <HomeMainDisplay/> */}
-                    {/* {} */}
-                    
+                    {this.someFunction()}             
                 </div>
             </div>
         )

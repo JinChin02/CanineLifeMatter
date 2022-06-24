@@ -7,6 +7,8 @@ import Registration from './Registration';
 import HomePage from './HomePage';
 import ImageUpload from './ImageUpload';
 import LogoutMessage from './LogoutMessage';
+import Map from './Map';
+import {LoadScript} from '@react-google-maps/api';
 
 
 class CanineApp extends Component {
@@ -14,19 +16,22 @@ class CanineApp extends Component {
 
   render() {
     const LoginWithNav = WithNavagation(Login);
+    const api = "AIzaSyBNn8vfymHui03uwp3VKl8_2EccQEu1F_g";
 
 
     return (
         <div className='CanineApp'>
             <Router>
-                {/* <HeaderWithNav/> */}
-                    <Routes>
-                        <Route path="/" element={<HomePage/>} /> 
-                        <Route path="/login" element={<LoginWithNav/>} />
-                        <Route path="/register" element={<Registration/>} />
-                        <Route path='/imageUpload' element={<ImageUpload/>}/>
-                        <Route path='/logoutMessage' element={<LogoutMessage/>}/>
-                    </Routes>
+                    <LoadScript googleMapsApiKey={api}> 
+                            <Routes>
+                                <Route path="/" element={<HomePage/>} /> 
+                                <Route path="/login" element={<LoginWithNav/>} />
+                                <Route path="/register" element={<Registration/>} />
+                                <Route path='/imageUpload' element={<ImageUpload/>}/>
+                                <Route path='/logoutMessage' element={<LogoutMessage/>}/>
+                                <Route path='/googleMap' element={<Map/>}/>
+                            </Routes>
+                    </LoadScript>
                 <Footer/>
             </Router>
         </div>

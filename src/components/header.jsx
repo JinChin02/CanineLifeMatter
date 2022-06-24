@@ -29,12 +29,12 @@ export class Header extends Component {
           <tbody>
             <tr>
                 <td> <img className='logo' src={CanineLogo} alt="Logo" /></td>
-                <td className='paddingTop'><Link to= '../' className='mainGrey hideButtonLine'>Cannine</Link></td>
-                <td className='paddingTop'>Map</td> 
+                <td className='paddingTop'><Link to= '../' className='headerLink'>Cannine</Link></td>
+                <td className='paddingTop'><Link to= '../googleMap'  className='headerLink'>Map</Link></td> 
                 <td className='paddingTop'>Donation</td> 
                 <td/><td/><td/><td/> 
-                {this.state.isLoggin==null&& <td className='paddingTop'><Link to= '../Login' className='mainGrey hideButtonLine'>Login</Link></td>}
-                {this.state.isLoggin!=null && <td className='paddingTop' onClick={this.logoutOut}><Link to= '../LogoutMessage' className='mainGrey hideButtonLine'>Logout</Link></td>}
+                {this.state.isLoggin==null&& <td className='paddingTop'><Link to= '../Login'  className='headerLink'>Login</Link></td>}
+                {this.state.isLoggin!=null && <td className='paddingTop' onClick={this.logoutOut}><Link to= '../LogoutMessage' className='headerLink'>Logout</Link></td>}
             </tr>
           </tbody>
         </table>

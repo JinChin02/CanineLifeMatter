@@ -27,13 +27,11 @@ class HomeMainDisplay extends Component{
 
     async componentDidMount() {
        await this.GetAllDogs();
-       console.log(this.state.DogList);
     }
 
      GetAllDogs = async() =>{
         await axios.get('http://localhost:8080/getAllDogs')
         .then((res)=>{this.setState({DogList:res.data})} )
-        .catch((e)=>console.log("Error: "+ e.message))
     }
 
     render(){
@@ -50,7 +48,7 @@ class HomeMainDisplay extends Component{
                         {/* End hero unit */}
                         <Grid container spacing={4}>
                             {this.state.DogList.map((dogs) => (
-                            <Grid item key={dogs} xs={12} sm={6} md={4} lg={3}>
+                            <Grid item key={dogs.id} xs={12} sm={6} md={4} lg={3}>
                                 <Card
                                 sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
                                 >
