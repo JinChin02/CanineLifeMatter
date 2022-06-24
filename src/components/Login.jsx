@@ -39,15 +39,17 @@ class Login extends Component{
             this.setState({warningStatement:"This account is not existed or password is wrong"})
         }
     }
-
+    
+ 
     render(){
         if (sessionStorage.getItem("userlogin")){
-         
-            return (<div><Header/>You cannot login two times</div>);
+            return (<div><Header/>You Are Already Logged In <br /><br/><br/><br/><br/><br/><br/><br/><br/>
+                                                            <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                                                            <br/><br/><br/><br/><br/><br/><br/><br/></div>);
         } else {
             return (
                 <div>
-                 <Header/>
+                    <Header/>
                     <div className="container formBody">
                         <h3 className="Title">Sign In To Continue</h3>
                         <br />
@@ -72,6 +74,7 @@ class Login extends Component{
                             Need an account ? <Link to="/register">Sign Up</Link>
                         </div>
                     </div>
+                    <br />
                 </div>
             )
         }
