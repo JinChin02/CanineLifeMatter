@@ -79,41 +79,41 @@ public class CannineLifeMatterApplication {
 			dogRepository.save(dog4);		
 			
 			Dog dog5= new Dog();
-			dog5.setDogname("James4");
-			dog5.setBreed("American Bulldog");
-			dog5.setDogURL("https%3A%2F%2Fres.cloudinary.com%2Fdlbwhvhsg%2Fimage%2Fupload%2Fv1655763268%2FAmerican_Bully1_e1yykr.jpg");	
+			dog5.setDogname("James5");
+			dog5.setBreed("labrador");
+			dog5.setDogURL("https%3A%2F%2Fres.cloudinary.com%2Fdlbwhvhsg%2Fimage%2Fupload%2Fv1656085595%2Flabrador1_ullbg8.jpg");	
 			dog5.setOwner(user1);
 			dog5.setIsAdopted(0);
 			dogRepository.save(dog5);	
 			
 			Dog dog6= new Dog();
-			dog6.setDogname("James4");
-			dog6.setBreed("American Bulldog");
-			dog6.setDogURL("https%3A%2F%2Fres.cloudinary.com%2Fdlbwhvhsg%2Fimage%2Fupload%2Fv1655763268%2FAmerican_Bully1_e1yykr.jpg");	
+			dog6.setDogname("James6");
+			dog6.setBreed("chihuahua");
+			dog6.setDogURL("https%3A%2F%2Fres.cloudinary.com%2Fdlbwhvhsg%2Fimage%2Fupload%2Fv1656085594%2Fchihuahua3_vdmt6i.jpg");	
 			dog6.setOwner(user1);
 			dog6.setIsAdopted(0);
 			dogRepository.save(dog6);	
 			
 			Dog dog7= new Dog();
-			dog7.setDogname("James4");
-			dog7.setBreed("American Bulldog");
-			dog7.setDogURL("https%3A%2F%2Fres.cloudinary.com%2Fdlbwhvhsg%2Fimage%2Fupload%2Fv1655763268%2FAmerican_Bully1_e1yykr.jpg");	
+			dog7.setDogname("James7");
+			dog7.setBreed("chihuahua");
+			dog7.setDogURL("https%3A%2F%2Fres.cloudinary.com%2Fdlbwhvhsg%2Fimage%2Fupload%2Fv1656085566%2Fchihuahua1_muw0zu.jpg");	
 			dog7.setOwner(user1);
 			dog7.setIsAdopted(0);
 			dogRepository.save(dog7);	
 			
 			Dog dog8= new Dog();
-			dog8.setDogname("James4");
-			dog8.setBreed("American Bulldog");
-			dog8.setDogURL("https%3A%2F%2Fres.cloudinary.com%2Fdlbwhvhsg%2Fimage%2Fupload%2Fv1655763268%2FAmerican_Bully1_e1yykr.jpg");	
+			dog8.setDogname("James8");
+			dog8.setBreed("labrador");
+			dog8.setDogURL("https%3A%2F%2Fres.cloudinary.com%2Fdlbwhvhsg%2Fimage%2Fupload%2Fv1656085594%2Flabrador3_azpwsl.jpg");	
 			dog8.setOwner(user1);
 			dog8.setIsAdopted(0);
 			dogRepository.save(dog8);	
 			
 			Dog dog9= new Dog();
-			dog9.setDogname("James4");
-			dog9.setBreed("American Bulldog");
-			dog9.setDogURL("https%3A%2F%2Fres.cloudinary.com%2Fdlbwhvhsg%2Fimage%2Fupload%2Fv1655763268%2FAmerican_Bully1_e1yykr.jpg");	
+			dog9.setDogname("James9");
+			dog9.setBreed("chihuahua");
+			dog9.setDogURL("https%3A%2F%2Fres.cloudinary.com%2Fdlbwhvhsg%2Fimage%2Fupload%2Fv1656085576%2Fchihuahua2_jd8gv1.jpg");	
 			dog9.setOwner(user1);
 			dog9.setIsAdopted(0);
 			dogRepository.save(dog9);	
