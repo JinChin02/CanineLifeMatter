@@ -25,6 +25,7 @@ public class DogSearchController {
 	@PostMapping("/searchDog")
 	public ResponseEntity<List<Dog>> searchDog(@RequestBody String dogBreed) {
 		String currentDogBreed =  dogBreed.substring(0,dogBreed.length()-1);
+		System.out.println(currentDogBreed);
 		List<Dog> dogList = dogRepository.findAll();
 		List<Dog> tmp_arrayDogs = serialSearchDog(dogList, currentDogBreed);
 		if (tmp_arrayDogs.isEmpty()) {
