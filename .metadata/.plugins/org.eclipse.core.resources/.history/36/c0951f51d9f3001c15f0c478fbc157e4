@@ -1,0 +1,37 @@
+package com.example.CSIS4495.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="clinic")
+public class clinic {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+	
+	@Column(name="clinicname")
+	private String clinicname;
+	
+	@Column(name="clinicknumber")
+	private String clinicknumber;
+	
+	@Column(name="lat")
+	private String lat;
+	
+	@Column(name="lng")
+	private String lng;
+	
+	@Column(name = "address")
+	private String address;
+	
+	@Column(name = "description")
+	private String description;
+	
+
+}
