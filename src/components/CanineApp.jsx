@@ -8,6 +8,7 @@ import HomePage from './HomePage';
 import ImageUpload from './ImageUpload';
 import LogoutMessage from './LogoutMessage';
 import Map from './Map';
+import Adoption from './Adoption';
 import {LoadScript} from '@react-google-maps/api';
 import Adoption from './Adoption';
 
@@ -16,9 +17,8 @@ class CanineApp extends Component {
 
   render() {
     const LoginWithNav = WithNavagation(Login);
-    const AdoptionWithNav= WithNavagation(Adoption);
-  
 
+    const AdoptionWithNav = WithNavagation(Adoption);
     const api = "AIzaSyBNn8vfymHui03uwp3VKl8_2EccQEu1F_g";
 
 

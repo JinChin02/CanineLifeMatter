@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -10,14 +9,9 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Link } from "react-router-dom";
 
 class HomeSearchDisplay extends Component{
-
-    // constructor(props){
-    //     super(props)
-
-    // }
-
 
     render(){
         const theme = createTheme();
@@ -57,7 +51,7 @@ class HomeSearchDisplay extends Component{
                                 </CardContent>
                                 <CardActions>
                                     <Button size="small">View</Button>
-                                    <Button size="small">Edit</Button>
+                                    <Button size="small"> <Link to="/adoption">Adopt</Link></Button>
                                 </CardActions>
                                 </Card>
                             </Grid>

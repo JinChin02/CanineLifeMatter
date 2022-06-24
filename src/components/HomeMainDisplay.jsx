@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import axios from 'axios';
-
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -11,11 +10,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import {Link} from 'react-router-dom';
-
-
-
-
+import { Link } from "react-router-dom";
 
 
 class HomeMainDisplay extends Component{
@@ -30,14 +25,14 @@ class HomeMainDisplay extends Component{
        await this.GetAllDogs();
     }
 
-     GetAllDogs = async() =>{
+    GetAllDogs = async() =>{
         await axios.get('http://localhost:8080/getAllDogs')
         .then((res)=>{this.setState({DogList:res.data})} )
     }
 
-    inputDogtoSession=(dogObj)=>{
-        sessionStorage.setItem("dogObj",dogObj);
-        console.log(JSON.parse(sessionStorage.getItem("dogObj"))) ;
+
+    putDogsToSession = (dogObj) =>{
+        sessionStorage.setItem("dogObj", dogObj)
     }
 
     render(){
@@ -77,7 +72,7 @@ class HomeMainDisplay extends Component{
                                 </CardContent>
                                 <CardActions>
                                     <Button size="small">View</Button>
-                                    <Button size="small" onClick={()=>this.inputDogtoSession(JSON.stringify(dogs))}> <Link to='/adoption'>Adopt</Link></Button>
+                                    <Button size="small" onClick={()=> this.putDogsToSession(JSON.stringify(dogs))}> <Link to='/adoption'>Adopt</Link></Button>
                                 </CardActions>
                                 </Card>
                             </Grid>
