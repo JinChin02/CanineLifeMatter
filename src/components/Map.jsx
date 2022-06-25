@@ -1,5 +1,5 @@
 import React,{Component} from "react";
-import {GoogleMap,MarkerF} from '@react-google-maps/api';
+import {GoogleMap,MarkerF,InfoWindow} from '@react-google-maps/api';
 import HeaderWithNav from './Header'
 import axios from "axios";
 
@@ -9,15 +9,14 @@ class Map extends Component{
         super(props)
         this.state = {
             location:{lat: 49.20348054635789*1 , lng: (-122.91076722885988)*1},
-            clinicObjArray:[]
+            clinicObjArray:[],
+            showingInfoWindow: 0
         }
     }
 
     async componentDidMount(){
-    await this.getAllMarkerLocation();
-    await this.getUserLocation();
-
-    console.log(this.state.clinicObjArray);
+        await this.getAllMarkerLocation();
+        await this.getUserLocation();
     }
 
     getAllMarkerLocation= async()=>{
@@ -42,15 +41,32 @@ class Map extends Component{
         }
     }
 
+  
+    onMarkerClick = (id) => {
+    console.log(id)
+      this.setState({
+        showingInfoWindow: id
+      })        
+    };
     
+    onInfoWindowClose = () =>{
+    console.log("close");
+        this.setState({
+          showingInfoWindow: false
+        });
+    }
+
     render(){
         return (
             <div>   
                 <HeaderWithNav/>         
                 <GoogleMap  center={this.state.location}  zoom={13} mapContainerClassName="map-container" >
-                <MarkerF key="user" size="large" position={this.state.location} label="User" ></MarkerF> 
+                <MarkerF key="user" size="large" position={this.state.location}  icon={"https://www.robotwoods.com/dev/misc/bluecircle.png"} ></MarkerF> 
                 {this.state.clinicObjArray.map((eachEle)=>
-                <MarkerF key={eachEle.id} size="large" position={{lat:eachEle.lat , lng:eachEle.lng}} label={eachEle.name}></MarkerF> 
+                <MarkerF key={eachEle.id} size="large" position={{lat:eachEle.lat , lng:eachEle.lng}} onClick={()=>this.onMarkerClick(eachEle.id)}>
+                    {this.state.showingInfoWindow === eachEle.id && 
+                    <InfoWindow position={{lat:eachEle.lat , lng:eachEle.lng}} onCloseClick={this.onInfoWindowClose}><>{eachEle.id}</></InfoWindow>}
+                </MarkerF> 
                 )}
                 </GoogleMap>
             </div>
