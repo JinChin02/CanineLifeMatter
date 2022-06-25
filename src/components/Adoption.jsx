@@ -24,9 +24,10 @@ class Adoption extends Component{
     }
     
     componentDidMount(){
-        if(sessionStorage.getItem('userlogin') === null){
-            this.props.navigate('/login')
-        }
+       if(sessionStorage.getItem('userlogin') === null){
+            console.log("hi")
+            this.props.navigate("/login")
+       }
     }
 
     dogNameDisplay=()=>{

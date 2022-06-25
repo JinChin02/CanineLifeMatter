@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {BrowserRouter as Router, Routes , Route} from 'react-router-dom';
-import WithNavagation from './WithNavigation';
+import WithNavigation from './WithNavigation';
 import Footer from './Footer';
 import Login from './Login';
 import Registration from './Registration';
@@ -11,14 +11,12 @@ import Map from './Map';
 import Adoption from './Adoption';
 import {LoadScript} from '@react-google-maps/api';
 
-
 class CanineApp extends Component {
-
-
+  
   render() {
-    const LoginWithNav = WithNavagation(Login);
-    const ImageUploadWithNav = WithNavagation(ImageUpload)
-    const AdoptionWithNav = WithNavagation(Adoption);
+    const LoginWithNav = WithNavigation(Login);
+    const ImageUploadWithNav = WithNavigation(ImageUpload)
+    const AdoptionWithNav = WithNavigation(Adoption);
     const api = "AIzaSyBNn8vfymHui03uwp3VKl8_2EccQEu1F_g";
 
 
