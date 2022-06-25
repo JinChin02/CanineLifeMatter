@@ -2,7 +2,6 @@ import React, { Component} from "react";
 import axios from "axios";
 import Header from "./Header";
 class DisplayImage extends Component {
-  
 
   constructor(props) {
     super(props);
@@ -10,12 +9,13 @@ class DisplayImage extends Component {
       image: null,
       imageURL: null
     };
-
-   // if we are using arrow function binding in not required
-   //  this.onImageChange = this.onImageChange.bind(this);
   }
 
-
+  componentDidMount(){
+    if(sessionStorage.getItem('userlogin') === null){
+        this.props.navigate('/login')
+    }
+  }
 
   onImageChange = event => {
     if (event.target.files && event.target.files[0]) {

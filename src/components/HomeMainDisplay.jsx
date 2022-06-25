@@ -71,8 +71,7 @@ class HomeMainDisplay extends Component{
                                     </Typography>
                                 </CardContent>
                                 <CardActions>
-                                    <Button size="small">View</Button>
-                                    <Button size="small" onClick={()=> this.putDogsToSession(JSON.stringify(dogs))}> <Link to='/adoption'>Adopt</Link></Button>
+                                    <Button size="small" onClick={()=> this.putDogsToSession(JSON.stringify(dogs))}> <Link to='/adoption'>View Details</Link></Button>
                                 </CardActions>
                                 </Card>
                             </Grid>

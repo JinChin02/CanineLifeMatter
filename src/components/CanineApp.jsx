@@ -16,7 +16,7 @@ class CanineApp extends Component {
 
   render() {
     const LoginWithNav = WithNavagation(Login);
-
+    const ImageUploadWithNav = WithNavagation(ImageUpload)
     const AdoptionWithNav = WithNavagation(Adoption);
     const api = "AIzaSyBNn8vfymHui03uwp3VKl8_2EccQEu1F_g";
 
@@ -29,7 +29,7 @@ class CanineApp extends Component {
                                 <Route path="/" element={<HomePage/>} /> 
                                 <Route path="/login" element={<LoginWithNav/>} />
                                 <Route path="/register" element={<Registration/>} />
-                                <Route path='/imageUpload' element={<ImageUpload/>}/>
+                                <Route path='/imageUpload' element={<ImageUploadWithNav/>}/>
                                 <Route path='/logoutMessage' element={<LogoutMessage/>}/>
                                 <Route path='/googleMap' element={<Map/>}/>
                                 <Route path='/adoption' element={<AdoptionWithNav/>}/>
