@@ -4,6 +4,7 @@ import HomeMainDisplay from "./HomeMainDisplay";
 import HomeSearchDisplay from "./HomeSearchDisplay";
 import Header from './Header';
 import HomeNotFound from "./HomeNotFound";
+
 class HomePage extends Component{
     constructor(props){
         super(props)
@@ -11,8 +12,7 @@ class HomePage extends Component{
             searchString:'',
             returnedData:'',
             returnedStatus:0
-        }
-        
+        } 
     }
 
     handleSearch = async(event) =>{
@@ -21,7 +21,6 @@ class HomePage extends Component{
         .then(response=>{
             this.setState({returnedData:response.data, returnedStatus:response.status})
         })
-        // .catch(e=>this.setState({returnedStatus:e.response.status}))
         .catch(e=>this.setState({returnedStatus:404}))
     }
 
@@ -44,7 +43,8 @@ class HomePage extends Component{
                 <div className="searchBody">
                     <form action="" onSubmit={this.handleSearch}>
                         <div className="abc">
-                            <input type="text" name="searchString" className="searchBar" placeholder="Search here" onChange={evt => this.setState({searchString: evt.target.value})} required/>
+                            <input type="text" name="searchString" className="searchBar" placeholder="Search here" 
+                                onChange={evt => this.setState({searchString: evt.target.value})} required/>
                             <button type="submit" name="submit" className="searchButton"  onClick={this.handleSearch} >GO !</button>
                         </div>
                     </form>

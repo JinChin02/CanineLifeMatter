@@ -17,6 +17,7 @@ class CanineApp extends Component {
     const LoginWithNav = WithNavigation(Login);
     const ImageUploadWithNav = WithNavigation(ImageUpload)
     const AdoptionWithNav = WithNavigation(Adoption);
+    const RegistrationWithNav = WithNavigation(Registration)
     const api = "AIzaSyBNn8vfymHui03uwp3VKl8_2EccQEu1F_g";
 
 
@@ -27,7 +28,7 @@ class CanineApp extends Component {
                             <Routes>
                                 <Route path="/" element={<HomePage/>} /> 
                                 <Route path="/login" element={<LoginWithNav/>} />
-                                <Route path="/register" element={<Registration/>} />
+                                <Route path="/register" element={<RegistrationWithNav/>} />
                                 <Route path='/imageUpload' element={<ImageUploadWithNav/>}/>
                                 <Route path='/logoutMessage' element={<LogoutMessage/>}/>
                                 <Route path='/googleMap' element={<Map/>}/>

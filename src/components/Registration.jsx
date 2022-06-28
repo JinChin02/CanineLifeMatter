@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import axios from "axios";
 import Header from "./Header";
 
-
 class Registration extends Component{
     constructor(props){
         super(props)
@@ -19,7 +18,7 @@ class Registration extends Component{
         if(this.state.password === this.state.confirmPassword){
             var user = {"username":this.state.username , "password":this.state.password , "email":this.state.email , "phone":this.state.phone}
             axios.post("http://localhost:8080/register", user)
-            .then(response=>console.log(response.status))
+            .then(response=>{alert("You have successfully registered an account with us. You can proceed to login"); this.props.navigate("/login")})
         }
     }
 

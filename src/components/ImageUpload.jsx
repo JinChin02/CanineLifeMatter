@@ -1,6 +1,7 @@
 import React, { Component} from "react";
 import axios from "axios";
-import Header from "./Header";
+import Header from "./Header"; 
+
 class DisplayImage extends Component {
 
   constructor(props) {
@@ -11,9 +12,9 @@ class DisplayImage extends Component {
     };
   }
 
-  componentDidMount(){
-    if(sessionStorage.getItem('userlogin') === null){
-        this.props.navigate('/login')
+  componentDidMount(){ 
+    if(sessionStorage.getItem('userlogin') === null){      
+      setTimeout(() => {this.props.navigate('/login', { replace: true })}, 0)
     }
   }
 
@@ -59,6 +60,7 @@ class DisplayImage extends Component {
   }
 
   render() {
+
     return (
       <div>
         <Header/>
@@ -73,6 +75,7 @@ class DisplayImage extends Component {
         </div>
       </div>
     );
+    
   }
 }
 export default DisplayImage;
