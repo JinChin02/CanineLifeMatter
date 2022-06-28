@@ -12,20 +12,23 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import axios from 'axios';
+import { aeroplane } from "@cloudinary/url-gen/qualifiers/focusOn";
+
 
 class Adoption extends Component{
 
     constructor(props){
-        super(props)
+        super(props);
         this.state = {
             dog : JSON.parse(sessionStorage.getItem("dogObj")),
             open : false,
         }
     }
     
-    componentDidMount(){
-        if(sessionStorage.getItem('userlogin') === null){
-            this.props.navigate('/login')
+    componentDidMount(){    
+        if(sessionStorage.getItem('userlogin') === null){    
+            setTimeout(() => {this.props.navigate('/login', { replace: true })}, 0)
+            alert("Please login first before proceeding");  
         }
     }
 

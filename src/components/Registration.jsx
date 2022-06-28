@@ -20,6 +20,9 @@ class Registration extends Component{
             var user = {"username":this.state.username , "password":this.state.password , "email":this.state.email , "phone":this.state.phone}
             axios.post("http://localhost:8080/register", user)
             .then(response=>console.log(response.status))
+            alert("Create success");
+        } else {
+            alert("Please enter the same passord");
         }
     }
 
