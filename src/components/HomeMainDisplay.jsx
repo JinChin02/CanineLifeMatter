@@ -12,7 +12,6 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link } from "react-router-dom";
 
-
 class HomeMainDisplay extends Component{
     constructor(props){
         super(props)
@@ -29,7 +28,6 @@ class HomeMainDisplay extends Component{
         await axios.get('http://localhost:8080/getAllDogs')
         .then((res)=>{this.setState({DogList:res.data})} )
     }
-
 
     putDogsToSession = (dogObj) =>{
         sessionStorage.setItem("dogObj", dogObj)
@@ -80,7 +78,6 @@ class HomeMainDisplay extends Component{
                         </Container>
                     </main>
                     </ThemeProvider>
-             
             </div>
         )
     }

@@ -4,10 +4,7 @@ import { Link } from "react-router-dom";
 import Header from "./Header"
 import Authentication from './Authentication';
 
-
-
 class Login extends Component{
-    
     constructor(props){
         super(props)
         this.state = {
@@ -40,7 +37,6 @@ class Login extends Component{
         }
     }
     
- 
     render(){
         if (sessionStorage.getItem("userlogin")){
             return (<div><Header/>You Are Already Logged In <br /><br/><br/><br/><br/><br/><br/><br/><br/>

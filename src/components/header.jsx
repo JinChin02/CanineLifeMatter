@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import CanineLogo from '../images/logo/CanineLogo.png'
 import {Link} from 'react-router-dom';
 import Authentication from './Authentication';
+import { Navigate } from 'react-router-dom';
 
 export class Header extends Component {
 
@@ -16,6 +17,10 @@ export class Header extends Component {
     Authentication.logout();
     this.setState({isLoggin:""})
   }
+  
+  navHome = () => {
+    <Navigate to="/"/>
+  }
 
   render() {
   //  const IsLoggedIn =  Authentication.isLoggedIn();
@@ -26,7 +31,7 @@ export class Header extends Component {
         <table className='headerTable'>
           <tbody>
             <tr>
-                <td> <img className='logo' src={CanineLogo} alt="Logo" /></td>
+                <td><img className='logo' src={CanineLogo} alt="Logo" /></td>
                 <td className='paddingTop'><Link to= '../' className='headerLink'>Cannine</Link></td>
                 <td className='paddingTop'><Link to= '../googleMap'  className='headerLink'>Map</Link></td> 
                 <td className='paddingTop'>Donation</td> 

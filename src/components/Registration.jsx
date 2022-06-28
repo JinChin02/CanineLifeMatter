@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import axios from "axios";
 import Header from "./Header";
 
-
 class Registration extends Component{
     constructor(props){
         super(props)
@@ -23,6 +22,7 @@ class Registration extends Component{
             alert("Create success");
         } else {
             alert("Please enter the same passord");
+
         }
     }
 

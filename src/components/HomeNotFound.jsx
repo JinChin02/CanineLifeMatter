@@ -8,6 +8,7 @@ class HomeNotFound extends Component{
         return(
             <div>
                 <h1>Search not found</h1>
+                
             </div>
         )
     }

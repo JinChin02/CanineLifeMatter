@@ -26,10 +26,7 @@ class HomeSearchDisplay extends Component{
                     <CssBaseline />
                     
                     <main>
-                        {/* Hero unit */}
-                    
                         <Container sx={{ py: 4 }} maxWidth="lg">
-                        {/* End hero unit */}
                         <Grid container spacing={4}>
                             {this.props.data.map((dogs) => (
                             <Grid item key={dogs.id} xs={12} sm={6} md={4} lg={3}>
@@ -54,7 +51,8 @@ class HomeSearchDisplay extends Component{
                                     </Typography>
                                 </CardContent>
                                 <CardActions>
-                                    <Button size="small" onClick={()=> this.putDogsToSession(JSON.stringify(dogs))}> <Link to='/adoption'>View Details</Link></Button>
+                                    <Button size="small" onClick={()=> this.putDogsToSession(JSON.stringify(dogs))}> 
+                                        <Link to='/adoption'>View Details</Link></Button>
                                 </CardActions>
                                 </Card>
                             </Grid>
@@ -62,9 +60,8 @@ class HomeSearchDisplay extends Component{
                         </Grid>
                         </Container>
                     </main>
-                    </ThemeProvider>
-             
-            </div>
+                </ThemeProvider>
+                </div>      
             </div>
         )
     }
