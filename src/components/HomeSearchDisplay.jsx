@@ -30,8 +30,10 @@ class HomeSearchDisplay extends Component{
                         <Grid container spacing={4}>
                             {this.props.data.map((dogs) => (
                             <Grid item key={dogs.id} xs={12} sm={6} md={4} lg={3}>
-                                <Card
+                                <Link  className="cancelUnderScore" to='/adoption'><Card
+                                className="card"
                                 sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+                                onClick={()=> this.putDogsToSession(JSON.stringify(dogs))}
                                 >
                                 <CardMedia
                                     component="img"
@@ -50,11 +52,11 @@ class HomeSearchDisplay extends Component{
                                     content.
                                     </Typography>
                                 </CardContent>
-                                <CardActions>
+                                {/* <CardActions>
                                     <Button size="small" onClick={()=> this.putDogsToSession(JSON.stringify(dogs))}> 
                                         <Link to='/adoption'>View Details</Link></Button>
-                                </CardActions>
-                                </Card>
+                                </CardActions> */}
+                                </Card></Link>
                             </Grid>
                             ))}
                         </Grid>

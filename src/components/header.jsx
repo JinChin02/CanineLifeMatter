@@ -35,7 +35,7 @@ export class Header extends Component {
                 <td className='paddingTop'><Link to= '../' className='headerLink'>Cannine</Link></td>
                 <td className='paddingTop'><Link to= '../googleMap'  className='headerLink'>Map</Link></td> 
                 <td className='paddingTop'>Donation</td> 
-                <td/><td/><td/><td/> 
+                <td/><td/><td/> 
                 {this.state.isLoggin!=null && <td className='paddingTop'><Link to='../ImageUpload' className='headerLink'>Upload</Link></td>}
                 {this.state.isLoggin==null&& <td className='paddingTop'><Link to= '../Login'  className='headerLink'>Login</Link></td>}
                 {this.state.isLoggin!=null && <td className='paddingTop' onClick={this.logoutOut}><Link to= '../LogoutMessage' className='headerLink'>Logout</Link></td>}

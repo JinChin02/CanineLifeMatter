@@ -10,8 +10,8 @@ class LogoutMessage extends Component{
         return(     
             <div>
                 <Header/>
-                <div className="LogoutMessage">
-                     <h1> Logout successful </h1>
+                <div >
+                     <h1 className="fillSpaceL"> Logout successful </h1>
                 </div>
             </div>
         )

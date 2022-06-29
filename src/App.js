@@ -4,7 +4,6 @@ import CanineApp from './components/CanineApp';
 
 class App extends Component{
   
-  
   render(){
 
     return (

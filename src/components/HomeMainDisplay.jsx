@@ -1,8 +1,6 @@
 import React, {Component} from "react";
 import axios from 'axios';
-import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -16,9 +14,13 @@ class HomeMainDisplay extends Component{
     constructor(props){
         super(props)
         this.state = {
-         DogList:[]
+         DogList:[],
+         shadows:1
         }
     }
+
+    onMouseOver = () => this.setState({ shadows: 3 });
+    onMouseOut = () => this.setState({ shadows: 1 });
 
     async componentDidMount() {
        await this.GetAllDogs();
@@ -48,8 +50,13 @@ class HomeMainDisplay extends Component{
                         <Grid container spacing={4}>
                             {this.state.DogList.map((dogs) => (
                             <Grid item key={dogs.id} xs={12} sm={6} md={4} lg={3}>
-                                <Card
-                                sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+                                <Link to='/adoption' className="cancelUnderScore"><Card
+                                className="card"
+                                sx={{ height: '100%', display: 'flex', flexDirection: 'column'}}
+                                onClick={()=> this.putDogsToSession(JSON.stringify(dogs))}
+                                onMouseOver={this.onMouseOver}
+                                onMouseOut={this.onMouseOut}
+                                
                                 >
                                 <CardMedia
                                     component="img"
@@ -68,10 +75,10 @@ class HomeMainDisplay extends Component{
                                     content.
                                     </Typography>
                                 </CardContent>
-                                <CardActions>
+                                {/* <CardActions>
                                     <Button size="small" onClick={()=> this.putDogsToSession(JSON.stringify(dogs))}> <Link to='/adoption'>View Details</Link></Button>
-                                </CardActions>
-                                </Card>
+                                </CardActions> */}
+                                </Card></Link>
                             </Grid>
                             ))}
                         </Grid>

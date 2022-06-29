@@ -7,8 +7,7 @@ class HomeNotFound extends Component{
     render(){
         return(
             <div>
-                <h1>Search not found</h1>
-                
+                <h1 className="fillSpace">Search not found</h1>
             </div>
         )
     }
