@@ -20,7 +20,6 @@ import com.example.CSIS4495.model.UserRepository;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200/")
 public class DogAdoptController {
-
 	
 	@Autowired
 	UserRepository userRepository;

@@ -32,8 +32,6 @@ public class DogSearchController {
 		} else
 			return new ResponseEntity<List<Dog>>(tmp_arrayDogs, HttpStatus.OK);
 	}
-
-	
 	
 	private static List<Dog> serialSearchDog(List<Dog> array, String inputDogBreed) {
 		List<Dog> tempArray = new ArrayList<Dog>();

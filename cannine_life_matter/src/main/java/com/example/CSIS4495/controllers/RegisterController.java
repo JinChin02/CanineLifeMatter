@@ -29,7 +29,6 @@ public class RegisterController {
 
 		for (User userInRepo : userRepository.findAll()) {
 			if (userInRepo.getUsername().equalsIgnoreCase(user.getUsername())) {
-				System.out.println("in");
 				return new ResponseEntity<User>(HttpStatus.NOT_ACCEPTABLE);
 			}
 		}

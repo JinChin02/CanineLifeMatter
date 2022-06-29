@@ -16,8 +16,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.example.CSIS4495.model.User;
 import com.example.CSIS4495.model.UserRepository;
 
-
-
 @RestController
 @CrossOrigin(origins= "http://localhost:4200/")
 public class LoginController {
@@ -27,20 +25,12 @@ public class LoginController {
 	
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
-	// this is just for in case 
 	@GetMapping("/login")
 	public ResponseEntity<List<User>> getAllUsers(){
 		List<User> userList= new ArrayList<User>();
 		userRepository.findAll().forEach(userList::add);
 		return new ResponseEntity<List<User>>(userList, HttpStatus.OK);
 	}
-	
-	@GetMapping("/hello")
-	public ResponseEntity<String> showHello(){
-		return new ResponseEntity<String>("Hello", HttpStatus.OK);
-	}
-	
-
 	
 	
 	@PostMapping("/login")
@@ -49,7 +39,8 @@ public class LoginController {
 		String userName= user.getUsername();
 		String password = user.getPassword(); 
 		for (User existedUser : userRepository.findAll()) {
-			if (userName.equalsIgnoreCase(existedUser.getUsername())&& bCryptPasswordEncoder.matches(password, existedUser.getPassword())) {
+			if (userName.equalsIgnoreCase(existedUser.getUsername())&& bCryptPasswordEncoder
+					.matches(password, existedUser.getPassword())) {
 				return new ResponseEntity<User>(existedUser,HttpStatus.OK);
 			}
 		}
