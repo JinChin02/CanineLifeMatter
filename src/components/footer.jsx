@@ -11,7 +11,8 @@ export class Footer extends Component {
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        minHeight: 'relative'
+        minHeight: 'relative',
+        marginTop:'2vh'
       }}
       >  
         <CssBaseline />
