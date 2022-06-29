@@ -18,7 +18,11 @@ class Registration extends Component{
         if(this.state.password === this.state.confirmPassword){
             var user = {"username":this.state.username , "password":this.state.password , "email":this.state.email , "phone":this.state.phone}
             axios.post("http://localhost:8080/register", user)
-            .then(response=>{alert("You have successfully registered an account with us. You can proceed to login"); this.props.navigate("/login")})
+            .then(response=>console.log(response.status))
+            alert("Create success");
+        } else {
+            alert("Please enter the same passord");
+
         }
     }
 

@@ -17,12 +17,13 @@ import { Navigate } from "react-router-dom";
 class Adoption extends Component{
 
     constructor(props){
-        super(props)
+        super(props);
         this.state = {
             dog : JSON.parse(sessionStorage.getItem("dogObj")),
             open : false,
         }
     }
+
 
     componentDidMount(){ 
         if(sessionStorage.getItem('userlogin') === null){    
@@ -73,6 +74,12 @@ class Adoption extends Component{
         .then(response => {alert("Congratulations, you have adopted a new canine")})
     }
 
+
+    navigateToMap=()=>{
+        this.props.navigate("/googleMap");
+    }
+
+
     render() {
 
         if(sessionStorage.getItem('userlogin') === null){
@@ -116,6 +123,7 @@ class Adoption extends Component{
                             </CardContent>
                             <CardActions >
                             {isNotYours && <Button variant="contained" size="large" sx={{margin:"auto"}} onClick={this.handleClickOpen} >Adopt Now</Button>}
+                            <Button variant="contained" size="large" sx={{margin:"auto"}} onClick={this.navigateToMap} >Location found</Button>
                                 <Dialog
                                     open={this.state.open}
                                     onClose={this.handleClose}

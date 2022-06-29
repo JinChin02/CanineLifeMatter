@@ -24,6 +24,9 @@ class HomeMainDisplay extends Component{
 
     async componentDidMount() {
        await this.GetAllDogs();
+       if (sessionStorage.getItem("dogObj")!=null){
+        sessionStorage.removeItem("dogObj");
+       }
     }
 
     GetAllDogs = async() =>{
