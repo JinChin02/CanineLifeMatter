@@ -142,24 +142,65 @@ public class CannineLifeMatterApplication {
 			dogRepository.findAll().forEach(System.out::println);
 			
 			
-			// Clinic input 
+			// 49.204248578758396, -122.90940678864632
 			Clinic clinic1 = new Clinic();
-			clinic1.setName("Clinic1");
-			clinic1.setLat(49.208153982254956);
-			clinic1.setLng(-122.92310370703693);
+			clinic1.setName("Royal City Paws Pet Centre");
+			clinic1.setLat(49.204248578758396);
+			clinic1.setLng( -122.90940678864632);
+			clinic1.setAddress("660 Columbia St, New Westminster, BC V3M 1A9");
+			clinic1.setDescription("Our Services:"
+					+ "• PAWS Veterinary Clinic"
+					+ "• In House Lab & Digital "
+					+ "• Veterinary Dentistry & Dental X-Ray"
+					+ "• Titer Testing and Vaccination"
+					+ "• Full Service Grooming");
 			clinicRepository.save(clinic1);
 			
 			Clinic clinic2 = new Clinic();
-			clinic2.setName("Clinic2");
-			clinic2.setLat(49.21421018050347);
-			clinic2.setLng(-122.90971061761758);
+			clinic2.setName("Alpine Animal Hospital");
+			clinic2.setLat(49.212002128754285);
+			clinic2.setLng( -122.9161194839417);
+			clinic2.setAddress("348 6th St, New Westminster, BC V3L 3B1");
+			clinic2.setDescription("At Alpine Animal Hospital, we are a team of dedicated health care professionals passionate about providing your pets with comprehensive treatment and care.");
 			clinicRepository.save(clinic2);
 			
 			Clinic clinic3 = new Clinic();
-			clinic3.setName("Clinic3");
-			clinic3.setLat(49.20905073530374);
-			clinic3.setLng(-122.93409180673292);
+			clinic3.setName("Central City Animal Hospital");
+			clinic3.setLat(49.222427787676445);
+			clinic3.setLng(-122.92864034590828);
+			clinic3.setAddress("1-7834 6th St, Burnaby, BC V3N 3N2");
+			clinic3.setDescription("Dental disease is the most common disease affecting adult dogs and cats. Maintaining a regular tooth brushing regime is the easiest thing we can do for our pets to keep them in their best health.");
 			clinicRepository.save(clinic3);
+			
+			
+
+			Clinic clinic4 = new Clinic();
+			clinic4.setName("South Burnaby Veterinary Hospital");
+			clinic4.setLat(49.22523027761946);
+			clinic4.setLng(-122.94194927881702);
+			clinic4.setAddress("7665 Edmonds St, Burnaby, BC V3N 1B6");
+			clinic4.setDescription("South Burnaby Veterinary Hospital was founded in 1987.");
+			clinicRepository.save(clinic4);
+			
+			
+			Clinic clinic5 = new Clinic();
+			clinic5.setName("Burnaby New Westminster Animal Hospital");
+			clinic5.setLat(49.21626595734754);
+			clinic5.setLng(-122.93809452998171);
+			clinic5.setAddress("7877 Kingsway Avenue, Burnaby, BC V3N 3E4");
+			clinic5.setDescription("At Burnaby New Westminster Hospital CARE is first and foremost. You can be assured our love for pets and their people will be evident during all interactions with you and your pet. WE LOVE PETS!");
+			clinicRepository.save(clinic5);
+			
+		
+			Clinic clinic6 = new Clinic();
+			clinic6.setName("Columbia Square Animal Hospital");
+			clinic6.setLat(49.203619775096286);
+			clinic6.setLng(-122.91748645960489);
+			clinic6.setAddress("1015 Columbia St, New Westminster, BC V3M 6H6");
+			clinic6.setDescription("You’re just going to sleep a little bit easier knowing that your pet is cared for by such an exceptionally skilled team.");
+			clinicRepository.save(clinic6);
+			
+			
 			
 			clinicRepository.findAll().forEach(System.out::println);
 			
