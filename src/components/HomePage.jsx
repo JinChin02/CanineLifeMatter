@@ -4,6 +4,9 @@ import HomeMainDisplay from "./HomeMainDisplay";
 import HomeSearchDisplay from "./HomeSearchDisplay";
 import Header from './Header';
 import HomeNotFound from "./HomeNotFound";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 class HomePage extends Component{
     constructor(props){
@@ -17,11 +20,16 @@ class HomePage extends Component{
 
     handleSearch = async(event) =>{
         event.preventDefault();
-        await axios.post("http://localhost:8080/searchDog",this.state.searchString)
-        .then(response=>{
-            this.setState({returnedData:response.data, returnedStatus:response.status})
-        })
-        .catch(e=>this.setState({returnedStatus:404}))
+        if(this.state.searchString.length === 0){
+            // alert("Please fill in breed type to search")
+            toast("Please fill in breed type to search",{type:"warning"})
+        }
+        else{
+            await axios.post("http://localhost:8080/searchDog",this.state.searchString)
+            .then(response=>{this.setState({returnedData:response.data, returnedStatus:response.status})})
+            .catch(e=>this.setState({returnedStatus:404}))
+        }
+        
     }
 
     someFunction = () => {
@@ -52,6 +60,7 @@ class HomePage extends Component{
                 <div>
                     {this.someFunction()}             
                 </div>
+                <ToastContainer autoClose={1000} />
             </div>
         )
     }

@@ -10,6 +10,7 @@ import LogoutMessage from './LogoutMessage';
 import Map from './Map';
 import Adoption from './Adoption';
 import {LoadScript} from '@react-google-maps/api';
+import Donation from './Donation';
 
 class CanineApp extends Component {
   
@@ -33,6 +34,7 @@ class CanineApp extends Component {
                                 <Route path='/logoutMessage' element={<LogoutMessage/>}/>
                                 <Route path='/googleMap' element={<Map/>}/>
                                 <Route path='/adoption' element={<AdoptionWithNav/>}/>
+                                <Route path='/donation' element={<Donation/>}/>
                             </Routes>
                     </LoadScript>
                 <Footer/>
