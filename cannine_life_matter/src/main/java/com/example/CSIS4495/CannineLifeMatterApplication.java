@@ -36,7 +36,6 @@ public class CannineLifeMatterApplication {
 			User user1= new User();
 			user1.setUsername("Aria");
 			user1.setPassword(bCryptPasswordEncoder.encode("123"));
-			;
 			userRepository.save(user1);	
 			
 
@@ -44,6 +43,12 @@ public class CannineLifeMatterApplication {
 			user2.setUsername("Jack");
 			user2.setPassword(bCryptPasswordEncoder.encode("123"));
 			userRepository.save(user2);	
+			
+			
+			User user3= new User();
+			user3.setUsername("Lin");
+			user3.setPassword(bCryptPasswordEncoder.encode("123"));
+			userRepository.save(user3);
 			userRepository.findAll().forEach(System.out::println);
 			
 			
@@ -56,6 +61,7 @@ public class CannineLifeMatterApplication {
 			dog1.setIsAdopted(0);
 			dog1.setLatitude(49.207843406821624);
 			dog1.setLongitude(-122.90177540682008);
+			dog1.setDogDescription("A lovely Poodle.");
 			dogRepository.save(dog1);
 			
 			Dog dog2= new Dog();
@@ -66,6 +72,7 @@ public class CannineLifeMatterApplication {
 			dog2.setIsAdopted(0);
 			dog2.setLatitude(49.21060736956497);
 			dog2.setLongitude(-122.92600328435951);
+			dog2.setDogDescription("A lovely Poodle.");
 			dogRepository.save(dog2);
 			
 			Dog dog3= new Dog();
@@ -76,6 +83,7 @@ public class CannineLifeMatterApplication {
 			dog3.setIsAdopted(0);
 			dog3.setLatitude(49.21695421190464);
 			dog3.setLongitude(-122.90961621434131);
+			dog3.setDogDescription("A lovely Golden Retriever.");
 			dogRepository.save(dog3);
 			
 			
@@ -84,9 +92,10 @@ public class CannineLifeMatterApplication {
 			dog4.setBreed("American Bulldog");
 			dog4.setDogURL("https%3A%2F%2Fres.cloudinary.com%2Fdlbwhvhsg%2Fimage%2Fupload%2Fv1655763268%2FAmerican_Bully1_e1yykr.jpg");	
 			dog4.setOwner(user1);
-			dog4.setIsAdopted(0);
+			dog4.setIsAdopted(1);
 			dog4.setLatitude(49.21119827631807);
 			dog4.setLongitude( -122.87386603610088);
+			dog4.setDogDescription("A lovely American Bulldog.");
 			dogRepository.save(dog4);		
 			
 			Dog dog5= new Dog();
@@ -97,6 +106,7 @@ public class CannineLifeMatterApplication {
 			dog5.setIsAdopted(0);
 			dog5.setLatitude(49.214335559806095);
 			dog5.setLongitude( -122.94498446880101);
+			dog5.setDogDescription("A lovely labrador.");
 			dogRepository.save(dog5);	
 			
 			Dog dog6= new Dog();
@@ -107,6 +117,7 @@ public class CannineLifeMatterApplication {
 			dog6.setIsAdopted(0);
 			dog6.setLatitude(49.21598623201734);
 			dog6.setLongitude(-122.93551712190988);
+			dog6.setDogDescription("A lovely chihuahua.");
 			dogRepository.save(dog6);	
 			
 			Dog dog7= new Dog();
@@ -117,6 +128,7 @@ public class CannineLifeMatterApplication {
 			dog7.setIsAdopted(0);
 			dog7.setLatitude(49.22176628510301);
 			dog7.setLongitude(-122.92922628120704);
+			dog7.setDogDescription("A lovely chihuahua.");
 			dogRepository.save(dog7);	
 			
 			Dog dog8= new Dog();
@@ -127,6 +139,7 @@ public class CannineLifeMatterApplication {
 			dog8.setIsAdopted(0);
 			dog8.setLatitude(49.21689489840684);
 			dog8.setLongitude(-122.92689110437357);
+			dog8.setDogDescription("A lovely labrador.");
 			dogRepository.save(dog8);	
 			
 			Dog dog9= new Dog();
@@ -137,12 +150,12 @@ public class CannineLifeMatterApplication {
 			dog9.setIsAdopted(0);
 			dog9.setLatitude(49.22227250710195);
 			dog9.setLongitude( -122.89984175539256);
+			dog9.setDogDescription("A lovely chihuahua.");
 			dogRepository.save(dog9);	
 			
 			dogRepository.findAll().forEach(System.out::println);
 			
 			
-			// 49.204248578758396, -122.90940678864632
 			Clinic clinic1 = new Clinic();
 			clinic1.setName("Royal City Paws Pet Centre");
 			clinic1.setLat(49.204248578758396);
@@ -200,6 +213,40 @@ public class CannineLifeMatterApplication {
 			clinic6.setDescription("You’re just going to sleep a little bit easier knowing that your pet is cared for by such an exceptionally skilled team.");
 			clinicRepository.save(clinic6);
 			
+		
+			Clinic clinic7 = new Clinic();
+			clinic7.setName("Queensborough Veterinary Hospital");
+			clinic7.setLat(49.189497643013446);
+			clinic7.setLng(-122.94644104592878);
+			clinic7.setAddress("#170 - 1110 Ewen Avenue Located Around Back of the Queens Hotel *ENTRANCE OFF JARDINE*, New Westminster, BC V3L 1X3");
+			clinic7.setDescription("We’re proud to provide a wide variety of veterinary medical services for cats, dogs and small animals in New Westminster & surrounding areas!");
+			clinicRepository.save(clinic7);
+			
+			
+			Clinic clinic8 = new Clinic();
+			clinic8.setName("Angel Animal Hospital");
+			clinic8.setLat(49.1924871736445);
+			clinic8.setLng(-122.84056084048926);
+			clinic8.setAddress("10318 Whalley Blvd, Surrey, BC V3T 4H4");
+			clinic8.setDescription("Our goal is to help your pet achieve optimal health from puppy or kitten hood through adult and senior years with quality medical and surgical care, and reasonable fees.");
+			clinicRepository.save(clinic8);
+			
+			Clinic clinic9 = new Clinic();
+			clinic9.setName("High Point Animal Hospital");
+			clinic9.setLat(49.18104291310804);
+			clinic9.setLng(-122.8440049298494);
+			clinic9.setAddress("9666 King George Blvd, Surrey, BC V3T 2V4");
+			clinic9.setDescription("The team of caring professionals at High Point Animal Hospital in Surrey provide excellent veterinary expertise to pets and their owners every day.");
+			clinicRepository.save(clinic9);
+
+		
+			Clinic clinic10 = new Clinic();
+			clinic10.setName("Cedar Hills Animal Hospital");
+			clinic10.setLat(49.18015341426373);
+			clinic10.setLng(-122.86614601449608);
+			clinic10.setAddress("12863 96 Avenue, Surrey, BC V3V 6V9");
+			clinic10.setDescription("Whether your pet is in need of routine veterinary care or needs treatment, our highly qualified staff provides all types of veterinary services in order to effectively treat your pet and maintain their health.");
+			clinicRepository.save(clinic10);
 			
 			
 			clinicRepository.findAll().forEach(System.out::println);
