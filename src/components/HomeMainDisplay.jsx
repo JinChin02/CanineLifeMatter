@@ -8,7 +8,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import LoadingPage from './LoadingPage';
+import LoadingPage from '../components/Loading';
 import { Link } from "react-router-dom";
 
 class HomeMainDisplay extends Component{
@@ -42,7 +42,7 @@ class HomeMainDisplay extends Component{
     render(){
         const theme = createTheme();
 
-        if(this.state.DogList.length==0){
+        if(this.state.DogList.length===0){
             <LoadingPage/>
         }else{
             return(

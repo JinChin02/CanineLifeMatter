@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import axios from "axios";
-import HomeMainDisplay from "./HomeMainDisplay";
-import HomeSearchDisplay from "./HomeSearchDisplay";
-import Header from './Header';
-import HomeNotFound from "./HomeNotFound";
+import HomeMainDisplay from "../components/HomeMainDisplay";
+import HomeSearchDisplay from "../components/HomeSearchDisplay";
+import Header from '../components/Header';
+import HomeNotFound from "../components/HomeNotFound";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

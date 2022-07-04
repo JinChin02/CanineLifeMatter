@@ -1,12 +1,12 @@
 import React,{Component} from "react";
 import {GoogleMap,MarkerF,InfoWindow} from '@react-google-maps/api';
-import HeaderWithNav from './Header'
+import HeaderWithNav from '../components/Header'
 import axios from "axios";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import LoadingPage from "./LoadingPage";
+import LoadingPage from "../components/Loading";
 
 
 class Map extends Component{

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Header from './Header'
-import LoadingPage from './LoadingPage';
+import Header from '../components/Header'
+import LoadingPage from '../components/Loading';
 import axios from 'axios';
 import Typography from '@mui/material/Typography';
 
@@ -17,7 +17,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
-import Row from './row.js'
+import Row from '../components/row.js'
 
 
 

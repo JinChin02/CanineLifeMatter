@@ -1,5 +1,5 @@
 import React,{Component} from "react";
-import HeaderWithNav from './Header';
+import HeaderWithNav from '../components/Header';
 import StripeCheckout from 'react-stripe-checkout';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

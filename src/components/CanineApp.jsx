@@ -1,18 +1,17 @@
 import React, { Component } from 'react'
 import {BrowserRouter as Router, Routes , Route} from 'react-router-dom';
-import WithNavigation from './WithNavigation';
+import WithNavigation from '../Utilities/WithNavigation';
 import Footer from './Footer';
-import Login from './Login';
-import Registration from './Registration';
-import HomePage from './HomePage';
-import ImageUpload from './ImageUpload';
-import LogoutMessage from './LogoutMessage';
-import Map from './Map';
-import Adoption from './Adoption';
-import Manage from './Manage';
-import Loading from './LoadingPage';
+import Login from '../Page/Login';
+import Registration from '../Page/Registration';
+import HomePage from '../Page/HomePage';
+import ImageUpload from '../Page/ImageUpload';
+import LogoutMessage from '../Page/LogoutMessage';
+import Map from '../Page/MapPage';
+import Adoption from '../Page/Adoption';
+import Manage from '../Page/Manage';
 import {LoadScript} from '@react-google-maps/api';
-import Donation from './Donation';
+import Donation from '../Page/Donation';
 
 
 class CanineApp extends Component {
@@ -39,7 +38,6 @@ class CanineApp extends Component {
                                 <Route path='/adoption' element={<AdoptionWithNav/>}/>
                                 <Route path='/donation' element={<Donation/>}/>
                                 <Route path='/manage' element={<Manage/>}/>
-                                <Route path='/loading' element={<Loading/>}/>
                             </Routes>
                     </LoadScript>
                 <Footer/>

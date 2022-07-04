@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import CanineLogo from '../images/logo/CanineLogo.png'
 import {Link} from 'react-router-dom';
-import Authentication from './Authentication';
+import Authentication from '../Utilities/Authentication';
 import { Navigate } from 'react-router-dom';
 
 export class Header extends Component {
