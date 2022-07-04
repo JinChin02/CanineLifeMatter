@@ -14,21 +14,10 @@
   text-decoration: none;
 }
 
-/**footer**/
-/* .footer{
-  position :inherit;
-  bottom:0;
-  width: 100%;
-  height: 40px;
-  background-color: #222222;
-  text-align: center;
-  margin-top: 2vh;
-} */
 
 /** header **/
 .header{
   height: 15vh;
-  /* scrollbar-shadow-color: black; */
 }
 
 .headerLink{
@@ -41,6 +30,7 @@
   font-size: larger;
 }
 
+
 .logo{
   padding-left: 1vw;
   width: 12vw;
@@ -50,7 +40,6 @@
 }
 
 .headerTable{
-  /* background-color: #a1f8b7; */
   background-color: #ceffdb;
   width:100%;
   height: 13vh;
@@ -62,11 +51,11 @@
 .headerTable tr td{
   text-align:center;
   font-size: 1.5vw;
-  /* font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
-  /* font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
   font-family:Arial, Helvetica, sans-serif;
   font-weight:550; 
 }
+
+
 
 
 .Title{
@@ -160,4 +149,39 @@
 
 .fillSpaceL{
   min-height: 77.5vh;
+}
+
+.InfoWindowStyle{
+  background-color:rgb(0, 221, 255);
+  width: 10vh; 
+  height: 5vw;
+} 
+
+
+/** Loading Page **/
+.loadingPageLayout{
+  height: 92vh;
+  align-items: center;
+}
+.LoadingPageContainer{
+  position: absolute;
+  left: 39%; top: 35%;
+}
+
+.LoadingSpinner {
+    width: 20vw;
+    height: 40vh;
+    border: 2.5vw solid;
+    border-color: #f16c18 transparent #3d5af1 transparent;
+    border-radius: 50%;
+    animation: spin-anim 3s linear infinite;
+}
+
+@keyframes spin-anim {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
