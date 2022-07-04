@@ -147,7 +147,6 @@ public class CannineLifeMatterApplication {
 			dog8.setLatitude(49.21689489840684);
 			dog8.setLongitude(-122.92689110437357);
 			dog8.setDogDescription("A lovely labrador.");
-			dog8.setVaccinationStatus("YES");	
 			dogRepository.save(dog8);	
 			
 			Dog dog9= new Dog();
@@ -159,7 +158,6 @@ public class CannineLifeMatterApplication {
 			dog9.setLatitude(49.22227250710195);
 			dog9.setLongitude( -122.89984175539256);
 			dog9.setDogDescription("A lovely chihuahua.");
-			dog9.setVaccinationStatus("YES");
 			dogRepository.save(dog9);	
 			
 			dogRepository.findAll().forEach(System.out::println);
