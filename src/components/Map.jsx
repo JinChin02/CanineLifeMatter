@@ -2,13 +2,19 @@ import React,{Component} from "react";
 import {GoogleMap,MarkerF,InfoWindow} from '@react-google-maps/api';
 import HeaderWithNav from './Header'
 import axios from "axios";
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import LoadingPage from "./LoadingPage";
+
 
 class Map extends Component{
 
     constructor(props){
         super(props)
         this.state = {
-            location:{lat: 49.20348054635789*1 , lng: (-122.91076722885988)*1},
+            location:null,
             clinicObjArray:[],
             showingInfoWindow: 0,
             dog:"",
@@ -20,7 +26,6 @@ class Map extends Component{
         await this.getUserLocation(); 
         await this.getDogLoaciton();  
         await this.getAllMarkerLocation();
-        
     }
 
 
@@ -53,14 +58,12 @@ class Map extends Component{
 
   
     onMarkerClick = (id) => {
-    console.log(id)
       this.setState({
         showingInfoWindow: id,
       })        
     };
     
     onInfoWindowClose = () =>{
-    console.log("close");
         this.setState({
           showingInfoWindow: false
         });
@@ -79,16 +82,39 @@ class Map extends Component{
     }
 
     render(){
+        if (this.state.clinicObjArray.length===0 ){
+            return (  <div><HeaderWithNav/> <LoadingPage/></div>);
+        } else 
         return (
-            <div>   
+            <div>
                 <HeaderWithNav/>         
                 <GoogleMap  center={this.state.location}  zoom={13} mapContainerClassName="map-container" >
                 <MarkerF key="user" size="large" position={this.state.userLocation}  icon={"https://www.robotwoods.com/dev/misc/bluecircle.png"} ></MarkerF> 
                 
                 {this.state.clinicObjArray.map((eachEle)=>
-                <MarkerF key={eachEle.id} size="large" position={{lat:eachEle.lat , lng:eachEle.lng}} onClick={()=>this.onMarkerClick(eachEle.id)}>
+                <MarkerF key={eachEle.id} size="large" position={{lat:eachEle.lat , lng:eachEle.lng}} onClick={()=>this.onMarkerClick(eachEle.id)} icon="https://res.cloudinary.com/dlbwhvhsg/image/upload/v1656696738/hos_Icon-removebg_small_lkarnz.png">
                     {this.state.showingInfoWindow === eachEle.id && 
-                    <InfoWindow position={{lat:eachEle.lat , lng:eachEle.lng}} onCloseClick={this.onInfoWindowClose}><>{eachEle.id}</></InfoWindow>}
+                    <InfoWindow position={{lat:eachEle.lat , lng:eachEle.lng}} onCloseClick={this.onInfoWindowClose}>
+                    <Card sx={{ minWidth: 275, maxWidth: 275}}>
+                    <CardContent>
+                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                        Hospital name: 
+                        </Typography>
+                        <Typography variant="h5" component="div">
+                        {eachEle.name}
+                        </Typography>
+                        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                        {eachEle.address}
+                        </Typography>
+                        <Typography variant="body2">
+                        {eachEle.description}
+                        </Typography>
+                    </CardContent>
+                    {/* <CardActions>
+                        <Button size="small">Learn More</Button>
+                    </CardActions> */}
+                    </Card>    
+                    </InfoWindow>}
                 </MarkerF> 
                 )}
 
@@ -96,7 +122,30 @@ class Map extends Component{
                 <MarkerF key={this.state.dog.id} size="large" position={{lat:this.state.dog.latitude*1 , lng:this.state.dog.longitude*1}} onClick={()=>this.onMarkerClick(this.state.dog.id)}
                 icon="https://res.cloudinary.com/dlbwhvhsg/image/upload/v1656459823/dogIcon_pcveui.png" >
                     {this.state.showingInfoWindow === this.state.dog.id && 
-                    <InfoWindow position={{lat:this.state.dog.latitude , lng:this.state.dog.longitude}} onCloseClick={this.onInfoWindowClose}><>{this.state.dog.dogname}</></InfoWindow>}
+                    <InfoWindow  position={{lat:this.state.dog.latitude , lng:this.state.dog.longitude}} onCloseClick={this.onInfoWindowClose}>
+                        <Card sx={{ minWidth: 275, maxWidth: 275}}>
+                            <CardContent>
+                                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                                Dog name: 
+                                </Typography>
+                                <Typography variant="h5" component="div">
+                                {this.state.dog.dogname}
+                                </Typography>
+                                <Typography sx={{ mb: 0.6 }} color="text.secondary">
+                                Breed: {this.state.dog.breed}
+                                </Typography>
+                                <Typography variant="body2">
+                                {this.state.dog.dogDescription}
+                                </Typography>
+                            </CardContent>
+                                <CardMedia
+                                    component="img"
+                                    height="194"
+                                    image={decodeURIComponent(this.state.dog.dogURL)}
+                                    alt="Paella dish"
+                                />
+                        </Card>    
+                    </InfoWindow>}
                 </MarkerF> 
                 }
 

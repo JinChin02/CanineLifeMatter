@@ -40,7 +40,7 @@ class HomePage extends Component{
             return <HomeNotFound />
         }
         else if (this.state.returnedStatus===0){
-            return <HomeMainDisplay/>
+            return <HomeMainDisplay/>       
         }
     }
 

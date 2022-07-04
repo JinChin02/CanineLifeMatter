@@ -9,8 +9,11 @@ import ImageUpload from './ImageUpload';
 import LogoutMessage from './LogoutMessage';
 import Map from './Map';
 import Adoption from './Adoption';
+import Manage from './Manage';
+import Loading from './LoadingPage';
 import {LoadScript} from '@react-google-maps/api';
 import Donation from './Donation';
+
 
 class CanineApp extends Component {
   
@@ -35,6 +38,8 @@ class CanineApp extends Component {
                                 <Route path='/googleMap' element={<Map/>}/>
                                 <Route path='/adoption' element={<AdoptionWithNav/>}/>
                                 <Route path='/donation' element={<Donation/>}/>
+                                <Route path='/manage' element={<Manage/>}/>
+                                <Route path='/loading' element={<Loading/>}/>
                             </Routes>
                     </LoadScript>
                 <Footer/>
