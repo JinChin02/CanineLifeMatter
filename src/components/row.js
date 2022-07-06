@@ -11,13 +11,10 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
-import ButtonBase from '@mui/material/ButtonBase';
 import Button from '@mui/material/Button';
 
-
+import Paper from '@mui/material/Paper';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 
 
@@ -35,6 +32,14 @@ export default function Row(props) {
         });
 
 
+        const Item = styled(Paper)(({ theme }) => ({
+          backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+          ...theme.typography.body2,
+          padding: theme.spacing(1),
+          textAlign: 'center',
+          color: theme.palette.text.secondary,
+        }));
+
         return (
             <React.Fragment>
             <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
@@ -43,7 +48,7 @@ export default function Row(props) {
                     // aria-label="expand row"
                     size="large"
                     color="default"
-                    onClick={() => setOpen(!open)}
+                    onClick={() => {setOpen(!open);}}
                   >
                   {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
                   </IconButton>
@@ -57,8 +62,8 @@ export default function Row(props) {
               <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
                 <Collapse in={open} timeout="auto" unmountOnExit>
                   <Box sx={{ margin: 3 }} >                             
-                    <Grid container spacing={10} direction="row" >
-                      <Grid item xs={12} sm={6} md={4} lg={3} >
+                    <Grid container >
+                      <Grid item xs={3.5} >
                           <Card sx={{ maxWidth: 345 }}>
                           <CardMedia
                               component="img"
@@ -66,10 +71,9 @@ export default function Row(props) {
                               image={decodeURIComponent(row.dogURL)}
                               alt="green iguana"
                           />
-                          </Card>         
+                          </Card>   
                       </Grid>
-                      <Grid item xs={18} sm container>
-                        <Grid item xs  direction="column" spacing={2}>
+                      <Grid item xs={7.5}  container direction="column" spacing={2}>
                           <Grid item xs>
                             <Typography gutterBottom variant="h5" component="div">
                               {row.dogname}
@@ -78,11 +82,10 @@ export default function Row(props) {
                               {row.dogDescription}
                             </Typography>
                           </Grid>
-                        </Grid>
-                        <Grid item xs="1" container direction="column" justifyContent="center" alignItems="center">               
-                          <Grid item><Button variant="contained" size='large'>Edit</Button></Grid>
-                        </Grid>
                       </Grid>
+                      <Grid item xs={1}  container direction="column" justifyContent="center" alignItems="center">   
+                          <Grid item><Button variant="contained" size='large'>Edit</Button></Grid>
+                      </Grid>                    
                     </Grid>
                   </Box>
                 </Collapse>

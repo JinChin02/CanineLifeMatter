@@ -3,6 +3,7 @@ import Header from '../components/Header'
 import LoadingPage from '../components/Loading';
 import axios from 'axios';
 import Typography from '@mui/material/Typography';
+import { Link } from 'react-router-dom';
 
 import { styled } from '@mui/material/styles';
 
@@ -18,7 +19,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
 import Row from '../components/row.js'
-
+import LoadinUploadPage from '../components/FloatingUploadBar'
 
 
 class Manage extends Component {
@@ -75,12 +76,9 @@ class Manage extends Component {
                 backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#EDEEED',
                 ...theme.typography.body2,
                  padding: theme.spacing(5),
-                // textAlign: 'center',
-               
+                // textAlign: 'center', 
                 color: theme.palette.text.secondary,
-
             }));
-
             return (
                 <div>
                     <Header/>
@@ -110,33 +108,35 @@ class Manage extends Component {
                                 </TableContainer>
                             </Item>
                         </Grid>
-                        <Grid item xs={6}md={10} justifyContent="flex-start"  margin={20}>
-                            <Item>
-                            <Typography variant="h4">Cannie waiting to be adopted:</Typography><br/><br />
+                            <Grid item xs={6}md={10} justifyContent="flex-start"  margin={20}>
+                                <Item>
+                                <Typography variant="h4">Cannie waiting to be adopted:</Typography><br/><br />
 
-                            <TableContainer component={Paper}>
-                                    <Table aria-label="collapsible table">
-                                        <TableHead>
-                                        <TableRow>
-                                            <TableCell />
-                                            <TableCell align="right"><Typography variant="h5">DogID</Typography></TableCell>
-                                            <TableCell align="right"><Typography variant="h5">Dog Name</Typography></TableCell>
-                                            <TableCell align="right"><Typography variant="h5">Dog breed</Typography></TableCell>
-                                            <TableCell align="right"><Typography variant="h5">Vaccination Status</Typography></TableCell>
-                                        </TableRow>
-                                        </TableHead>
-                                        <TableBody>
-                                        {this.state.dogListOfFinded.length!==0&&this.state.dogListOfFinded.map((dog) =>
-                                         <Row key={dog.id} row={dog} />
-                                        )}                                   
-                                        </TableBody>
-                                    </Table>
-                                </TableContainer>
-
-                            </Item>
+                                <TableContainer component={Paper}>
+                                        <Table aria-label="collapsible table">
+                                            <TableHead>
+                                            <TableRow>
+                                                <TableCell />
+                                                <TableCell align="right"><Typography variant="h5">DogID</Typography></TableCell>
+                                                <TableCell align="right"><Typography variant="h5">Dog Name</Typography></TableCell>
+                                                <TableCell align="right"><Typography variant="h5">Dog breed</Typography></TableCell>
+                                                <TableCell align="right"><Typography variant="h5">Vaccination Status</Typography></TableCell>
+                                            </TableRow>
+                                            </TableHead>
+                                            <TableBody>
+                                            {this.state.dogListOfFinded.length!==0&&this.state.dogListOfFinded.map((dog) =>
+                                            <Row key={dog.id} row={dog} />
+                                            )}                                   
+                                            </TableBody>
+                                        </Table>
+                                    </TableContainer>
+                                </Item>
+                            </Grid>
                         </Grid>
-                    </Grid>
                     </Box>
+                    <div className='floatingBarPosition'>
+                        <Link to="/imageUpload"><LoadinUploadPage/></Link>
+                    </div>        
                 </div>
             )
         }

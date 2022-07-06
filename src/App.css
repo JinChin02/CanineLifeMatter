@@ -185,3 +185,11 @@
         transform: rotate(360deg);
     }
 }
+
+/*** Manage ***/
+.floatingBarPosition{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 2vw 2vh;
+}

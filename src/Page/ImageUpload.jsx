@@ -1,6 +1,7 @@
 import React, { Component} from "react";
 import axios from "axios";
 import Header from "../components/Header"; 
+import Map from "../components/Map";
 
 class DisplayImage extends Component {
 
@@ -73,6 +74,7 @@ class DisplayImage extends Component {
             {this.state.imageURL!=null&&<img src={this.state.imageURL} alt="no"></img>}
           </div>
         </div>
+        <Map/>
       </div>
     );
     
