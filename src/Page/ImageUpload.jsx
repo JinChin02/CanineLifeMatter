@@ -3,6 +3,7 @@ import axios from "axios";
 import Header from "../components/Header"; 
 import Map from "../components/Map";
 
+
 class DisplayImage extends Component {
 
   constructor(props) {
@@ -64,7 +65,6 @@ class DisplayImage extends Component {
 
     return (
       <div>
-        <Header/>
         <div>
           <div>
             <h1>Dog Image upload</h1>

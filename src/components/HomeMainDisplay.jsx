@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import LoadingPage from '../components/Loading';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 class HomeMainDisplay extends Component{
     constructor(props){
@@ -58,7 +58,7 @@ class HomeMainDisplay extends Component{
                             <Grid container spacing={4}>
                                 {this.state.DogList.map((dogs) => (
                                 <Grid item key={dogs.id} xs={12} sm={6} md={4} lg={3}>
-                                    <Link to='/adoption' className="cancelUnderScore"><Card
+                                    <NavLink to='/adoption' className="cancelUnderScore"><Card
                                     className="card"
                                     sx={{ height: '100%', display: 'flex', flexDirection: 'column'}}
                                     onClick={()=> this.putDogsToSession(JSON.stringify(dogs))}
@@ -86,7 +86,7 @@ class HomeMainDisplay extends Component{
                                     {/* <CardActions>
                                         <Button size="small" onClick={()=> this.putDogsToSession(JSON.stringify(dogs))}> <Link to='/adoption'>View Details</Link></Button>
                                     </CardActions> */}
-                                    </Card></Link>
+                                    </Card></NavLink>
                                 </Grid>
                                 ))}
                             </Grid>

@@ -1,20 +1,33 @@
 import React, {Component} from "react";
-import Header from '../components/Header';
-
-
-
 
 class LogoutMessage extends Component{
 
+    time = () => {
+        setTimeout(()=>{this.props.navigate("/")},2000)
+    }
+
+    noTime = () =>{
+        setTimeout(()=>{this.props.navigate("/")},0)
+    }
+
     render(){
-        return(     
-            <div>
-                <Header/>
-                <div >
-                     <h1 className="fillSpaceL"> Logout successful </h1>
+        if(sessionStorage.getItem('userlogin') !== null){
+            return (
+                <div>
+                    {this.noTime()}
                 </div>
-            </div>
-        )
+            )
+        }else{
+            return(     
+                <div>
+                    <div >
+                         <h2 className="fillSpaceL" > You have successfully logout </h2>
+                         {this.time()}
+                    </div>
+                </div>
+            )
+        }
+       
     }
 }
 

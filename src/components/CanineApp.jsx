@@ -11,7 +11,8 @@ import Map from '../Page/MapPage';
 import Adoption from '../Page/Adoption';
 import Manage from '../Page/Manage';
 import {LoadScript} from '@react-google-maps/api';
-import Donation from '../Page/Donation';
+import Donation from '../Page/DonationF';
+import Header from './Header';
 
 
 class CanineApp extends Component {
@@ -21,19 +22,22 @@ class CanineApp extends Component {
     const ImageUploadWithNav = WithNavigation(ImageUpload)
     const AdoptionWithNav = WithNavigation(Adoption);
     const RegistrationWithNav = WithNavigation(Registration)
+    const LogoutWithNav = WithNavigation(LogoutMessage)
+    const HeaderWithNav = WithNavigation(Header)
     const api = "AIzaSyBNn8vfymHui03uwp3VKl8_2EccQEu1F_g";
 
 
     return (
         <div className='CanineApp'>
             <Router>
+                <HeaderWithNav/>
                     <LoadScript googleMapsApiKey={api}> 
                             <Routes>
                                 <Route path="/" element={<HomePage/>} /> 
                                 <Route path="/login" element={<LoginWithNav/>} />
                                 <Route path="/register" element={<RegistrationWithNav/>} />
                                 <Route path='/imageUpload' element={<ImageUploadWithNav/>}/>
-                                <Route path='/logoutMessage' element={<LogoutMessage/>}/>
+                                <Route path='/logoutMessage' element={<LogoutWithNav/>}/>
                                 <Route path='/googleMap' element={<Map/>}/>
                                 <Route path='/adoption' element={<AdoptionWithNav/>}/>
                                 <Route path='/donation' element={<Donation/>}/>
