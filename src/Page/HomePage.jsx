@@ -2,10 +2,12 @@ import React, {Component} from "react";
 import axios from "axios";
 import HomeMainDisplay from "../components/HomeMainDisplay";
 import HomeSearchDisplay from "../components/HomeSearchDisplay";
-import Header from '../components/Header';
 import HomeNotFound from "../components/HomeNotFound";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import CardMedia from '@mui/material/CardMedia';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 
 
 class HomePage extends Component{
@@ -47,7 +49,20 @@ class HomePage extends Component{
     render(){
         return(
             <div>
-                <Header/>
+                <div>
+                    {/* <CardMedia component="img" sx={{height : 450 }} image={require('../images/strays.jpg')} alt="main"/> */}
+                    <Grid container className='mainImage' md={12} sx={{minHeight:470}}>
+                        <Grid item>
+                            <Typography variant='h5' fontFamily={"monospace"} style={{color:'rgba(199, 192, 183, 0.5)',marginLeft:"3.9em", marginTop:"8em", marginBottom:'0.5em'}} align='left' >
+                                Togather we can <br />
+                                ________
+                            </Typography>
+                            <Typography variant='h3' fontFamily={"monospace"} style={{color:'rgba(199, 192, 183, 0.5)',marginLeft:"1.9em", marginBottom:'0.5em'}} align='left' >
+                                BUILD A COMMUNITY OF LOVING AND CARE
+                            </Typography>
+                        </Grid>
+                    </Grid>
+                </div>
                 <div className="searchBody">
                     <form action="" onSubmit={this.handleSearch}>
                         <div className="abc">

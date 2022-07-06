@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import HeaderWithNav from '../components/Header';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -92,8 +91,7 @@ class Adoption extends Component{
         else{
             const isNotYours = this.ownership()
             return(
-                <div>
-                        <HeaderWithNav/>  
+                <div> 
                         <Card sx={{ maxWidth:1000 ,textAlign:'center', margin:'auto', background:'#eff9fa' }}>
                             <CardContent>
                                 <Typography gutterBottom variant="h4" component="h2" color="text.secondary">

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Header from '../components/Header'
 import LoadingPage from '../components/Loading';
 import axios from 'axios';
 import Typography from '@mui/material/Typography';
@@ -68,7 +67,7 @@ class Manage extends Component {
     render() {
 
         if (this.state.user==null){
-            return ( <div><Header/><LoadingPage/></div>);
+            return ( <div><LoadingPage/></div>);
         } else {
             const Item = styled(Paper)(({ theme }) => ({
                 // '#fff' (white version)
@@ -83,7 +82,6 @@ class Manage extends Component {
 
             return (
                 <div>
-                    <Header/>
                     <Box sx={{ width: '100%' }}>
                         <Grid justifyContent="center"  >
                             <Grid item xs={6}md={10} justifyContent="flex-start"  margin={20}>

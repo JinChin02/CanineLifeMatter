@@ -5,8 +5,6 @@ class Authentication{
 
     logout(){
         sessionStorage.removeItem('userlogin');
-        alert("logout success");
-        
     }
 
     isLoggedIn(){

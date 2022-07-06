@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import Header from "../components/Header"
+import { NavLink } from "react-router-dom";
 import Authentication from '../Utilities/Authentication';
 
 class Login extends Component{
@@ -12,13 +11,11 @@ class Login extends Component{
             password:'',
             signinSuccess: false,
             warningStatement:"",
+            isLogin:false
         }
     }
 
     userLogin = async () => {
-        console.log(this.state.username);
-        console.log(this.state.password);
-
         var user = {"username":this.state.username, "password":this.state.password}
         await axios.post("http://localhost:8080/login" , user)
         .then(response =>  this.abc(response.status,response)) 
@@ -27,8 +24,6 @@ class Login extends Component{
 
     abc = (res,response) => {
         if(res === 200){
-            console.log(res)
-            console.log(response.data.id)
             this.setState({signinSuccess: true},() => console.log(this.state.signinSuccess))    
             Authentication.registerSuccess(response.data.id);
             this.props.navigate('/');  
@@ -39,13 +34,12 @@ class Login extends Component{
     
     render(){
         if (sessionStorage.getItem("userlogin")){
-            return (<div><Header/>You Are Already Logged In <br /><br/><br/><br/><br/><br/><br/><br/><br/>
+            return (<div>You Are Already Logged In <br /><br/><br/><br/><br/><br/><br/><br/><br/>
                                                             <br/><br/><br/><br/><br/><br/><br/><br/><br/>
                                                             <br/><br/><br/><br/><br/><br/><br/><br/></div>);
         } else {
             return (
                 <div>
-                    <Header/>
                     <div className="container formBody">
                         <h3 className="Title">Sign In To Continue</h3>
                         <br />
@@ -67,7 +61,7 @@ class Login extends Component{
                         </form>
                         <br /><br /><br />
                         <div className=" alignCenter">
-                            Need an account ? <Link to="/register">Sign Up</Link>
+                            Need an account ? <NavLink to="/register">Sign Up</NavLink>
                         </div>
                     </div>
                     <br />

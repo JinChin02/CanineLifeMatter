@@ -83,11 +83,10 @@ class Map extends Component{
 
     render(){
         if (this.state.clinicObjArray.length===0 ){
-            return (  <div><HeaderWithNav/> <LoadingPage/></div>);
+            return (  <div><LoadingPage/></div>);
         } else 
         return (
-            <div>
-                <HeaderWithNav/>         
+            <div>     
                 <GoogleMap  center={this.state.location}  zoom={13} mapContainerClassName="map-container" >
                 <MarkerF key="user" size="large" position={this.state.userLocation}  icon={"https://www.robotwoods.com/dev/misc/bluecircle.png"} ></MarkerF> 
                 

@@ -1,6 +1,5 @@
 import React, { Component} from "react";
 import axios from "axios";
-import Header from "../components/Header"; 
 
 class DisplayImage extends Component {
 
@@ -63,7 +62,6 @@ class DisplayImage extends Component {
 
     return (
       <div>
-        <Header/>
         <div>
           <div>
             <h1>Dog Image upload</h1>
