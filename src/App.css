@@ -229,3 +229,12 @@
   background-size:cover;
 }
 
+/** upload Image Page **/
+
+.uploadPageBackGround{
+  background-color: #f6e7d4;
+  margin: 5vw;
+  border-radius: 50px;
+}
+
+

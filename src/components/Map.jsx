@@ -71,6 +71,7 @@ import LoadingPage from "../components/Loading";
 
     const onMapClick=(e)=>{
         setClickLoaction({lat:e.latLng.lat() , lng:e.latLng.lng()});
+        sessionStorage.setItem("clickLocation",{lat:e.latLng.lat() , lng:e.latLng.lng()});
     }
  
 
@@ -81,8 +82,9 @@ import LoadingPage from "../components/Loading";
     } else 
     {   const google = window.google;
         return (
-            <div> 
-                <GoogleMap  center={location}  zoom={13} mapContainerClassName="map-container" onClick={onMapClick}>
+            // <div style={componentSize} > 
+            <div>
+                <GoogleMap  center={location}  zoom={13} mapContainerClassName="map-container" onClick={onMapClick} >
                 <MarkerF key="user" size="large" position={userLocation}  icon={"https://www.robotwoods.com/dev/misc/bluecircle.png"} ></MarkerF> 
                 {clickLocation!="" && <MarkerF key={"selectedLocation"} size="large" position={clickLocation}></MarkerF>}
                 {clinicObjArray.map((eachEle)=>

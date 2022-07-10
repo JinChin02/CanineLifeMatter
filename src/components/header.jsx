@@ -14,18 +14,11 @@ export class Header extends Component {
   constructor(props){
     super(props)
     this.state = {
-      isLoggin :null,
       open: false,
-      loginStatus: false
     }
   }
-  componentDidCatch(){
-    
-  }
 
-  refresh = () => {
-    this.setState({})
-  }
+
 
   logOut = () => {
     this.setState({open : false});
@@ -46,6 +39,7 @@ export class Header extends Component {
   render() {
   //  const IsLoggedIn =  Authentication.isLoggedIn();
     let activeStyle = {color: "rgb(8, 86, 135)", fontWeight:"800"};
+    const isLogin = sessionStorage.getItem("userlogin");
     return (
       <div>
         <header className='header' >  
@@ -57,9 +51,9 @@ export class Header extends Component {
                   <td className='paddingTop'><NavLink to= '../googleMap' style={({ isActive }) =>isActive ? activeStyle : undefined }  id='headerLink'>MAP</NavLink></td> 
                   <td className='paddingTop'><NavLink to= '../donation' style={({ isActive }) =>isActive ? activeStyle : undefined }  id='headerLink'>DONATION</NavLink></td> 
                   <td/><td/><td/> 
-                  {this.state.isLoggin!=null && <td className='paddingTop'><NavLink to= '../manage' style={({ isActive }) =>isActive ? activeStyle : undefined } id='headerLink'>MANAGE</NavLink></td>}
-                  {this.state.isLoggin==null&& <td className='paddingTop'><NavLink to= '../Login' style={({ isActive }) =>isActive ? activeStyle : undefined }  id='headerLink'>LOGIN</NavLink></td>}
-                  {this.state.isLoggin!=null && <td className='paddingTop' ><NavLink onClick={this.handleOpen} to= '../LogoutMessage' id='headerLink'>LOGOUT</NavLink></td>} 
+                  {isLogin!=null && <td className='paddingTop'><NavLink to= '../manage' style={({ isActive }) =>isActive ? activeStyle : undefined } id='headerLink'>MANAGE</NavLink></td>}
+                  {isLogin==null&& <td className='paddingTop'><NavLink to= '../Login' style={({ isActive }) =>isActive ? activeStyle : undefined }  id='headerLink'>LOGIN</NavLink></td>}
+                  {isLogin!=null && <td className='paddingTop' ><NavLink onClick={this.handleOpen} to= '../LogoutMessage' id='headerLink'>LOGOUT</NavLink></td>} 
                   <Dialog
                     open={this.state.open}
                     onClose={this.handleClose}
