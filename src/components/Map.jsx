@@ -84,7 +84,7 @@ import LoadingPage from "../components/Loading";
             <div> 
                 <GoogleMap  center={location}  zoom={13} mapContainerClassName="map-container" onClick={onMapClick}>
                 <MarkerF key="user" size="large" position={userLocation}  icon={"https://www.robotwoods.com/dev/misc/bluecircle.png"} ></MarkerF> 
-                {clickLocation!="" && <MarkerF key={"selectedLocation"} size="large" position={clickLocation}></MarkerF>}
+                {clickLocation!=="" && <MarkerF key={"selectedLocation"} size="large" position={clickLocation}></MarkerF>}
                 {clinicObjArray.map((eachEle)=>
                 <MarkerF key={eachEle.id} size="large" position={{lat:eachEle.lat , lng:eachEle.lng}} onClick={()=>onMarkerClick(eachEle.id)} icon="https://res.cloudinary.com/dlbwhvhsg/image/upload/v1656696738/hos_Icon-removebg_small_lkarnz.png">
                     {showingInfoWindow === eachEle.id && 

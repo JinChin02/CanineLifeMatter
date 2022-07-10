@@ -8,5 +8,4 @@ class MapPage extends Component{
     }
 }
 
-
 export default MapPage;
