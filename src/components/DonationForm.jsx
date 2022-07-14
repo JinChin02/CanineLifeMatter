@@ -33,8 +33,6 @@ const CARD_ELEMENT_OPTIONS = {
       }
 };
 
-
-
 export default function DonationForm(){
 
     const [amount,setAmount] = useState(0);
@@ -42,7 +40,6 @@ export default function DonationForm(){
     const stripe = useStripe();
     const elements = useElements();
     
-
     const onAmountChange = (evt) => {
         const amount = evt.target.value;
         if (!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
@@ -109,8 +106,10 @@ export default function DonationForm(){
                             </Typography>
                         </Grid>
                         <Grid item >
-                            <Typography width={900} align='left' textAlign='justify' variant='subtitle1' style={{color:'#fff7ec',marginBottom:'0.5em'}} >
-                                When you support us you're concomitantly saving lives. Every dollar you donate to Canine Life Matter is used for spaying, neutering and vaccinations.
+                            <Typography width={900} align='left' textAlign='justify' variant='subtitle1' 
+                                        style={{color:'#fff7ec',marginBottom:'0.5em'}} >
+                                When you support us you're concomitantly saving lives. 
+                                Every dollar you donate to Canine Life Matter is used for spaying, neutering and vaccinations.
                                 <br />
                                 <br />
                                 Every canine that is taken care by our volunteers are never released to adopter until it has been 
@@ -129,7 +128,8 @@ export default function DonationForm(){
                         </Grid>
                         <Grid item>
                             <form  >
-                                <Typography variant='h7' style={{color:'#fff7ec',marginBottom:'0.5em'}}> <input type="text" name="name" value={amount} onChange={onAmountChange} required/> CAD</Typography>
+                                <Typography variant='h7' style={{color:'#fff7ec',marginBottom:'0.5em'}}> 
+                                <input type="text" name="name" value={amount} onChange={onAmountChange} required/> CAD</Typography>
                             </form>
                             <br />
                         </Grid>
