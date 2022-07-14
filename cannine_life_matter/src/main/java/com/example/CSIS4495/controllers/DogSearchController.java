@@ -36,7 +36,7 @@ public class DogSearchController {
 	private static List<Dog> serialSearchDog(List<Dog> array, String inputDogBreed) {
 		List<Dog> tempArray = new ArrayList<Dog>();
 		for (int i = 0; i < array.size(); i++) {
-			if (array.get(i).getBreed().toLowerCase().contains(inputDogBreed.toLowerCase())) {
+			if (array.get(i).getBreed().toLowerCase().contains(inputDogBreed.toLowerCase())&&array.get(i).getIsAdopted()==0) {
 				tempArray.add(array.get(i));
 			}
 		}

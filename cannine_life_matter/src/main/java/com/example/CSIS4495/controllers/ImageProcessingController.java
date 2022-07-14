@@ -1,6 +1,7 @@
 package com.example.CSIS4495.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,10 +40,17 @@ public class ImageProcessingController {
 	@GetMapping("/getAllDogs")
 	public ResponseEntity <List<Dog>> getAllDog(){
 		List<Dog> dogList= dogRepository.findAll();
+		List<Dog> dogNotAdopteDogs = new ArrayList<Dog>();
+		for (Dog dog: dogList) {
+			if (dog.getIsAdopted()==0) {
+				dogNotAdopteDogs.add(dog);
+			}
+		}
+		
 		if (dogList.isEmpty()) {
 			return new ResponseEntity<List<Dog>>(HttpStatus.NOT_FOUND);
 		} else {
-			return new ResponseEntity<List<Dog>>(dogList,HttpStatus.OK);
+			return new ResponseEntity<List<Dog>>(dogNotAdopteDogs,HttpStatus.OK);
 		}
 	}	
 	
