@@ -1,6 +1,11 @@
 package com.example.CSIS4495.controllers;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -91,5 +96,92 @@ public class ImageProcessingController {
 		} else {
 			return new ResponseEntity<Dog>(HttpStatus.NOT_FOUND);
 		}
+	}
+	
+	@PostMapping("/imageProcessing")
+	public ResponseEntity<String> imageProcessing(@RequestBody String imagePath) throws UnsupportedEncodingException{
+		 	String decodeImageURlWithEqual =URLDecoder.decode(imagePath, StandardCharsets.UTF_8.toString());
+		 	String decodeImageURl=decodeImageURlWithEqual.substring(0,decodeImageURlWithEqual.length()-1);
+			System.out.println(decodeImageURl);
+			String result = getBreedByImage(imagePath);
+			if(result == null) {
+				return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
+			}
+			else {
+				return new ResponseEntity<String>( result ,HttpStatus.OK); 
+			}
+	}
+	
+	
+	private String execProcess(String cmdStr) {
+		
+		Process process = null;
+        String result = "";
+        try {
+            process = Runtime.getRuntime().exec(cmdStr);
+            BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream(), "utf-8"));
+            String line;
+            while ((line = in.readLine()) != null) {
+                result = line;
+            }
+            in.close();
+            process.waitFor();
+            return result;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return result;
+        } finally {
+            process.destroy();
+        }
+	}
+	
+	private String getBreedByImage(String imgPath) {
+		
+		StringBuffer command = new StringBuffer();
+        command.append("cmd /c C:");
+        command.append("&& cd C:\\Users\\nirdo\\OneDrive - Douglas College\\Desktop\\4495\\yolov5-master");
+        command.append("&& activate");
+        command.append("&& conda activate yolov5");
+        
+//        command.append("&& python detect.py --source dog_breed\\images\\n02085620_1569.jpg --weights best.pt");
+        //command.append("&& python detect.py --source "+imgPath+" --weights best.pt");
+        
+        command.append("&& python detect.py --source https://www.thesprucepets.com/thmb/jqJfo0LTfkrLu13W28cyrqsrl2w=/3200x2400/smart/filters:no_upscale()/bulldog-4584344-hero-8b60f1e867f046e792ba092eec669256.jpg --weights best.pt");
+        command.append("&& conda deactive");
+        String arguments=command.toString();
+        System.out.println(arguments);
+        try {
+            Process process = Runtime.getRuntime().exec(arguments);
+            BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream(), "GBK"));
+            String line = null;
+            while ((line = in.readLine()) != null) {
+                System.out.println(line);
+            }
+            in.close();
+            int re = process.waitFor();
+            System.out.println(process);
+            System.out.println("Call result:");
+            System.out.println(re);
+            System.out.println(arguments);
+   
+            String cmdstr = arguments;
+            String s = execProcess(cmdstr);
+            System.out.println("##################"); 
+            //System.out.println(s); 
+            System.out.println("Dog Breed is: "); 
+            String[] splitStr=s.split("\\s+");
+            String breed=splitStr[splitStr.length-3];
+            breed=breed.substring(0,breed.length()-1);
+            System.out.println(breed); 
+            return breed;
+            
+       
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+		
+		
 	}
 }
