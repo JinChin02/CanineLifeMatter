@@ -73,7 +73,7 @@ export default function DonationForm(){
             setOpen(false)
             try{
                 const {id} = paymentMethod
-                const response = await axios.post("http://localhost:4000/donation", {
+                const response = await axios.post("https://pay-node-server.herokuapp.com/donation", {
                     amount,
                     id
                 })
