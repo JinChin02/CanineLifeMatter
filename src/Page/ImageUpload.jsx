@@ -96,11 +96,14 @@ class DisplayImage extends Component {
     } 
   }
 
+  // 這裡可以試著傳data 路徑
   passData = (data) => {
 
     this.setState({
       imageURL:data
     })
+    console.log(data);
+  
   };
 
   render() {
@@ -150,8 +153,7 @@ class DisplayImage extends Component {
                       required
                       label="dog breed"
                       id="dogUpload_dogBreed"         
-                      placeholder="Dog Breed"
-                    
+                      value="Breed"
                     />  
               </Grid> 
               <Grid item>
