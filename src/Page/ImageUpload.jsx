@@ -102,8 +102,10 @@ class DisplayImage extends Component {
     this.setState({
       imageURL:data
     })
-    console.log(data);
-  
+
+    axios.post("http://localhost:8080/imageProcessing",data)
+    .then((res)=> console.log(res.data)); 
+    
   };
 
   render() {
