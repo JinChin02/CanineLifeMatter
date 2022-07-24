@@ -5,6 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
+import { ToastContainer, toast } from 'react-toastify';
 
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
@@ -16,6 +17,8 @@ import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -24,6 +27,9 @@ export default function Row(props) {
 
         const { row } = props; // row == dog
         const [open, setOpen] = React.useState(false);
+        const navigate = useNavigate();
+      
+
         const Img = styled('img')({
           margin: 'auto',
           display: 'block',
@@ -39,6 +45,12 @@ export default function Row(props) {
           textAlign: 'center',
           color: theme.palette.text.secondary,
         }));
+
+        const deleteDog =async(dogID)=>{
+          await axios.post(`http://localhost:8080/deleteDog/${dogID}`);
+          toast("delete success", { type: "true" }) 
+          setTimeout(()=>{navigate("/",{replace:false})},1000);
+        }
 
         return (
             <React.Fragment>
@@ -84,7 +96,7 @@ export default function Row(props) {
                           </Grid>
                       </Grid>
                       <Grid item xs={1}  container direction="column" justifyContent="center" alignItems="center">   
-                          <Grid item><Button variant="contained" size='large'>Edit</Button></Grid>
+                          <Grid item><Button variant="contained" size='large' onClick={()=>deleteDog(row.id)}>Delete</Button></Grid>
                       </Grid>                    
                     </Grid>
                   </Box>

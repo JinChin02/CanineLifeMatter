@@ -3,6 +3,7 @@ import LoadingPage from '../components/Loading';
 import axios from 'axios';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 import { styled } from '@mui/material/styles';
 
@@ -17,8 +18,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
-import Row from '../components/row.js'
+import Row from '../components/row.jsx'
 import LoadinUploadPage from '../components/FloatingUploadBar'
+
 
 
 class Manage extends Component {
@@ -32,6 +34,7 @@ class Manage extends Component {
             dogListOfFinded:[]
         }
     }
+
 
 
 
@@ -79,6 +82,7 @@ class Manage extends Component {
                 color: theme.palette.text.secondary,
             }));
             return (
+                
                 <div>
                     <Box sx={{ width: '100%' }}>
                         <Grid justifyContent="center"  >
@@ -99,7 +103,7 @@ class Manage extends Component {
                                         </TableHead>
                                         <TableBody>
                                         {this.state.dogListOfAdpoted.length!==0&&this.state.dogListOfAdpoted.map((dog) =>
-                                         <Row key={dog.id} row={dog} />
+                                         <Row key={dog.id} row={dog}/>
                                         )}                                   
                                         </TableBody>
                                     </Table>
@@ -134,7 +138,8 @@ class Manage extends Component {
                     </Box>
                     <div className='floatingBarPosition'>
                         <Link to="/imageUpload"><LoadinUploadPage/></Link>
-                    </div>        
+                    </div> 
+                    <ToastContainer autoClose={1000}/>
                 </div>
             )
         }

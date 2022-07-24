@@ -16,6 +16,7 @@ import Dialog from '@mui/material/Dialog';
 
 import DialogContent from '@mui/material/DialogContent';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import { ToastContainer,toast } from 'react-toastify';
 
 
 
@@ -111,8 +112,8 @@ class DisplayImage extends Component {
     axios.post("http://localhost:8080/uploadDog/dog/"+currentUserID, dog)
     .then((res)=>{
       console.log(res.data);
-      alert("create success");
-      this.props.navigate('/');  
+      toast("create success", { type: "true" }) 
+      setTimeout(()=>{this.props.navigate("/",{replace:false})},1000);
     })
     .catch(e=>console.log(e.message))
   }
@@ -263,6 +264,7 @@ class DisplayImage extends Component {
             <Button variant="contained" size="large" onClick={this.uploadDog} >submit</Button>
           </Grid>
         </Grid><br />
+        <ToastContainer autoClose={1000}/>
       </div>
     );
     
