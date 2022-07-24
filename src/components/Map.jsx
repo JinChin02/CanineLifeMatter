@@ -71,7 +71,7 @@ import LoadingPage from "../components/Loading";
 
     const onMapClick=(e)=>{
         setClickLoaction({lat:e.latLng.lat() , lng:e.latLng.lng()});
-        sessionStorage.setItem("clickLocation",{lat:e.latLng.lat() , lng:e.latLng.lng()});
+        sessionStorage.setItem("clickLocation",JSON.stringify({lat:e.latLng.lat() , lng:e.latLng.lng()}) );
     }
  
 
