@@ -12,6 +12,7 @@ import Adoption from '../Page/Adoption';
 import Manage from '../Page/Manage';
 import {LoadScript} from '@react-google-maps/api';
 import Donation from '../Page/DonationF';
+import Dashboard from '../Page/Dashboard';
 import Header from './Header';
 
 
@@ -42,6 +43,7 @@ class CanineApp extends Component {
                                 <Route path='/adoption' element={<AdoptionWithNav/>}/>
                                 <Route path='/donation' element={<Donation/>}/>
                                 <Route path='/manage' element={<Manage/>}/>
+                                <Route path='/dashboard' element={<Dashboard/>}/>
                             </Routes>
                     </LoadScript>
                 <Footer/>
