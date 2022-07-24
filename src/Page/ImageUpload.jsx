@@ -82,7 +82,7 @@ class DisplayImage extends Component {
 
     axios.post("https://api.cloudinary.com/v1_1/dlbwhvhsg/image/upload",data)
     .then((res)=> this.getDogBreedByImage(res.data.secure_url)) 
-    .catch(e=>console.log(e.message) )
+    .catch(e=> toast("Please upload an image of smaller size", { type: "error" })  )
   }
 
 

@@ -12,19 +12,31 @@ import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 
+import { useNavigate } from "react-router-dom";
+import Authentication from "../Utilities/Authentication";
+import { ToastContainer,toast } from 'react-toastify';
+import { margin, padding } from "@mui/system";
+
 export default function Dashboard (){
 
     const [comments, setComments] = useState("");
-
     const [open, setOpen] = React.useState(false);
     const [value, setValue] = React.useState('Controlled');
 
+    const navigate = useNavigate();
+
     const handleClickOpen = () => {
-        setOpen(true);
+        if (Authentication.isLoggedIn()){
+            setOpen(true);
+        }else {
+            toast("Please login to comment", { type: "warning" }) 
+            setTimeout(()=>{navigate("/login",{replace:false})},1000);
+        }
     };
     
     const handleClose = () => {
         setOpen(false);
+        setValue("");
     };
 
     const handleChange = (event) => {
@@ -33,7 +45,24 @@ export default function Dashboard (){
 
     const submitComment = () => {
         setOpen(false);
-        console.log(value);
+        // value = comment;
+        if (value !==""&&value!=="Controlled"){
+            const d = new Date();
+            let text = d.toString();
+            let _date = text.slice(4,16);
+            let _time = text.slice(16,24);
+            let userID =sessionStorage.getItem('userlogin');
+            
+            const commentObj= {
+                description:value,
+                date:_date,
+                time:_time
+            }
+
+            axios.post(`http://localhost:8080/bulletins/${userID}`,commentObj)
+            .then((res)=>console.log(res.data));
+        }
+        setValue("");
     }
 
     useEffect(() => {
@@ -48,21 +77,21 @@ export default function Dashboard (){
         return (
             <div>
                 <div style={{ padding: 50 }} className="Comments">
-                    <h3>Comments</h3>
-                    <Divider variant="fullWidth" style={{ margin: "30px 0" }}/>
+                    <h1><strong>Bulletin Board</strong></h1>
+                    {/* <Divider variant="fullWidth" style={{ margin: "30px 0" }}/> */}
                     {comments.length!=0&& comments.map((comment)=>{
                         // <DashboardElement key={comment.id} userComment={comment} />
                         return (
                             <div key={comment.id}>
-                                <Paper style={{ padding: "40px 20px", marginLeft: 50, marginTop: 20 , marginBottom: 10, backgroundColor:"rgba(0,0,0,0.1)"}}>
-                                    <Grid container wrap="nowrap" spacing={2}>
-                                        <Grid item></Grid>
-                                        <Grid justifyContent="left" item xs zeroMinWidth>
-                                            <h4 style={{ margin: 0, textAlign: "left" }}>{comment.owner.username}</h4>
-                                            <p style={{ textAlign: "left" }}>
+                                <Paper style={{ padding: "30px 10px 10px 10px", marginLeft: 50, marginTop: 50 , backgroundColor:"rgba(0,0,0,0.1)"}}>
+                                    <Grid container wrap="nowrap" spacing={2} style={{ paddingRight:50}}>
+                                        <Grid justifyContent="left" item xs zeroMinWidth style={{paddingLeft:60}}>
+                                            <h4 style={{ margin: 0, textAlign: "left" }}>@ {comment.owner.username}</h4>
+                                            <Divider variant="fullWidth" style={{ margin: "10px 0" }}/>
+                                            <p style={{ textAlign: "left" ,marginTop:20}}>
                                             {comment.description}
                                             </p>
-                                            <p style={{ textAlign: "left", color: "gray" }}>
+                                            <p style={{ textAlign: "right", color: "gray",paddingRight:20 }}>
                                             Posted on {comment.date} ({comment.time})
                                             </p>
                                         </Grid>
@@ -88,7 +117,8 @@ export default function Dashboard (){
                     <DialogActions>
                         <Button style={{marginRight:10}} onClick={submitComment}>Comment</Button>
                     </DialogActions>
-                </Dialog>       
+                </Dialog>
+                <ToastContainer autoClose={1000}/>       
             </div>
         )
     }
