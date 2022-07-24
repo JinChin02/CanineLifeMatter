@@ -99,11 +99,11 @@ public class ImageProcessingController {
 	}
 	
 	@PostMapping("/imageProcessing")
-	public ResponseEntity<String> imageProcessing(@RequestBody String imagePath) throws UnsupportedEncodingException{
-		 	String decodeImageURlWithEqual =URLDecoder.decode(imagePath, StandardCharsets.UTF_8.toString());
+	public ResponseEntity<String> imageProcessing(@RequestBody String imageURL) throws UnsupportedEncodingException{
+		 	String decodeImageURlWithEqual =URLDecoder.decode(imageURL, StandardCharsets.UTF_8.toString());
 		 	String decodeImageURl=decodeImageURlWithEqual.substring(0,decodeImageURlWithEqual.length()-1);
 			System.out.println(decodeImageURl);
-			String result = getBreedByImage(imagePath);
+			String result = getBreedByImage(decodeImageURl);
 			if(result == null) {
 				return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
 			}
@@ -136,18 +136,15 @@ public class ImageProcessingController {
         }
 	}
 	
-	private String getBreedByImage(String imgPath) {
+	private String getBreedByImage(String imgUrl) {
 		
 		StringBuffer command = new StringBuffer();
         command.append("cmd /c C:");
         command.append("&& cd C:\\Users\\nirdo\\OneDrive - Douglas College\\Desktop\\4495\\yolov5-master");
         command.append("&& activate");
         command.append("&& conda activate yolov5");
-        
-//        command.append("&& python detect.py --source dog_breed\\images\\n02085620_1569.jpg --weights best.pt");
-        //command.append("&& python detect.py --source "+imgPath+" --weights best.pt");
-        
-        command.append("&& python detect.py --source https://www.thesprucepets.com/thmb/jqJfo0LTfkrLu13W28cyrqsrl2w=/3200x2400/smart/filters:no_upscale()/bulldog-4584344-hero-8b60f1e867f046e792ba092eec669256.jpg --weights best.pt");
+        command.append("&& python downloadImg.py " + imgUrl);
+        command.append("&& python detect.py --source dog_breed\\images\\temp.jpg --weights best.pt");
         command.append("&& conda deactive");
         String arguments=command.toString();
         System.out.println(arguments);
