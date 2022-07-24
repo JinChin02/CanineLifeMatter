@@ -97,7 +97,7 @@ export default function DonationForm(){
     return (
         <div>
             <div>
-                <Grid container className='donateBack' justifyContent='center' md={12} sx={{minHeight:750, minWidth:1050}}>
+                <Grid container className='donateBack' justifyContent='center' sx={{minHeight:750, minWidth:1050}}>
                     <Grid item container direction='column' alignItems='center' height='35em' >
                         <Grid item>
                             <Typography variant='h4' style={{color:'#fff7ec', marginTop:"1em", marginBottom:'0.5em'}} align='left' >

@@ -137,7 +137,7 @@ class Manage extends Component {
                         </Grid>
                     </Box>
                     <div className='floatingBarPosition'>
-                        <Link to="/imageUpload"><LoadinUploadPage/></Link>
+                        <Link to="/imageUpload"><LoadinUploadPage name={"upload"}/></Link>
                     </div> 
                     <ToastContainer autoClose={1000}/>
                 </div>
