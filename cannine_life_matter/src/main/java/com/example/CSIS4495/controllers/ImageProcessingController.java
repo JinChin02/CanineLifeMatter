@@ -72,21 +72,44 @@ public class ImageProcessingController {
 		} else
 			return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
 	}
-
-	@PostMapping("/uploadImage/dog/{id}")
-	public ResponseEntity<Dog> uploadDogImage(@PathVariable("id") long id, @RequestBody String imageUrl)
-			throws IOException {
-		Optional<Dog> dogList = dogRepository.findById(id);
-		if (dogList.isPresent()) {
-			Dog dog = dogList.get();
-			dog.setDogURL(imageUrl);
-			System.out.println(imageUrl);
-			dogRepository.save(dog);
-			return new ResponseEntity<Dog>(dog, HttpStatus.OK);
-		} else {
+	
+	@PostMapping("/uploadDog/dog/{userid}")
+	public ResponseEntity<Dog> uploadDogImage(@PathVariable("userid") long userid,@RequestBody Dog dog){
+		Optional<User>currentUser = userRepository.findById(userid);
+		if (currentUser.isPresent()) {
+			Dog currentDog = new Dog();
+			currentDog.setDogname(dog.getDogname());
+			currentDog.setDogDescription(dog.getDogDescription());
+			currentDog.setDogURL(dog.getDogURL());
+			currentDog.setBreed(dog.getBreed());
+			currentDog.setLatitude(dog.getLatitude());
+			currentDog.setLongitude(dog.getLongitude());
+			currentDog.setIsAdopted(dog.getIsAdopted());
+			currentDog.setVaccinationStatus(dog.getVaccinationStatus());
+			currentUser.get().addDog(currentDog);
+			dogRepository.save(currentDog);
+			userRepository.save(currentUser.get());
+			return new ResponseEntity<Dog>(currentDog,HttpStatus.OK);
+		}else {
 			return new ResponseEntity<Dog>(HttpStatus.NOT_FOUND);
 		}
 	}
+	
+
+//	@PostMapping("/uploadImage/dog/{id}")
+//	public ResponseEntity<Dog> uploadDogImage(@PathVariable("id") long id, @RequestBody String imageUrl)
+//			throws IOException {
+//		Optional<Dog> dogList = dogRepository.findById(id);
+//		if (dogList.isPresent()) {
+//			Dog dog = dogList.get();
+//			dog.setDogURL(imageUrl);
+//			System.out.println(imageUrl);
+//			dogRepository.save(dog);
+//			return new ResponseEntity<Dog>(dog, HttpStatus.OK);
+//		} else {
+//			return new ResponseEntity<Dog>(HttpStatus.NOT_FOUND);
+//		}
+//	}
 	
 	@GetMapping("/getDog/{id}")
 	public ResponseEntity<Dog> uploadDogImage(@PathVariable("id") long id){
@@ -99,18 +122,22 @@ public class ImageProcessingController {
 	}
 	
 	@PostMapping("/imageProcessing")
-	public ResponseEntity<String> imageProcessing(@RequestBody String imagePath) throws UnsupportedEncodingException{
-		 	String decodeImageURlWithEqual =URLDecoder.decode(imagePath, StandardCharsets.UTF_8.toString());
-		 	String decodeImageURl=decodeImageURlWithEqual.substring(0,decodeImageURlWithEqual.length()-1);
-			System.out.println(decodeImageURl);
-			return new ResponseEntity<String>(decodeImageURl,HttpStatus.OK);
-//			String result = getBreedByImage(imagePath);
+	public ResponseEntity<String> imageProcessing(@RequestBody String imageURL) throws UnsupportedEncodingException{
+//		 	System.out.println(imageURL);
+//		    String decodeImageURlWithEqual =URLDecoder.decode(imageURL, StandardCharsets.UTF_8.toString());
+//		 	String decodeImageURl=decodeImageURlWithEqual.substring(0,decodeImageURlWithEqual.length()-1);
+//		 	System.out.println(decodeImageURl);
+//			String result = getBreedByImage(decodeImageURl);
 //			if(result == null) {
 //				return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
 //			}
 //			else {
-//				return new ResponseEntity<String>( result ,HttpStatus.OK); 
+//				return new ResponseEntity<String>( tempDogBreedString ,HttpStatus.OK); 
 //			}
+			
+			
+			String tempDogBreedString = "Poodle";
+			return new ResponseEntity<String>( tempDogBreedString ,HttpStatus.OK); 
 	}
 	
 	
@@ -137,18 +164,15 @@ public class ImageProcessingController {
         }
 	}
 	
-	private String getBreedByImage(String imgPath) {
+	private String getBreedByImage(String imgUrl) {
 		
 		StringBuffer command = new StringBuffer();
         command.append("cmd /c C:");
-        command.append("&& cd C:\\Users\\nirdo\\OneDrive - Douglas College\\Desktop\\4495\\yolov5-master");
+        command.append("&& cd C:\\Users\\jerry\\Desktop\\4495\\yolov5-master");
         command.append("&& activate");
         command.append("&& conda activate yolov5");
-        
-//        command.append("&& python detect.py --source dog_breed\\images\\n02085620_1569.jpg --weights best.pt");
-        //command.append("&& python detect.py --source "+imgPath+" --weights best.pt");
-        
-        command.append("&& python detect.py --source https://www.thesprucepets.com/thmb/jqJfo0LTfkrLu13W28cyrqsrl2w=/3200x2400/smart/filters:no_upscale()/bulldog-4584344-hero-8b60f1e867f046e792ba092eec669256.jpg --weights best.pt");
+        command.append("&& python downloadImg.py " + imgUrl);
+        command.append("&& python detect.py --source dog_breed\\images\\temp.jpg --weights best.pt");
         command.append("&& conda deactive");
         String arguments=command.toString();
         System.out.println(arguments);
@@ -169,7 +193,7 @@ public class ImageProcessingController {
             String cmdstr = arguments;
             String s = execProcess(cmdstr);
             System.out.println("##################"); 
-            //System.out.println(s); 
+//            System.out.println(s); 
             System.out.println("Dog Breed is: "); 
             String[] splitStr=s.split("\\s+");
             String breed=splitStr[splitStr.length-3];
