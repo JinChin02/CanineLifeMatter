@@ -1,0 +1,44 @@
+package com.example.CSIS4495.controllers;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.CSIS4495.model.Bulletin;
+import com.example.CSIS4495.model.BulletinRepository;
+
+@RestController
+@CrossOrigin(origins = "http://localhost:4200/")
+public class BulletinController {
+
+	@Autowired
+	BulletinRepository bulletinRepository;
+	
+	@GetMapping("/bulletins")
+	public ResponseEntity<List<Bulletin>> getAllBulletins(){
+		try {
+			List<Bulletin> bulletins = new ArrayList<Bulletin>();
+			bulletinRepository.findAll().forEach(bulletins::add);
+			Collections.reverse(bulletins);
+			return new ResponseEntity<List<Bulletin>>(bulletins,HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<List<Bulletin>>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@PostMapping("/bulletins")
+	public ResponseEntity<Bulletin> leaveComment(@RequestBody Bulletin bulletin){
+		Bulletin currentBulletin = new Bulletin();
+		
+		
+	}
+}

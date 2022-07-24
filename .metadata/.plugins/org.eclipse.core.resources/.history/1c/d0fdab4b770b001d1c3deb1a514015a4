@@ -1,0 +1,38 @@
+package com.example.CSIS4495.model;
+
+import java.sql.Date;
+import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Bulletin")
+public class Bulletin {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+	
+	
+	@Column(name = "description")
+	private String description;
+	
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name="User_id", nullable = false)
+	private User owner;
+	
+	@Column(name = "date")
+	private LocalDate date;
+	
+	
+	
+
+}

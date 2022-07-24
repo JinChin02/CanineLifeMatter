@@ -1,0 +1,13 @@
+package com.example.CSIS4495.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Bulletin")
+public class Bulletin {
+	
+	@id
+	
+
+}
