@@ -18,7 +18,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 
-
+import FileSaver  from 'file-saver';
 
 
 
@@ -44,14 +44,17 @@ class DisplayImage extends Component {
     }
   } 
 
-  onImageChange = event => {
-    if (event.target.files && event.target.files[0]) {
-      let img = event.target.files[0];
-      this.setState({
-        image: img,
-      }); 
-    }
-  };
+  // onImageChange = event => {
+  //   if (event.target.files && event.target.files[0]) {
+  //     let img = event.target.files[0];
+  //     console.log(event);
+  //     console.log(event.target.files);
+  //     console.log(event.target.files[0]);
+  //     this.setState({
+  //       image: img,
+  //     }); 
+  //   }
+  // };
 
   // this is the demo method that how to upload the image 
   onClickUpload=(event)=>{
@@ -98,15 +101,23 @@ class DisplayImage extends Component {
 
   // 這裡可以試著傳data 路徑
   passData = (data) => {
-
+    let img = data.target.files[0];
+    var image =  URL.createObjectURL(img);
     this.setState({
-      imageURL:data
+      imageURL:image,
+      image:img
     })
 
-    axios.post("http://localhost:8080/imageProcessing",data)
-    .then((res)=> console.log(res.data)); 
-    
+    // console.log(data);
+    // console.log(data.target.files[0]);
+    // console.log(data.target.files[1]);
+    // axios.post("http://localhost:8080/imageProcessing",data)
+    // .then((res)=> console.log(res.data)); 
+   
   };
+
+
+
 
   render() {
 
@@ -129,7 +140,7 @@ class DisplayImage extends Component {
         </Grid>
         <Grid container direction="row" justifyContent="space-evenly" alignItems="flex-start" marginTop={10}>
           <Grid item  >
-            <Grid item> <DragDrop passData={this.passData}/></Grid>
+            <Grid item> <input type="file" onChange={this.passData}/></Grid>
             <Grid item><img  width="400vw" height="300vh" src={this.state.imageURL} alt="no Pictue" /></Grid>
           </Grid>
           <Grid item justifyContent="center" alignItems="center" >
