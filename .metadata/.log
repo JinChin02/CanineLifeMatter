@@ -2028,3 +2028,18 @@ java.lang.NullPointerException
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-07-24 16:21:42.147
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.NGAWbLsG
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-07-24 16:21:42.147
+!MESSAGE unsubscribing from classpath changes: sts4.classpath.NGAWbLsG
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-07-24 16:21:42.148
+!MESSAGE subsribers = {}
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2022-07-24 16:21:42.149
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.NGAWbLsG => OK
+
+!ENTRY org.eclipse.ui 2 2 2022-07-24 16:21:42.433
+!MESSAGE Invalid property category path: org.springframework.ide.eclipse.beans.ui.properties.ProjectPropertyPage (bundle: org.springframework.ide.eclipse.xml.namespaces, propertyPage: org.springframework.ide.eclipse.beans.ui.namespaces.projectPropertyPage)
