@@ -103,13 +103,14 @@ public class ImageProcessingController {
 		 	String decodeImageURlWithEqual =URLDecoder.decode(imagePath, StandardCharsets.UTF_8.toString());
 		 	String decodeImageURl=decodeImageURlWithEqual.substring(0,decodeImageURlWithEqual.length()-1);
 			System.out.println(decodeImageURl);
-			String result = getBreedByImage(imagePath);
-			if(result == null) {
-				return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
-			}
-			else {
-				return new ResponseEntity<String>( result ,HttpStatus.OK); 
-			}
+			return new ResponseEntity<String>(decodeImageURl,HttpStatus.OK);
+//			String result = getBreedByImage(imagePath);
+//			if(result == null) {
+//				return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
+//			}
+//			else {
+//				return new ResponseEntity<String>( result ,HttpStatus.OK); 
+//			}
 	}
 	
 	
