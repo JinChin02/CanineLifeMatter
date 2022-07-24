@@ -66,7 +66,7 @@ export class Header extends Component {
                     </DialogContent>
                     <DialogActions>
                       <Button onClick={this.handleClose}>No</Button>
-                      <Button onClick={this.logOut} autofocus>Yes</Button>
+                      <Button onClick={this.logOut} >Yes</Button>
                     </DialogActions>
                   </Dialog>
               </tr>

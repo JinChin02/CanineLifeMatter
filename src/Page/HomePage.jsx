@@ -51,7 +51,7 @@ class HomePage extends Component{
             <div>
                 <div>
                     {/* <CardMedia component="img" sx={{height : 450 }} image={require('../images/strays.jpg')} alt="main"/> */}
-                    <Grid container className='mainImage' md={12} sx={{minHeight:470}}>
+                    <Grid container className='mainImage' sx={{minHeight:470}}>
                         <Grid item>
                             <Typography variant='h5' fontFamily={"monospace"} style={{color:'rgba(199, 192, 183, 0.5)',marginLeft:"3.9em", marginTop:"8em", marginBottom:'0.5em'}} align='left' >
                                 Togather we can <br />
