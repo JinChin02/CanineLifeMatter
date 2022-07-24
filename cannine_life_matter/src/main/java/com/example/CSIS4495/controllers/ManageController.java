@@ -9,6 +9,7 @@ import java.util.Set;
 
 import javax.websocket.server.PathParam;
 
+import org.hibernate.engine.query.spi.sql.NativeSQLQueryCollectionReturn;
 import org.hibernate.loader.plan.exec.process.spi.ReturnReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,9 +17,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.CSIS4495.model.Dog;
+import com.example.CSIS4495.model.DogRepository;
 import com.example.CSIS4495.model.User;
 import com.example.CSIS4495.model.UserRepository;
 
@@ -28,6 +31,9 @@ public class ManageController {
 	
 	@Autowired
 	UserRepository userRepository; 
+	
+	@Autowired
+	DogRepository dogRepository;
 	
 	@GetMapping("/user/{id}")
 	public ResponseEntity<User> getOneUsers(@PathVariable("id") long id){
@@ -73,5 +79,14 @@ public class ManageController {
 			return dogList;
 		}
 	}
-	
+	@PostMapping("/deleteDog/{id}")
+	public ResponseEntity<Dog> deleteOneDog(@PathVariable("id") long id) {
+		try {
+			dogRepository.deleteById(id);
+			return new ResponseEntity(HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity(HttpStatus.NOT_FOUND);
+		}
+		
+	}
 }
