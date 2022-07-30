@@ -39,18 +39,23 @@ public class CannineLifeMatterApplication {
 			User user1= new User();
 			user1.setUsername("Aria");
 			user1.setPassword(bCryptPasswordEncoder.encode("123"));
+			user1.setIsAdmin(1);
 			userRepository.save(user1);	
+			
 			
 
 			User user2= new User();
 			user2.setUsername("Jack");
 			user2.setPassword(bCryptPasswordEncoder.encode("123"));
+			user2.setIsAdmin(0);
 			userRepository.save(user2);	
+			
 			
 			
 			User user3= new User();
 			user3.setUsername("Lin");
 			user3.setPassword(bCryptPasswordEncoder.encode("123"));
+			user3.setIsAdmin(0);
 			userRepository.save(user3);
 			userRepository.findAll().forEach(System.out::println);
 			

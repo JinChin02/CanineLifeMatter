@@ -42,6 +42,9 @@ public class User {
 
 	@Column(name = "userurl", length = 10000000)
 	private String userURL;
+	
+	@Column(name = "Admin")
+	private int isAdmin;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -129,4 +132,15 @@ public class User {
 		bulletin.setOwner(this);
 	}
 
+	public int getIsAdmin() {
+		return isAdmin;
+	}
+
+	public void setIsAdmin(int isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+
+	public Set<Bulletin> getBullletin() {
+		return bullletin;
+	}
 }
