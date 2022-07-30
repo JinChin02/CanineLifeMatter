@@ -19,8 +19,6 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import { ToastContainer,toast } from 'react-toastify';
 
 
-
-
 class DisplayImage extends Component {
 
   constructor(props) {
@@ -72,7 +70,6 @@ class DisplayImage extends Component {
   //   .catch(e=>console.log(e.message) )
   // }
 
-
   uploadDog=()=>{
     const data = new FormData()
     data.append("file", this.state.image)
@@ -84,8 +81,6 @@ class DisplayImage extends Component {
     .then((res)=> this.getDogBreedByImage(res.data.secure_url)) 
     .catch(e=> toast("Please upload an image of smaller size", { type: "error" })  )
   }
-
-
 
   getDogBreedByImage = (imageUrl)=>{
     axios.post("http://localhost:8080/imageProcessing",imageUrl)
@@ -108,7 +103,6 @@ class DisplayImage extends Component {
       isAdopted:0
     }
 
-
     axios.post("http://localhost:8080/uploadDog/dog/"+currentUserID, dog)
     .then((res)=>{
       console.log(res.data);
@@ -117,7 +111,6 @@ class DisplayImage extends Component {
     })
     .catch(e=>console.log(e.message))
   }
-  
 
   // getDogImage = () =>{
   //   axios.get("http://localhost:8080/getDog/44")
@@ -129,7 +122,6 @@ class DisplayImage extends Component {
     console.log(url.slice(0,-1));
     this.setState({imageURL:url.slice(0,-1)});
   }
-
     
   handleOpen = () => {
     this.setState({open : true})
@@ -162,26 +154,14 @@ class DisplayImage extends Component {
    
   };
 
-
   handleChangeVac=(event)=>{
     this.setState({
       DogVacInput : event.target.value
     });
   }
   render() {
-
     return (
       <div className="uploadPageBackGround">
-         {/* <div>
-          <div>
-             <h1>Dog Image upload</h1>
-             <input type="file" name="dogImage" onChange={this.onImageChange}/>
-             <button onClick={this.onClickUpload}>Upload</button>
-             <button onClick={this.getDogImage} >Show picture from database</button>
-             {this.state.imageURL!=null&&<img src={this.state.imageURL} alt="no"></img>}
-           </div>
-        </div> */}
-
         <Grid container direction="row" justifyContent="center" alignItems="center" paddingTop={7}>
           <Grid item >
             <h1>Upload Canine</h1>
@@ -212,14 +192,6 @@ class DisplayImage extends Component {
                       onChange={evt=>this.setState({DogDescInput:evt.target.value})} 
                     />  
               </Grid> 
-              {/* <Grid item>
-                <TextField
-                      required
-                      label="dog breed"
-                      id="dogUpload_dogBreed"         
-                      value="Breed"
-                    />  
-              </Grid>  */}
               <Grid item>
                 <FormControl fullWidth>
                   <InputLabel id="demo-simple-select-label">Vaccination Status</InputLabel>
