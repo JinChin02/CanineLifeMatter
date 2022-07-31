@@ -33,19 +33,20 @@ class CanineApp extends Component {
             <Router>
                 <HeaderWithNav/>
                     <LoadScript googleMapsApiKey={api}> 
-                            <Routes>
-                                <Route path="/" element={<HomePage/>} /> 
-                                <Route path="/login" element={<LoginWithNav/>} />
-                                <Route path="/register" element={<RegistrationWithNav/>} />
-                                <Route path='/imageUpload' element={<ImageUploadWithNav/>}/>
-                                <Route path='/logoutMessage' element={<LogoutWithNav/>}/>
-                                <Route path='/googleMap' element={<Map/>}/>
-                                <Route path='/adoption' element={<AdoptionWithNav/>}/>
-                                <Route path='/donation' element={<Donation/>}/>
-                                <Route path='/manage' element={<Manage/>}/>
-                                <Route path='/dashboard' element={<Dashboard/>}/>
-                            </Routes>
+                        <Routes>
+                            <Route path="/" element={<HomePage/>} /> 
+                            <Route path="/login" element={<LoginWithNav/>} />
+                            <Route path="/register" element={<RegistrationWithNav/>} />
+                            <Route path='/imageUpload' element={<ImageUploadWithNav/>}/>
+                            <Route path='/logoutMessage' element={<LogoutWithNav/>}/>
+                            <Route path='/googleMap' element={<Map/>}/>
+                            <Route path='/adoption' element={<AdoptionWithNav/>}/>
+                            <Route path='/donation' element={<Donation/>}/>
+                            <Route path='/manage' element={<Manage/>}/>
+                            <Route path='/dashboard' element={<Dashboard/>}/>
+                        </Routes>
                     </LoadScript>
+                    
                 <Footer/>
             </Router>
         </div>
