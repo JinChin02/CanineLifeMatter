@@ -136,7 +136,9 @@ class Manage extends Component {
                             </Grid>
                         </Grid>
                     </Box>
+                 
                     <div className='floatingBarPosition'>
+                    {this.state.user.isAdmin==1 &&<Link to="/hospitalUpload"><LoadinUploadPage name={"Add hospital"}/></Link>  }
                         <Link to="/imageUpload"><LoadinUploadPage name={"upload"}/></Link>
                     </div> 
                     <ToastContainer autoClose={1000}/>

@@ -14,6 +14,7 @@ import {LoadScript} from '@react-google-maps/api';
 import Donation from '../Page/DonationF';
 import Dashboard from '../Page/Dashboard';
 import Header from './Header';
+import HospitalUpload from '../Page/HospitalUpload';
 
 
 class CanineApp extends Component {
@@ -44,6 +45,7 @@ class CanineApp extends Component {
                                 <Route path='/donation' element={<Donation/>}/>
                                 <Route path='/manage' element={<Manage/>}/>
                                 <Route path='/dashboard' element={<Dashboard/>}/>
+                                <Route path='/hospitalUpload' element={<HospitalUpload/>}/>
                             </Routes>
                     </LoadScript>
                 <Footer/>

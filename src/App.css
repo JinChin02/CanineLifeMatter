@@ -210,6 +210,13 @@
   margin: 2vw 2vh;
 }
 
+.floatingBarPosition2{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 5vw 2vh;
+}
+
 /** donation **/
 .donateBack{
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("./images/strays2.jpg");
