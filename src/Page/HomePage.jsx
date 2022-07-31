@@ -8,6 +8,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import Advert from "../components/Advert";
+
 
 
 class HomePage extends Component{
@@ -63,19 +65,32 @@ class HomePage extends Component{
                         </Grid>
                     </Grid>
                 </div>
-                <div className="searchBody">
-                    <form action="" onSubmit={this.handleSearch}>
-                        <div className="abc">
-                            <input type="text" name="searchString" className="searchBar" placeholder="Search here" 
-                                onChange={evt => this.setState({searchString: evt.target.value})} required/>
-                            <button type="submit" name="submit" className="searchButton"  onClick={this.handleSearch} >GO !</button>
-                        </div>
-                    </form>
-                </div>
-                <div>
-                    {this.someFunction()}             
-                </div>
+
+                <Grid container spacing={3} wrap="nowrap" direction="row" justifyContent="center" alignItems="Top">
+
+                    <Grid item ><Advert name="adImage1"/></Grid>
+                    <Grid item xs={8} sx={{marginTop:2.5}}>
+                    <div className="searchBody">
+                        <form action="" onSubmit={this.handleSearch}>
+                            <div className="abc">
+                                <input type="text" name="searchString" className="searchBar" placeholder="Search here" 
+                                    onChange={evt => this.setState({searchString: evt.target.value})} required/>
+                                <button type="submit" name="submit" className="searchButton"  onClick={this.handleSearch} >GO !</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div>
+                        {this.someFunction()}             
+                    </div>
+
+                    </Grid>
+                    <Grid item ><Advert name="adImage2"/></Grid>
+                </Grid>
+
+                
                 <ToastContainer autoClose={1000} />
+                
             </div>
         )
     }

@@ -9,6 +9,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 
+
 export class Header extends Component {
 
   constructor(props){
@@ -73,7 +74,6 @@ export class Header extends Component {
             </tbody>
           </table>
         </header>
-        
       </div>
       
     )

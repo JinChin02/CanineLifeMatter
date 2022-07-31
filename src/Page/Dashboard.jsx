@@ -30,7 +30,7 @@ export default function Dashboard (){
             setOpen(true);
         }else {
             toast("Please login to comment", { type: "warning" }) 
-            setTimeout(()=>{navigate("/login",{replace:false})},1000);
+            setTimeout(()=>{navigate("/login",{replace:false})},1500);
         }
     };
     
@@ -76,10 +76,10 @@ export default function Dashboard (){
     } else {
         return (
             <div>
-                <div style={{ padding: 50 }} className="Comments">
-                    <h1><strong>Bulletin Board</strong></h1>
-                    {/* <Divider variant="fullWidth" style={{ margin: "30px 0" }}/> */}
-                    {comments.length!=0&& comments.map((comment)=>{
+                
+                <h1><strong>Bulletin Board</strong></h1>   
+                <Grid container direction="row" justifyContent="flex-start" alignItems="center">
+                {comments.length!=0&& comments.map((comment)=>{
                         // <DashboardElement key={comment.id} userComment={comment} />
                         return (
                             <div key={comment.id}>
@@ -100,8 +100,9 @@ export default function Dashboard (){
                         
                             </div>
                           )}
-                    )}
-                </div>   
+                    )}    
+                </Grid>
+
                 <div className='floatingBarPosition' onClick={handleClickOpen} >
                     <LoadinUploadPage name={"Comment"} /> 
                 </div>     
@@ -118,7 +119,7 @@ export default function Dashboard (){
                         <Button style={{marginRight:10}} onClick={submitComment}>Comment</Button>
                     </DialogActions>
                 </Dialog>
-                <ToastContainer autoClose={1000}/>       
+                <ToastContainer autoClose={1500}/>       
             </div>
         )
     }

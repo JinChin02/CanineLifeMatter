@@ -48,6 +48,7 @@ class CanineApp extends Component {
                                 <Route path='/hospitalUpload' element={<HospitalUpload/>}/>
                             </Routes>
                     </LoadScript>
+                    
                 <Footer/>
             </Router>
         </div>
