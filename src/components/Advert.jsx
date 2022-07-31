@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Adsense} from '@ctrl/react-adsense';
+
 import { Grid } from '@mui/material';
 
 export default class Advert extends Component {
@@ -29,7 +29,7 @@ export default class Advert extends Component {
             // </div>
 
             <div>
-                <Grid className={this.props.name} container sx={{display:'inline-block', width:"13rem", height:"40rem", }}>
+                <Grid className={this.props.name} container sx={{display:'inline-block', width:"13rem", height:"40rem" }}>
                 </Grid>
             </div>    
         
