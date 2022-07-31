@@ -15,7 +15,7 @@ class Registration extends Component{
 
     userRegister = () => {
         if(this.state.password === this.state.confirmPassword){
-            var user = {"username":this.state.username , "password":this.state.password , "email":this.state.email , "phone":this.state.phone}
+            var user = {"username":this.state.username , "password":this.state.password , "email":this.state.email , "phone":this.state.phone,"isAdmin":0}
             axios.post("http://localhost:8080/register", user)
             .then(response=>console.log(response.status))
             alert("Create success");
