@@ -88,7 +88,6 @@ class HomePage extends Component{
                     <Grid item ><Advert name="adImage2"/></Grid>
                 </Grid>
 
-                
                 <ToastContainer autoClose={1000} />
                 
             </div>

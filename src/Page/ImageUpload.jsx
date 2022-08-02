@@ -79,7 +79,7 @@ class DisplayImage extends Component {
 
     axios.post("https://api.cloudinary.com/v1_1/dlbwhvhsg/image/upload",data)
     .then((res)=> this.getDogBreedByImage(res.data.secure_url)) 
-    .catch(e=> toast("Please upload an image of smaller size", { type: "error" })  )
+    .catch(e=> toast("Please select an image to upload or choose a smaller size", { type: "error" })  )
   }
 
   getDogBreedByImage = (imageUrl)=>{
@@ -91,25 +91,35 @@ class DisplayImage extends Component {
   putDogIntoDatabase = (dogBreed,imageUrl) =>{
     let currentUserID = sessionStorage.getItem("userlogin");
     let location = JSON.parse(sessionStorage.getItem("clickLocation")); 
-    // console.log(location.lat);
-    let dog = {
-      dogname: this.state.DogNameInput,
-      breed:dogBreed,
-      longitude:location.lng,
-      latitude:location.lat,
-      vaccinationStatus:this.state.DogVacInput,
-      dogDescription:this.state.DogDescInput,
-      dogURL: imageUrl,
-      isAdopted:0
+  
+    if(this.state.DogNameInput.replace(/^\s+|\s+$/gm,'')===""|| this.state.DogNameInput.length===0){
+      toast("Please input a dog name", { type: "error" });
+    } else if (location==null){
+      toast("Please select a place", { type: "error" });
+    } else if (this.state.DogVacInput.replace(/^\s+|\s+$/gm,'')===""||this.state.DogVacInput.length===0){
+      toast("Please choose a vaccination state", { type: "error" });
+    }else if (this.state.DogDescInput.replace(/^\s+|\s+$/gm,'')===""||this.state.DogDescInput.length===0){
+      toast("Please provide at least one dog description", { type: "error" });
+    } else {
+      let dog = {
+        dogname: this.state.DogNameInput,
+        breed:dogBreed,
+        longitude:location.lng,
+        latitude:location.lat,
+        vaccinationStatus:this.state.DogVacInput,
+        dogDescription:this.state.DogDescInput,
+        dogURL: imageUrl,
+        isAdopted:0
+      }
+  
+      axios.post("http://localhost:8080/uploadDog/dog/"+currentUserID, dog)
+      .then((res)=>{
+        console.log(res.data);
+        toast("create success", { type: "true" }) 
+        setTimeout(()=>{this.props.navigate("/",{replace:false})},1000);
+      })
+      .catch(e=>console.log(e.message))
     }
-
-    axios.post("http://localhost:8080/uploadDog/dog/"+currentUserID, dog)
-    .then((res)=>{
-      console.log(res.data);
-      toast("create success", { type: "true" }) 
-      setTimeout(()=>{this.props.navigate("/",{replace:false})},1000);
-    })
-    .catch(e=>console.log(e.message))
   }
 
   // getDogImage = () =>{

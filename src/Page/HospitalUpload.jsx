@@ -13,6 +13,8 @@ import DialogContent from '@mui/material/DialogContent';
 import Snackbar from '@mui/material/Snackbar';
 import axios from 'axios';
 import MuiAlert from '@mui/material/Alert';
+import { useNavigate } from "react-router-dom";
+
 
 
 
@@ -27,8 +29,9 @@ const [locationIsChosen,setLocationIsChosen]= useState(false);
 const [warningStatement, setWarningStatement]=useState(null); // this is going to input array
 const [snackIsOpen, setSnackIsOpen] = useState(false);
 
-let isValidForm = true;
 
+let isValidForm = true;
+let navigate = useNavigate();
 
 useEffect(()=>{
     sessionStorage.removeItem("clickLocation");
@@ -46,26 +49,36 @@ const handleClose=()=>{
     } 
 }
 
+const onlyNumbers = (str) => {
+    return /^[0-9]+$/.test(str);
+}
+
+
 const verifyForm = () =>{
     let warningArray = [];
-    if (clinicName==""||clinicName.length===0){
+    if (clinicName.replace(/^\s+|\s+$/gm,'')===""||clinicName.length===0){
         isValidForm=false;
         warningArray.push("Please input a clinic name before uploading");
     }
-    if (phoneNumber==""||phoneNumber.length===0){
+    if (phoneNumber.replace(/^\s+|\s+$/gm,'')===""||phoneNumber.length===0){
         isValidForm=false;
         warningArray.push("Please input a phone number before uploading");
-    }
+    }else if (onlyNumbers(phoneNumber.replace(/^\s+|\s+$/gm,''))==false){
+        isValidForm=false;
+        warningArray.push("Please only input digits in phone number");
+    } 
+
+
     if (sessionStorage.getItem("clickLocation")===null){ 
         isValidForm=false;
         warningArray.push("Please choose a location before uploading");
     }
-    if (clincAddress==""||clincAddress.length===0){
+    if (clincAddress.replace(/^\s+|\s+$/gm,'')===""||clincAddress.length===0){
         isValidForm=false;
         warningArray.push("Please input the address");
     }
 
-    if (description==""||description.length===0){
+    if (description.replace(/^\s+|\s+$/gm,'')===""||description.length===0){
         isValidForm=false;
         warningArray.push("Please provide a clinic informataion before submiting");
     }
@@ -88,6 +101,8 @@ const uploadHospital = () =>{
         axios.post("http://localhost:8080/uploadClinic",newClinic)
         .then((e)=>console.log(e.data))
         .catch((e)=>console.log(e.message));
+        
+        navigate("/",{replace:true});
     } else {
         setSnackIsOpen(true);
     }

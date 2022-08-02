@@ -245,21 +245,19 @@
 }
 
 .adImage1{
-  background-image: url("./images/ad1.jpg");
+  background-image: url("./images/pc1.jpg");
   background-position:center;
   background-repeat: no-repeat;
   background-size:contain;
-
 
 
 }
 
 .adImage2{
-  background-image: url("./images/ad2.jpg");
+  background-image: url("./images/pc2.jpg");
   background-position:center;
   background-repeat: no-repeat;
   background-size:contain;
-
 }
 
 
