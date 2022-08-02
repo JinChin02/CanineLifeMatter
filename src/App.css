@@ -79,6 +79,12 @@
   text-align: center;
 }
 
+.alignCenterMarginTop{
+  text-align: center;
+  margin-top: 3rem;
+  
+}
+
 .formBody{
   background-color: rgb(199, 193, 193);
   margin-top: 5vh;

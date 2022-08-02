@@ -20,7 +20,7 @@ class Login extends Component{
         var user = {"username":this.state.username, "password":this.state.password}
         await axios.post("http://localhost:8080/login" , user)
         .then(response =>  this.abc(response.status,response)) 
-        .catch(e => this.abc(e))
+        .catch(e => this.abc(e.status,e))
     }   
 
     abc = (res,response) => {

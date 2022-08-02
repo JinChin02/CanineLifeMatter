@@ -11,6 +11,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
+import Typography from '@mui/material/Typography';
 
 import { useNavigate } from "react-router-dom";
 import Authentication from "../Utilities/Authentication";
@@ -76,14 +77,15 @@ export default function Dashboard (){
     } else {
         return (
             <div>
-                
-                <h1><strong>Bulletin Board</strong></h1>   
+                 <Typography gutterBottom variant="h3" component="h2" style={{marginLeft:20, marginTop:30, fontWeight:"bold"}}>
+                                Bulletin Board
+                </Typography> 
                 <Grid container direction="row" justifyContent="flex-start" alignItems="center">
                 {comments.length!=0&& comments.map((comment)=>{
                         // <DashboardElement key={comment.id} userComment={comment} />
                         return (
                             <div key={comment.id}>
-                                <Paper style={{ padding: "30px 10px 10px 10px", marginLeft: 50, marginTop: 50 , backgroundColor:"rgba(0,0,0,0.1)"}}>
+                                <Paper style={{ padding: "30px 10px 10px 10px", marginLeft: 50, marginTop: 30, marginRight:30, backgroundColor:"rgba(0,0,0,0.2)"}}>
                                     <Grid container wrap="nowrap" spacing={2} style={{ paddingRight:50}}>
                                         <Grid justifyContent="left" item xs zeroMinWidth style={{paddingLeft:60}}>
                                             <h4 style={{ margin: 0, textAlign: "left" }}>@ {comment.owner.username}</h4>
