@@ -12,6 +12,8 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import axios from 'axios';
 import { Navigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class Adoption extends Component{
 
@@ -23,13 +25,11 @@ class Adoption extends Component{
         }
     }
 
-
-    componentDidMount(){ 
-        if(sessionStorage.getItem('userlogin') === null){    
-            setTimeout(() => {this.props.navigate('/login', { replace: true })}, 0)
-            alert("Please login first before proceeding") 
-        }
-    }
+    // verify = () =>{
+        
+    //     alert("Please login first before proceeding") 
+        
+    // }
 
     dogNameDisplay=()=>{
         if(this.state.dog.dogname === null){
@@ -81,15 +81,19 @@ class Adoption extends Component{
 
     render() {
 
-        if(sessionStorage.getItem('userlogin') === null){
-            return (
-                <div>
-                    <Navigate to="/login"/>
-                </div>
-            )
-        }
-        else{
-            const isNotYours = this.ownership()
+        // if(sessionStorage.getItem('userlogin') === null){
+        //     return (
+        //         <div>
+        //             <Navigate to="/login"/>
+        //         </div>
+        //     )
+        // }
+        // else{
+            
+            
+        // }
+
+        const isNotYours = this.ownership()
             return(
                 <div> 
                         <Card sx={{ maxWidth:1000 ,textAlign:'center', margin:'auto', background:'#eff9fa' }}>
@@ -145,9 +149,11 @@ class Adoption extends Component{
                                 </Dialog>
                             </CardActions>
                     </Card>
+                    <ToastContainer autoClose={1500} />
                 </div>
             )
-        }
+
+        
 
        
     }

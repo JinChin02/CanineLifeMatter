@@ -15,6 +15,8 @@ import Donation from '../Page/DonationF';
 import Dashboard from '../Page/Dashboard';
 import Header from './Header';
 import HospitalUpload from '../Page/HospitalUpload';
+import HomeMainDisplay from './HomeMainDisplay';
+import HomeNotFound from './HomeNotFound';
 
 
 class CanineApp extends Component {
@@ -46,6 +48,10 @@ class CanineApp extends Component {
                                 <Route path='/manage' element={<Manage/>}/>
                                 <Route path='/dashboard' element={<Dashboard/>}/>
                                 <Route path='/hospitalUpload' element={<HospitalUpload/>}/>
+
+
+                                <Route path = '/homeMainDisplay' element={<HomeMainDisplay/>}/>
+                                <Route path = '/HomeNotFound' element={<HomeNotFound/>}/>
                             </Routes>
                     </LoadScript>
                     

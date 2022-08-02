@@ -9,8 +9,10 @@ import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Advert from "../components/Advert";
+import WithNavigation from "../Utilities/WithNavigation";
 
-
+const HomeMainDisplayWithNav = WithNavigation(HomeMainDisplay);
+const HomeSearchDisplayWithNav = WithNavigation(HomeSearchDisplay);
 
 class HomePage extends Component{
     constructor(props){
@@ -36,19 +38,23 @@ class HomePage extends Component{
         
     }
 
-    someFunction = () => {
-        if (this.state.returnedStatus === 200){
-            return <HomeSearchDisplay data={this.state.returnedData}/>
-        }
-        else if (this.state.returnedStatus===404){
-            return <HomeNotFound />
-        }
-        else if (this.state.returnedStatus===0){
-            return <HomeMainDisplay/>       
-        }
-    }
+    // someFunction = () => {
+        
+    //     if (this.state.returnedStatus === 200){
+    //         return <HomeSearchDisplayWithNav data={this.state.returnedData}/>
+    //     }
+    //     else if (this.state.returnedStatus === 404){
+    //         return <HomeNotFound />
+    //     }
+    //     else if (this.state.returnedStatus === 0){
+    //         return <HomeMainDisplayWithNav/>       
+    //     }
+    // }
 
     render(){
+        // const HomeMainDisplayWithNav = WithNavigation(HomeMainDisplay)
+        // const HomeSearchDisplayWithNav = WithNavigation(HomeSearchDisplay)
+        
         return(
             <div>
                 <div>
@@ -81,7 +87,9 @@ class HomePage extends Component{
                     </div>
 
                     <div>
-                        {this.someFunction()}             
+                        {this.state.returnedStatus===0 &&  <HomeMainDisplayWithNav/>} 
+                        {this.state.returnedStatus===200 && <HomeSearchDisplayWithNav data={this.state.returnedData}/>} 
+                        {this.state.returnedStatus===404 && <HomeNotFound/>}         
                     </div>
 
                     </Grid>

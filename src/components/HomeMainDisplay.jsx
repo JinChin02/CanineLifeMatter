@@ -9,7 +9,9 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import LoadingPage from '../components/Loading';
-import { NavLink } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 class HomeMainDisplay extends Component{
     constructor(props){
@@ -23,8 +25,9 @@ class HomeMainDisplay extends Component{
     onMouseOver = () => this.setState({ shadows: 3 });
     onMouseOut = () => this.setState({ shadows: 1 });
 
-    async componentDidMount() {
-       await this.GetAllDogs();
+  
+    componentDidMount() {
+        this.GetAllDogs();
        if (sessionStorage.getItem("dogObj")!=null){
         sessionStorage.removeItem("dogObj");
        }
@@ -36,7 +39,17 @@ class HomeMainDisplay extends Component{
     }
 
     putDogsToSession = (dogObj) =>{
-        sessionStorage.setItem("dogObj", dogObj)
+
+        if(sessionStorage.getItem('userlogin')===null){
+            toast("Please login first before proceeding",{type:"warning"})
+            setTimeout(() => {this.props.navigate('/login', { replace: true })}, 1000)
+        }
+        else{
+            sessionStorage.setItem("dogObj", dogObj)
+            this.props.navigate('/adoption',{replace:true})
+        }
+
+        
     }
 
     render(){
@@ -58,7 +71,7 @@ class HomeMainDisplay extends Component{
                             <Grid container spacing={4}>
                                 {this.state.DogList.map((dogs) => (
                                 <Grid item key={dogs.id} xs={12} sm={6} md={4} lg={3}>
-                                    <NavLink to='/adoption' className="cancelUnderScore"><Card
+                                   <Card
                                     className="card"
                                     sx={{ height: '100%', display: 'flex', flexDirection: 'column'}}
                                     onClick={()=> this.putDogsToSession(JSON.stringify(dogs))}
@@ -86,13 +99,14 @@ class HomeMainDisplay extends Component{
                                     {/* <CardActions>
                                         <Button size="small" onClick={()=> this.putDogsToSession(JSON.stringify(dogs))}> <Link to='/adoption'>View Details</Link></Button>
                                     </CardActions> */}
-                                    </Card></NavLink>
+                                    </Card>
                                 </Grid>
                                 ))}
                             </Grid>
                             </Container>
                         </main>
                         </ThemeProvider>
+                        <ToastContainer autoClose={1000} />
                 </div>
             )
         }
