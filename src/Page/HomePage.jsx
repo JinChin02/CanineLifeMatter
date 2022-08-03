@@ -38,23 +38,7 @@ class HomePage extends Component{
         
     }
 
-    // someFunction = () => {
-        
-    //     if (this.state.returnedStatus === 200){
-    //         return <HomeSearchDisplayWithNav data={this.state.returnedData}/>
-    //     }
-    //     else if (this.state.returnedStatus === 404){
-    //         return <HomeNotFound />
-    //     }
-    //     else if (this.state.returnedStatus === 0){
-    //         return <HomeMainDisplayWithNav/>       
-    //     }
-    // }
-
     render(){
-        // const HomeMainDisplayWithNav = WithNavigation(HomeMainDisplay)
-        // const HomeSearchDisplayWithNav = WithNavigation(HomeSearchDisplay)
-        
         return(
             <div>
                 <div>
