@@ -10,6 +10,10 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Advert from "../components/Advert";
 import WithNavigation from "../Utilities/WithNavigation";
+import Authentication from "../Utilities/Authentication";
+import DialogTitle from '@mui/material/DialogTitle';
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
 
 const HomeMainDisplayWithNav = WithNavigation(HomeMainDisplay);
 const HomeSearchDisplayWithNav = WithNavigation(HomeSearchDisplay);
@@ -20,9 +24,28 @@ class HomePage extends Component{
         this.state = {
             searchString:'',
             returnedData:'',
-            returnedStatus:0
+            returnedStatus:0,
+            open:false,
+            dogList:null
         } 
     }
+
+    componentDidMount(){
+        if (Authentication.isLoggedIn()){
+            axios.put("http://localhost:8080/CheckCleanUserPreviousDog/"+sessionStorage.getItem('userlogin'))
+            .then((res)=>{
+                if (res.data===null||res.data==""){
+                    
+                } else {
+                    // toast("Your dogs "+res.data+" has been adopted",{type:"warning"});
+                    this.setState({dogList:res.data})
+                    this.handleOpen();
+                }
+            })
+            .catch((res)=>console.log(res.message))
+        }
+    }
+
 
     handleSearch = async(event) =>{
         event.preventDefault();
@@ -38,22 +61,20 @@ class HomePage extends Component{
         
     }
 
-    // someFunction = () => {
-        
-    //     if (this.state.returnedStatus === 200){
-    //         return <HomeSearchDisplayWithNav data={this.state.returnedData}/>
-    //     }
-    //     else if (this.state.returnedStatus === 404){
-    //         return <HomeNotFound />
-    //     }
-    //     else if (this.state.returnedStatus === 0){
-    //         return <HomeMainDisplayWithNav/>       
-    //     }
-    // }
+    handleOpen = () => {
+        this.setState({open : true})
+    }
+    
+    handleClose = () => {
+    this.setState({open : false})
+        // sample shows lat and lng
+    
+    } 
+
+
 
     render(){
-        // const HomeMainDisplayWithNav = WithNavigation(HomeMainDisplay)
-        // const HomeSearchDisplayWithNav = WithNavigation(HomeSearchDisplay)
+        
         
         return(
             <div>
@@ -97,6 +118,17 @@ class HomePage extends Component{
                 </Grid>
 
                 <ToastContainer autoClose={1000} />
+
+                <Dialog
+                      open={this.state.open}
+                      onClose={this.handleClose}
+                      aria-describedby="alert-dialog-slide-description"
+                    >
+                      <DialogTitle id="alert-dialog-title">{"Notification"} </DialogTitle>
+                      <DialogContent sx={{minWidth: 200, minHeight:50}}>
+                       Your dogs {this.state.dogList} has been adopted!
+                      </DialogContent>
+                  </Dialog>
                 
             </div>
         )
