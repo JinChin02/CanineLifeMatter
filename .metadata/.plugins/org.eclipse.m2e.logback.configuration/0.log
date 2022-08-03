@@ -10730,3 +10730,4 @@ org.eclipse.core.runtime.CoreException: Could not read maven project
 2022-08-02 16:45:29,607 [Worker-7: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
 2022-08-02 16:45:29,609 [Worker-7: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2022-08-02 16:45:29,610 [Worker-7: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-08-02 16:45:29,610 [Worker-7: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\chinj\OneDrive - Douglas College\Desktop\4495SpringBoot\cannine_life_matter\src\test\resources
