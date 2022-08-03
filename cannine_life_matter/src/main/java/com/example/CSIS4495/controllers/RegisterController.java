@@ -25,6 +25,7 @@ public class RegisterController {
 	public ResponseEntity<User> registerNewUser(@RequestBody User user) {
 
 		bCryptPasswordEncoder = new BCryptPasswordEncoder(10);
+		
 		System.out.println(user.getUsername());
 
 		for (User userInRepo : userRepository.findAll()) {

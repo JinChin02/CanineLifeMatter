@@ -10,7 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="Dog")
@@ -47,9 +49,23 @@ public class Dog {
 	
 	@Column(name = "isAdopted")
 	private int isAdopted;
+	
+	@Column(name = "previousOwnerID")
+	private Long previosOwnerID;
+	
+	
 
 	public Dog() {
 		super();
+		
+	}
+	
+	public Long getPreviosOwner() {
+		return previosOwnerID;
+	}
+
+	public void setPreviosOwner(Long previosOwnerID) {
+		this.previosOwnerID = previosOwnerID;
 	}
 
 	public long getId() {
@@ -131,6 +147,15 @@ public class Dog {
 	public void setIsAdopted(int isAdopted) {
 		this.isAdopted = isAdopted;
 	}
+
+	public Long getPreviosOwnerID() {
+		return previosOwnerID;
+	}
+
+	public void setPreviosOwnerID(Long previosOwnerID) {
+		this.previosOwnerID = previosOwnerID;
+	}
+	
 
 	
 }

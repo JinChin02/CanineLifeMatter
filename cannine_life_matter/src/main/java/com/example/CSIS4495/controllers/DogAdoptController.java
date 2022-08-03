@@ -32,15 +32,21 @@ public class DogAdoptController {
 		try {
 			// 1. get dog obj and set it to adopt 
 			Dog thisDog= dogRepository.findById(dogId).get();
-			thisDog.setIsAdopted(1);
-			dogRepository.save(thisDog);
-			// 2. we need to cancel this dog from origin user 
 			User OriginUser = dogRepository.findById(dogId).get().getOwner();
+			thisDog.setIsAdopted(1);
+			
+			//edit here
+			thisDog.setPreviosOwner(OriginUser.getId());
+			dogRepository.save(thisDog);
+			// 2. we need to cancel this dog from origin user 	
 			Set<Dog> originUserDogList = OriginUser.getDogs();
 			if (originUserDogList.contains(thisDog)) {
 				originUserDogList.remove(thisDog);
 			}
 			OriginUser.setDogs(originUserDogList);	
+			
+			//edit here
+			OriginUser.addNotification(thisDog.getDogname());
 			userRepository.save(OriginUser);
 			// 3. add this dog to new user 
 			User newUser = userRepository.findById(userid).get();

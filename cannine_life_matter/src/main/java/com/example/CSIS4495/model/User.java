@@ -9,10 +9,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.OneToMany;
@@ -53,7 +56,11 @@ public class User {
 	@JsonIgnore
 	@OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<Bulletin> bullletin = new HashSet<>();
+	
+	@Column(name = "notification")
+	private String notification; 
 
+	
 	public User() {
 		super();
 	}
@@ -142,5 +149,26 @@ public class User {
 
 	public Set<Bulletin> getBullletin() {
 		return bullletin;
+	}	
+
+	public void setBullletin(Set<Bulletin> bullletin) {
+		this.bullletin = bullletin;
+	}
+
+	public String getNotification() {
+		return notification;
+	}
+
+	public void addNotification(String dogName) {
+		if (this.notification==null||this.notification=="") {
+			this.notification = dogName;
+		} else {
+			String currentString = this.notification;
+			String newString = currentString+","+dogName;
+			this.notification = newString;
+		}
+	}
+	public void cleanNotification() {
+		this.notification = null;
 	}
 }

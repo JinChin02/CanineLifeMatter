@@ -18,7 +18,9 @@ public class Bulletin {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
-	@Column(name = "description", length = 2000)
+
+
+	@Column(name = "description", length=2000)
 	private String description;
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -30,14 +32,10 @@ public class Bulletin {
 	
 	@Column(name = "time")
 	private String time;
-	
-	
 
 	public Bulletin() {
 		super();
 	}
-
-
 
 	public long getId() {
 		return id;
