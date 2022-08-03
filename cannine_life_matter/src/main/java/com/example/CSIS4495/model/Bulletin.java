@@ -18,7 +18,7 @@ public class Bulletin {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
-	@Column(name = "description")
+	@Column(name = "description", length = 2000)
 	private String description;
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
