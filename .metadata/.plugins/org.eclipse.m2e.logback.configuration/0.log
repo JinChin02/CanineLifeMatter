@@ -10566,3 +10566,167 @@ org.eclipse.core.runtime.CoreException: Could not read maven project
 2022-07-24 15:46:18,517 [Worker-61: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
 2022-07-24 15:46:18,517 [Worker-61: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jerry\Desktop\4495project\4495back-end\cannine_life_matter\src\test\resources
 2022-07-24 16:26:31,756 [Worker-5: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2022-07-24 16:32:01,221 [Worker-5: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2022-07-24 16:32:02,532 [Worker-0: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.example:cannine_life_matter:0.0.1-SNAPSHOT @ C:\Users\chinj\OneDrive - Douglas College\Desktop\4495SpringBoot\cannine_life_matter\pom.xml.
+2022-07-24 16:32:50,444 [Worker-16: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.example:cannine_life_matter:0.0.1-SNAPSHOT @ C:\Users\chinj\OneDrive - Douglas College\Desktop\4495SpringBoot\cannine_life_matter\pom.xml.
+2022-07-24 16:32:51,421 [Worker-16: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-24 16:32:51,422 [Worker-16: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-07-24 16:32:51,425 [Worker-16: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2022-07-24 16:32:51,436 [Worker-16: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-07-24 16:32:51,438 [Worker-16: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-24 16:32:51,438 [Worker-16: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-07-24 16:32:51,438 [Worker-16: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\chinj\OneDrive - Douglas College\Desktop\4495SpringBoot\cannine_life_matter\src\test\resources
+2022-07-24 17:29:04,688 [Worker-43: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-24 17:29:04,689 [Worker-43: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-07-24 17:29:04,690 [Worker-43: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-07-24 17:29:04,690 [Worker-43: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-07-24 17:29:04,692 [Worker-43: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-24 17:29:04,692 [Worker-43: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-07-24 17:29:04,692 [Worker-43: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\chinj\OneDrive - Douglas College\Desktop\4495SpringBoot\cannine_life_matter\src\test\resources
+2022-07-24 17:31:31,355 [Worker-43: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-24 17:31:31,355 [Worker-43: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-07-24 17:31:31,357 [Worker-43: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2022-07-24 17:31:31,380 [Worker-43: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-07-24 17:31:31,383 [Worker-43: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-24 17:31:31,383 [Worker-43: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-07-24 17:31:31,383 [Worker-43: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\chinj\OneDrive - Douglas College\Desktop\4495SpringBoot\cannine_life_matter\src\test\resources
+2022-07-29 10:09:34,365 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2022-07-29 10:09:38,855 [Worker-2: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-29 10:09:38,855 [Worker-2: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-07-29 10:09:38,859 [Worker-2: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2022-07-29 10:09:38,878 [Worker-2: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-07-29 10:09:38,881 [Worker-2: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-29 10:09:38,881 [Worker-2: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-07-29 10:09:38,881 [Worker-2: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\chinj\OneDrive - Douglas College\Desktop\4495SpringBoot\cannine_life_matter\src\test\resources
+2022-07-29 23:33:53,692 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2022-07-30 16:27:41,921 [Worker-0: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2022-07-30 18:36:59,213 [Worker-53: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-30 18:36:59,214 [Worker-53: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-07-30 18:36:59,217 [Worker-53: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2022-07-30 18:36:59,269 [Worker-53: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-07-30 18:36:59,271 [Worker-53: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-30 18:36:59,271 [Worker-53: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-07-30 18:36:59,272 [Worker-53: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\chinj\OneDrive - Douglas College\Desktop\4495SpringBoot\cannine_life_matter\src\test\resources
+2022-07-30 18:37:52,700 [Worker-56: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-30 18:37:52,700 [Worker-56: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-07-30 18:37:52,702 [Worker-56: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2022-07-30 18:37:52,708 [Worker-56: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-07-30 18:37:52,710 [Worker-56: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-30 18:37:52,710 [Worker-56: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-07-30 18:37:52,710 [Worker-56: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\chinj\OneDrive - Douglas College\Desktop\4495SpringBoot\cannine_life_matter\src\test\resources
+2022-07-30 18:39:24,886 [Worker-54: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-30 18:39:24,887 [Worker-54: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-07-30 18:39:24,887 [Worker-54: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2022-07-30 18:39:24,893 [Worker-54: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-07-30 18:39:24,894 [Worker-54: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-30 18:39:24,895 [Worker-54: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-07-30 18:39:24,895 [Worker-54: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\chinj\OneDrive - Douglas College\Desktop\4495SpringBoot\cannine_life_matter\src\test\resources
+2022-07-30 18:40:35,920 [Worker-56: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-30 18:40:35,920 [Worker-56: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-07-30 18:40:35,921 [Worker-56: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2022-07-30 18:40:35,929 [Worker-56: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-07-30 18:40:35,931 [Worker-56: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-30 18:40:35,932 [Worker-56: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-07-30 18:40:35,932 [Worker-56: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\chinj\OneDrive - Douglas College\Desktop\4495SpringBoot\cannine_life_matter\src\test\resources
+2022-07-30 18:42:05,554 [Worker-53: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-30 18:42:05,555 [Worker-53: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-07-30 18:42:05,555 [Worker-53: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2022-07-30 18:42:05,562 [Worker-53: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-07-30 18:42:05,564 [Worker-53: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-30 18:42:05,564 [Worker-53: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-07-30 18:42:05,564 [Worker-53: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\chinj\OneDrive - Douglas College\Desktop\4495SpringBoot\cannine_life_matter\src\test\resources
+2022-07-30 18:42:38,788 [Worker-53: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-30 18:42:38,789 [Worker-53: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-07-30 18:42:38,789 [Worker-53: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2022-07-30 18:42:38,794 [Worker-53: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-07-30 18:42:38,795 [Worker-53: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-30 18:42:38,795 [Worker-53: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-07-30 18:42:38,795 [Worker-53: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\chinj\OneDrive - Douglas College\Desktop\4495SpringBoot\cannine_life_matter\src\test\resources
+2022-07-30 18:44:10,492 [Worker-60: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-30 18:44:10,493 [Worker-60: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-07-30 18:44:10,493 [Worker-60: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2022-07-30 18:44:10,499 [Worker-60: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-07-30 18:44:10,501 [Worker-60: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-30 18:44:10,501 [Worker-60: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-07-30 18:44:10,501 [Worker-60: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\chinj\OneDrive - Douglas College\Desktop\4495SpringBoot\cannine_life_matter\src\test\resources
+2022-07-30 18:48:24,150 [Worker-61: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-30 18:48:24,151 [Worker-61: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-07-30 18:48:24,151 [Worker-61: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2022-07-30 18:48:24,156 [Worker-61: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-07-30 18:48:24,158 [Worker-61: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-30 18:48:24,158 [Worker-61: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-07-30 18:48:24,159 [Worker-61: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\chinj\OneDrive - Douglas College\Desktop\4495SpringBoot\cannine_life_matter\src\test\resources
+2022-07-30 18:48:40,302 [Worker-55: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-30 18:48:40,303 [Worker-55: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-07-30 18:48:40,303 [Worker-55: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2022-07-30 18:48:40,307 [Worker-55: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-07-30 18:48:40,309 [Worker-55: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-30 18:48:40,309 [Worker-55: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-07-30 18:48:40,309 [Worker-55: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\chinj\OneDrive - Douglas College\Desktop\4495SpringBoot\cannine_life_matter\src\test\resources
+2022-07-31 12:21:42,960 [Worker-0: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2022-07-31 12:43:53,825 [Worker-34: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-31 12:43:53,825 [Worker-34: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-07-31 12:43:53,828 [Worker-34: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2022-07-31 12:43:53,848 [Worker-34: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-07-31 12:43:53,851 [Worker-34: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-07-31 12:43:53,851 [Worker-34: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-07-31 12:43:53,851 [Worker-34: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\chinj\OneDrive - Douglas College\Desktop\4495SpringBoot\cannine_life_matter\src\test\resources
+2022-07-31 16:54:01,103 [Worker-5: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2022-08-02 09:49:03,818 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2022-08-02 10:31:49,240 [Worker-35: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-08-02 10:31:49,241 [Worker-35: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-08-02 10:31:49,244 [Worker-35: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2022-08-02 10:31:49,259 [Worker-35: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-08-02 10:31:49,262 [Worker-35: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-08-02 10:31:49,262 [Worker-35: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-08-02 10:31:49,263 [Worker-35: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\chinj\OneDrive - Douglas College\Desktop\4495SpringBoot\cannine_life_matter\src\test\resources
+2022-08-02 10:32:14,386 [Worker-40: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-08-02 10:32:14,386 [Worker-40: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-08-02 10:32:14,388 [Worker-40: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2022-08-02 10:32:14,402 [Worker-40: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-08-02 10:32:14,406 [Worker-40: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-08-02 10:32:14,406 [Worker-40: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-08-02 10:32:14,406 [Worker-40: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\chinj\OneDrive - Douglas College\Desktop\4495SpringBoot\cannine_life_matter\src\test\resources
+2022-08-02 10:32:37,090 [Worker-37: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-08-02 10:32:37,091 [Worker-37: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-08-02 10:32:37,091 [Worker-37: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2022-08-02 10:32:37,106 [Worker-37: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-08-02 10:32:37,110 [Worker-37: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-08-02 10:32:37,110 [Worker-37: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-08-02 10:32:37,110 [Worker-37: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\chinj\OneDrive - Douglas College\Desktop\4495SpringBoot\cannine_life_matter\src\test\resources
+2022-08-02 10:32:56,575 [Worker-12: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-08-02 10:32:56,575 [Worker-12: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-08-02 10:32:56,576 [Worker-12: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2022-08-02 10:32:56,585 [Worker-12: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-08-02 10:32:56,588 [Worker-12: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-08-02 10:32:56,588 [Worker-12: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-08-02 10:32:56,588 [Worker-12: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\chinj\OneDrive - Douglas College\Desktop\4495SpringBoot\cannine_life_matter\src\test\resources
+2022-08-02 10:33:26,074 [Worker-40: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-08-02 10:33:26,074 [Worker-40: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-08-02 10:33:26,075 [Worker-40: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2022-08-02 10:33:26,085 [Worker-40: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-08-02 10:33:26,087 [Worker-40: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-08-02 10:33:26,088 [Worker-40: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-08-02 10:33:26,088 [Worker-40: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\chinj\OneDrive - Douglas College\Desktop\4495SpringBoot\cannine_life_matter\src\test\resources
+2022-08-02 10:33:54,179 [Worker-38: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-08-02 10:33:54,179 [Worker-38: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-08-02 10:33:54,179 [Worker-38: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2022-08-02 10:33:54,189 [Worker-38: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-08-02 10:33:54,191 [Worker-38: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-08-02 10:33:54,192 [Worker-38: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-08-02 10:33:54,192 [Worker-38: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\chinj\OneDrive - Douglas College\Desktop\4495SpringBoot\cannine_life_matter\src\test\resources
+2022-08-02 10:34:40,386 [Worker-40: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-08-02 10:34:40,387 [Worker-40: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-08-02 10:34:40,387 [Worker-40: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2022-08-02 10:34:40,396 [Worker-40: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-08-02 10:34:40,398 [Worker-40: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-08-02 10:34:40,398 [Worker-40: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-08-02 10:34:40,398 [Worker-40: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\chinj\OneDrive - Douglas College\Desktop\4495SpringBoot\cannine_life_matter\src\test\resources
+2022-08-02 14:42:16,505 [Worker-0: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2022-08-02 16:45:22,210 [Worker-3: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2022-08-02 16:45:29,592 [Worker-7: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-08-02 16:45:29,593 [Worker-7: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-08-02 16:45:29,595 [Worker-7: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2022-08-02 16:45:29,607 [Worker-7: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2022-08-02 16:45:29,609 [Worker-7: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2022-08-02 16:45:29,610 [Worker-7: Launching CannineLifeMatterApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.

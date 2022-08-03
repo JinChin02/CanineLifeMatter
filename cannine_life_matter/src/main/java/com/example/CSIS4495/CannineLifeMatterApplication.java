@@ -266,7 +266,7 @@ public class CannineLifeMatterApplication {
 			Bulletin bulletin1 = new Bulletin();
 			bulletin1.setDate("Jul 21 2022");
 			bulletin1.setTime("10:59:16");
-			bulletin1.setDescription("My dogs so cute.");
+			bulletin1.setDescription("Test Comment 1.");
 			bulletin1.setOwner(user1);
 			bulletinRepository.save(bulletin1);
 			
@@ -274,14 +274,14 @@ public class CannineLifeMatterApplication {
 			Bulletin bulletin2 = new Bulletin();
 			bulletin2.setDate("Jul 22 2022");
 			bulletin2.setTime("11:55:16");
-			bulletin2.setDescription("WTF, too many options here.");
+			bulletin2.setDescription("Test Comment 2.");
 			bulletin2.setOwner(user2);
 			bulletinRepository.save(bulletin2);
 			
 			Bulletin bulletin3 = new Bulletin();
 			bulletin3.setDate("Jul 24 2022");
 			bulletin3.setTime("11:59:16");
-			bulletin3.setDescription("Lovely doggggggyyyyyyyssssss");
+			bulletin3.setDescription("Test Comment 3 .Test Comment 3 .Test Comment 3 .Test Comment 3.Test Comment 3.Test Comment 3.Test Comment 3 .Test Comment 3 .Test Comment 3 .");
 			bulletin3.setOwner(user3);
 			bulletinRepository.save(bulletin3);
 			

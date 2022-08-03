@@ -58,7 +58,6 @@ public class BulletinController {
 		} catch (Exception e) {
 			return new ResponseEntity<Bulletin>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-	
 		
 	}
 }

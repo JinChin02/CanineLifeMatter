@@ -2,6 +2,7 @@ package com.example.CSIS4495.controllers;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -122,91 +123,155 @@ public class ImageProcessingController {
 	}
 	
 	@PostMapping("/imageProcessing")
-	public ResponseEntity<String> imageProcessing(@RequestBody String imageURL) throws UnsupportedEncodingException{
-//		 	System.out.println(imageURL);
-//		    String decodeImageURlWithEqual =URLDecoder.decode(imageURL, StandardCharsets.UTF_8.toString());
-//		 	String decodeImageURl=decodeImageURlWithEqual.substring(0,decodeImageURlWithEqual.length()-1);
-//		 	System.out.println(decodeImageURl);
-//			String result = getBreedByImage(decodeImageURl);
-//			if(result == null) {
-//				return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
-//			}
-//			else {
-//				return new ResponseEntity<String>( tempDogBreedString ,HttpStatus.OK); 
-//			}
+	public ResponseEntity<String> imageProcessing(@RequestBody String imageURL) throws IOException{
+		 	System.out.println(imageURL);
+		    String decodeImageURlWithEqual =URLDecoder.decode(imageURL, StandardCharsets.UTF_8.toString());
+		 	String decodeImageURl=decodeImageURlWithEqual.substring(0,decodeImageURlWithEqual.length()-1);
+		 	System.out.println(decodeImageURl);
+			String result = getBreedByImage(decodeImageURl);
+			if(result == null) {
+				return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
+			}
+			else {
+				return new ResponseEntity<String>( result ,HttpStatus.OK); 
+			}
 			
 			
-			String tempDogBreedString = "Poodle";
-			return new ResponseEntity<String>( tempDogBreedString ,HttpStatus.OK); 
+//			String tempDogBreedString = "Poodle";
+//			return new ResponseEntity<String>( tempDogBreedString ,HttpStatus.OK); 
 	}
 	
 	
-	private String execProcess(String cmdStr) {
-		
-		Process process = null;
-        String result = "";
-        try {
-            process = Runtime.getRuntime().exec(cmdStr);
-            BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream(), "utf-8"));
-            String line;
-            while ((line = in.readLine()) != null) {
-                result = line;
-            }
-            in.close();
-            process.waitFor();
-            return result;
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            return result;
-        } finally {
-            process.destroy();
-        }
-	}
+//	private String execProcess(String cmdStr) {
+//		
+//		Process process = null;
+//        String result = "";
+//        try {
+//            process = Runtime.getRuntime().exec(cmdStr);
+//            BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream(), "utf-8"));
+//            String line;
+//            while ((line = in.readLine()) != null) {
+//                result = line;
+//            }
+//            in.close();
+//            process.waitFor();
+//            return result;
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return result;
+//        } finally {
+//            process.destroy();
+//        }
+//	}
 	
-	private String getBreedByImage(String imgUrl) {
-		
+//	private String getBreedByImage(String imgUrl) {
+//		
+//		StringBuffer command = new StringBuffer();
+//        command.append("cmd /c C:");
+//        command.append("&& cd C:\\Users\\jerry\\Desktop\\4495\\yolov5-master");
+//        command.append("&& activate");
+//        command.append("&& conda activate yolov5");
+//        command.append("&& python downloadImg.py " + imgUrl);
+//        command.append("&& python detect.py --source dog_breed\\images\\temp.jpg --weights best.pt");
+//        command.append("&& conda deactive");
+//        String arguments=command.toString();
+//        System.out.println(arguments);
+//        try {
+//            Process process = Runtime.getRuntime().exec(arguments);
+//            BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream(), "GBK"));
+//            String line = null;
+//            while ((line = in.readLine()) != null) {
+//                System.out.println(line);
+//            }
+//            in.close();
+//            int re = process.waitFor();
+//            System.out.println(process);
+//            System.out.println("Call result:");
+//            System.out.println(re);
+//            System.out.println(arguments);
+//   
+//            String cmdstr = arguments;
+//            String s = execProcess(cmdstr);
+//            System.out.println("##################"); 
+////            System.out.println(s); 
+//            System.out.println("Dog Breed is: "); 
+//            String[] splitStr=s.split("\\s+");
+//            String breed=splitStr[splitStr.length-3];
+//            breed=breed.substring(0,breed.length()-1);
+//            System.out.println(breed); 
+//            return breed;
+//            
+//       
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return null;
+//        }
+//		
+//		
+//	}
+	
+	private String getBreedByImage(String imgUrl) throws IOException {
 		StringBuffer command = new StringBuffer();
-        command.append("cmd /c C:");
-        command.append("&& cd C:\\Users\\jerry\\Desktop\\4495\\yolov5-master");
-        command.append("&& activate");
-        command.append("&& conda activate yolov5");
-        command.append("&& python downloadImg.py " + imgUrl);
-        command.append("&& python detect.py --source dog_breed\\images\\temp.jpg --weights best.pt");
-        command.append("&& conda deactive");
-        String arguments=command.toString();
-        System.out.println(arguments);
-        try {
-            Process process = Runtime.getRuntime().exec(arguments);
-            BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream(), "GBK"));
-            String line = null;
-            while ((line = in.readLine()) != null) {
-                System.out.println(line);
-            }
-            in.close();
-            int re = process.waitFor();
-            System.out.println(process);
-            System.out.println("Call result:");
-            System.out.println(re);
-            System.out.println(arguments);
-   
-            String cmdstr = arguments;
-            String s = execProcess(cmdstr);
-            System.out.println("##################"); 
-//            System.out.println(s); 
-            System.out.println("Dog Breed is: "); 
-            String[] splitStr=s.split("\\s+");
-            String breed=splitStr[splitStr.length-3];
-            breed=breed.substring(0,breed.length()-1);
-            System.out.println(breed); 
-            return breed;
-            
-       
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+		command.append("cmd /c C:");
+		command.append("&& cd C:\\Users\\chinj\\OneDrive - Douglas College\\Desktop\\4495\\yolov5");
+		command.append("&& activate");
+		command.append("&& conda activate yolov5");
+		command.append("&& python downloadImg.py " + imgUrl);
+		command.append("&& python detect.py --source dog_breed\\images\\temp.jpg --weights best.pt");
+
+		command.append("&& conda deactivate");
+		String arguments = command.toString();
+
+		Process p = Runtime.getRuntime().exec(arguments);
+		final InputStream is1 = p.getInputStream();
+		new Thread(new Runnable() {
+			public void run() {
+				BufferedReader br = new BufferedReader(new InputStreamReader(is1));
+				try {
+					String outputLine = null;
+					while ((outputLine = br.readLine()) != null) {
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+		InputStream is2 = p.getErrorStream();
+		BufferedReader br2 = new BufferedReader(new InputStreamReader(is2));
+		StringBuilder buf = new StringBuilder();
+		String line = null;
+
+		while ((line = br2.readLine()) != null) {
+			//System.out.println(line);
+			String[] temp = line.split("\\s+");
+			
+			if (temp[0].equals("image")) {
+				buf.append(temp[temp.length - 3] + "\n");
+				//System.out.println(temp.length);
+			}
+			if (temp.length==9) {
+				
+				buf.setLength(0);
+				buf.append("Not detected  ");
+			}
+			
+			
+		}
 		
+		//System.out.println(buf);
+		String result = buf.substring(0, buf.length() - 2);
 		
+		while (br2.readLine() != null)
+			;
+		try {
+			p.waitFor();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+			
+			
 	}
 }
