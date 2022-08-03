@@ -22,6 +22,7 @@ class Adoption extends Component{
         this.state = {
             dog : JSON.parse(sessionStorage.getItem("dogObj")),
             open : false,
+            oldUser:"",
         }
     }
 
@@ -70,7 +71,8 @@ class Adoption extends Component{
     handleYes = async (userId, dogId) => {
         this.setState({open : false})
         await axios.post(`http://localhost:8080/adopt/${userId}/${dogId}`)
-        .then(response => {alert("Congratulations, you have adopted a new canine")})
+        .then(response => toast("Congratulations, you have adopted a new canine. You can check out the details in manage page."),{ type: "success" })
+        .catch(e=>toast("Adoption failed",{ type: "error" }))
     }
 
 

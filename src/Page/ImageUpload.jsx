@@ -115,7 +115,7 @@ class DisplayImage extends Component {
       axios.post("http://localhost:8080/uploadDog/dog/"+currentUserID, dog)
       .then((res)=>{
         console.log(res.data);
-        toast("create success", { type: "true" }) 
+        toast("Canine upload successful", { type: "true" }) 
         setTimeout(()=>{this.props.navigate("/",{replace:false})},1000);
       })
       .catch(e=>console.log(e.message))

@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
@@ -27,6 +27,9 @@ export default function Row(props) {
 
         const { row } = props; // row == dog
         const [open, setOpen] = React.useState(false);
+
+        // this is the user obj include username, email, phone, address
+        const [previosUser, setPreviosUser] = React.useState(null);
         const navigate = useNavigate();
       
 
@@ -52,6 +55,17 @@ export default function Row(props) {
           setTimeout(()=>{navigate("/",{replace:false})},1000);
         }
 
+     
+
+        useEffect(()=>{
+          if (row.previosOwnerID!=null){
+            axios.get(`http://localhost:8080/user/${row.previosOwnerID}`)
+            .then ((res)=>{
+              setPreviosUser(res.data)
+            })
+          }
+        },[])
+
         return (
             <React.Fragment>
             <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
@@ -74,7 +88,7 @@ export default function Row(props) {
               <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
                 <Collapse in={open} timeout="auto" unmountOnExit>
                   <Box sx={{ margin: 3 }} >                             
-                    <Grid container >
+                    <Grid container spacing={3}>
                       <Grid item xs={3.5} >
                           <Card sx={{ maxWidth: 345 }}>
                           <CardMedia
@@ -85,17 +99,18 @@ export default function Row(props) {
                           />
                           </Card>   
                       </Grid>
-                      <Grid item xs={7.5}  container direction="column" spacing={2}>
+                      <Grid item xs={6.5}  container direction="column" spacing={2}>
                           <Grid item xs>
                             <Typography gutterBottom variant="h5" component="div">
                               {row.dogname}
                             </Typography>
                             <Typography variant="body1" gutterBottom>
-                              {row.dogDescription}
+                              {row.dogDescription} <br /><br /><br />
+                              {row.previosOwnerID&&<div>Previous User: {previosUser!==null&&previosUser.username}</div>} 
                             </Typography>
                           </Grid>
                       </Grid>
-                      <Grid item xs={1}  container direction="column" justifyContent="center" alignItems="center">   
+                      <Grid item xs={2}  container direction="column" justifyContent="center" alignItems="center">   
                           <Grid item><Button variant="contained" size='large' onClick={()=>deleteDog(row.id)}>Delete</Button></Grid>
                       </Grid>                    
                     </Grid>
