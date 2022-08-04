@@ -25,13 +25,7 @@ class Adoption extends Component{
             oldUser:"",
         }
     }
-
-    // verify = () =>{
-        
-    //     alert("Please login first before proceeding") 
-        
-    // }
-
+    
     dogNameDisplay=()=>{
         if(this.state.dog.dogname === null){
             return "Not Available"
@@ -72,6 +66,7 @@ class Adoption extends Component{
         this.setState({open : false})
         await axios.post(`http://localhost:8080/adopt/${userId}/${dogId}`)
         .then(response => toast("Congratulations, you have adopted a new canine. You can check out the details in manage page."),{ type: "success" })
+        .then(res=> axios.get("http://localhost:8080/sendMail"))
         .catch(e=>toast("Adoption failed",{ type: "error" }))
     }
 
@@ -82,18 +77,6 @@ class Adoption extends Component{
 
 
     render() {
-
-        // if(sessionStorage.getItem('userlogin') === null){
-        //     return (
-        //         <div>
-        //             <Navigate to="/login"/>
-        //         </div>
-        //     )
-        // }
-        // else{
-            
-            
-        // }
 
         const isNotYours = this.ownership()
             return(
@@ -154,9 +137,6 @@ class Adoption extends Component{
                     <ToastContainer autoClose={1500} />
                 </div>
             )
-
-        
-
        
     }
 }

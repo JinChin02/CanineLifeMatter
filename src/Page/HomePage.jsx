@@ -51,7 +51,6 @@ class HomePage extends Component{
     handleSearch = async(event) =>{
         event.preventDefault();
         if(this.state.searchString.length === 0){
-            // alert("Please fill in breed type to search")
             toast("Please fill in breed type to search",{type:"warning"})
         }
         else{
