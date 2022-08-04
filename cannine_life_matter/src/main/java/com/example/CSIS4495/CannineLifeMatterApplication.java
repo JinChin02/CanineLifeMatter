@@ -37,20 +37,22 @@ public class CannineLifeMatterApplication {
 
 			// user input
 			User user1= new User();
-			user1.setUsername("Aria");
+			user1.setUsername("Liangku");
 			user1.setPassword(bCryptPasswordEncoder.encode("123"));
-			user1.setEmail("Aria@gmail.com");
+			user1.setEmail("jerry031785@gmail.com");
 			user1.setIsAdmin(1);
+			user1.setPhoneNumber("7781231234");
 			user1.setAddress("12118 95a Ave, Surrey, BC V3V 1P8");
 			userRepository.save(user1);	
 			
 			
 
 			User user2= new User();
-			user2.setUsername("Jack");
+			user2.setUsername("Jin");
 			user2.setPassword(bCryptPasswordEncoder.encode("123"));
-			user2.setEmail("Jack@gmail.com");
+			user2.setEmail("chinjinhung@gmail.com");
 			user2.setIsAdmin(0);
+			user2.setPhoneNumber("7781233456");
 			user2.setAddress("6688 Southoaks Crescent, Burnaby, BC V5E 4M7");
 			userRepository.save(user2);	
 			
@@ -60,8 +62,9 @@ public class CannineLifeMatterApplication {
 			user3.setUsername("Lin");
 			user3.setPassword(bCryptPasswordEncoder.encode("123"));
 			user3.setIsAdmin(0);
-			user3.setEmail("Lin@gmail.com");
+			user3.setEmail("iamaguard3@gmail.com");
 			user3.setAddress("755 Burrard St #202, Vancouver, BC V6Z 1X6");
+			user3.setPhoneNumber("7784434565");
 			userRepository.save(user3);
 			userRepository.findAll().forEach(System.out::println);
 			
