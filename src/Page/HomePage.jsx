@@ -14,6 +14,7 @@ import Authentication from "../Utilities/Authentication";
 import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
+import Divider from "@mui/material/Divider";
 
 const HomeMainDisplayWithNav = WithNavigation(HomeMainDisplay);
 const HomeSearchDisplayWithNav = WithNavigation(HomeSearchDisplay);
@@ -85,7 +86,7 @@ class HomePage extends Component{
                             </Typography>
                         </Grid>
                     </Grid>
-                </div>
+                </div>  
 
                 <Grid container spacing={3} wrap="nowrap" direction="row" justifyContent="center" alignItems="Top">
 
@@ -117,10 +118,16 @@ class HomePage extends Component{
                       open={this.state.open}
                       onClose={this.handleClose}
                       aria-describedby="alert-dialog-slide-description"
+                      fullWidth
+                      maxWidth="md"
+                      
                     >
-                      <DialogTitle id="alert-dialog-title">Notification</DialogTitle>
-                      <DialogContent sx={{minWidth: 200, minHeight:50}}>
-                        Your dogs {this.state.dogList} has been adopted!
+                      <DialogTitle id="alert-dialog-title" style={{paddingLeft:40, paddingRight:40}} >Notification</DialogTitle>
+                      <Divider variant="middle" style={{ marginLeft: 40, marginRight:40 }}/>
+                      <DialogContent sx={{maxWidth: 1000, maxHeight:500, paddingLeft:5, paddingRight:5, wordWrap:"break-word"}}>
+                        Someone intended to adopt your canine : {this.state.dogList} 
+                        <br/><br />
+                        Please check your email for more details.
                       </DialogContent>
                   </Dialog>
                 

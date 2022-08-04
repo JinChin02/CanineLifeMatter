@@ -19,6 +19,7 @@ import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import Divider from "@mui/material/Divider";
 
 
 
@@ -99,14 +100,22 @@ export default function Row(props) {
                           />
                           </Card>   
                       </Grid>
-                      <Grid item xs={6.5}  container direction="column" spacing={2}>
+                      <Grid item xs={6.5}  container direction="column" spacing={2} >
                           <Grid item xs>
                             <Typography gutterBottom variant="h5" component="div">
                               {row.dogname}
                             </Typography>
                             <Typography variant="body1" gutterBottom>
                               {row.dogDescription} <br /><br /><br />
-                              {row.previosOwnerID&&<div>Previous User: {previosUser!==null&&previosUser.username}</div>} 
+                              {row.previosOwnerID&&<div>
+                                Previous Owner Details
+                                <Divider variant="full-width" style={{ marginBottom:20}}/>
+                                Name : {previosUser!==null&&previosUser.username} <br />
+                                Email : {previosUser!==null&&previosUser.email} <br />
+                                Contact : {previosUser!==null&&previosUser.phoneNumber}
+                              
+                              
+                              </div>} 
                             </Typography>
                           </Grid>
                       </Grid>
