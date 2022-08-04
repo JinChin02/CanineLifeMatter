@@ -72,6 +72,7 @@ class Adoption extends Component{
         this.setState({open : false})
         await axios.post(`http://localhost:8080/adopt/${userId}/${dogId}`)
         .then(response => toast("Congratulations, you have adopted a new canine. You can check out the details in manage page."),{ type: "success" })
+        .then(res=> axios.get("http://localhost:8080/sendMail"))
         .catch(e=>toast("Adoption failed",{ type: "error" }))
     }
 
