@@ -59,8 +59,7 @@ class HomeSearchDisplay extends Component{
                                         {dogs.dogname}
                                         </Typography>
                                         <Typography>
-                                        This is a media card. You can use this section to describe the
-                                        content.
+                                        {dogs.dogDescription}
                                         </Typography>
                                     </CardContent>
                                     </Card>
