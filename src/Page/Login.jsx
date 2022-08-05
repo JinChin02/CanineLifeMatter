@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import Authentication from '../Utilities/Authentication';
-import Header from '../components/Header';
 
 class Login extends Component{
     constructor(props){
@@ -35,9 +34,7 @@ class Login extends Component{
     
     render(){
         if (sessionStorage.getItem("userlogin")){
-            return (<div>You Are Already Logged In <br /><br/><br/><br/><br/><br/><br/><br/><br/>
-                                                            <br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                                                            <br/><br/><br/><br/><br/><br/><br/><br/></div>);
+            return (<div>You Have Already Logged In <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>);
         } else {
             return (
                 <div>

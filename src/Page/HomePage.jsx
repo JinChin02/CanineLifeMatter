@@ -94,7 +94,7 @@ class HomePage extends Component{
                     <div className="searchBody">
                         <form action="" onSubmit={this.handleSearch}>
                             <div className="abc">
-                                <input type="text" name="searchString" className="searchBar" placeholder="Search here" 
+                                <input type="text" name="searchString" className="searchBar" placeholder="Search by breed" 
                                     onChange={evt => this.setState({searchString: evt.target.value})} required/>
                                 <button type="submit" name="submit" className="searchButton"  onClick={this.handleSearch} >GO !</button>
                             </div>

@@ -43,7 +43,8 @@ class Registration extends Component{
     userRegister = () => {
         this.verifyForm()
         if(this.state.warningStatement.length === 0){
-            var user = {"username":this.state.username , "password":this.state.password , "email":this.state.email , "phoneNumber":this.state.phone, "isAdmin":0 , "address":this.state.address}
+            var user = {"username":this.state.username , "password":this.state.password , "email":this.state.email , 
+                "phoneNumber":this.state.phone, "isAdmin":0 , "address":this.state.address}
             axios.post("http://localhost:8080/register", user)
             .then(response=>{this.abc(response.status,response)})
             .catch(e =>{this.abc(e.response.status, e.response)})
@@ -73,7 +74,6 @@ class Registration extends Component{
         }
     }
     
-
     render(){
         return (
             <div>
@@ -83,32 +83,38 @@ class Registration extends Component{
                 <form >
                     <div className="form-group">
                         <label>Username</label><br />   
-                        <input type="text" name="username" placeholder="Pick your username" className="form-control" required onChange={evt => this.setState({username: evt.target.value})}/>
+                        <input type="text" name="username" placeholder="Pick your username" className="form-control"
+                             required onChange={evt => this.setState({username: evt.target.value})}/>
                     </div>
                     <br />
                     <div className="form-group">
                         <label>Email</label><br />
-                        <input type="email" name="email" placeholder="Fill in your email" className="form-control" required onChange={evt => this.setState({email: evt.target.value})}/>
+                        <input type="email" name="email" placeholder="Fill in your email" className="form-control" 
+                            required onChange={evt => this.setState({email: evt.target.value})}/>
                     </div>
                     <br />
                     <div className="form-group">
                         <label>Phone Number</label><br />
-                        <input type="tel" name="phone" className="form-control" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required onChange={evt => this.setState({phone: evt.target.value})}/>
+                        <input type="tel" name="phone" className="form-control" placeholder="123-456-7890" 
+                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required onChange={evt => this.setState({phone: evt.target.value})}/>
                     </div>
                     <br />
                     <div className="form-group">
                         <label>Residential Address</label><br />
-                        <input type="text" name="address" className="form-control" placeholder="Fill in your residential address" required onChange={evt => this.setState({address: evt.target.value})}/>
+                        <input type="text" name="address" className="form-control" placeholder="Fill in your residential address" 
+                            required onChange={evt => this.setState({address: evt.target.value})}/>
                     </div>
                     <br />
                     <div className="form-group">
                         <label>Password</label><br />
-                        <input type="password" name="password" placeholder="Input your password" className="form-control" required onChange={evt => this.setState({password: evt.target.value})}/>
+                        <input type="password" name="password" placeholder="Input your password" className="form-control" 
+                            required onChange={evt => this.setState({password: evt.target.value})}/>
                     </div>
                     <br />
                     <div className="form-group">
                         <label>Confirm Password</label><br />
-                        <input type="password" name="confirmPassword" placeholder="Input your password again" className="form-control" required onChange={evt => this.setState({confirmPassword: evt.target.value})}/>
+                        <input type="password" name="confirmPassword" placeholder="Input your password again" className="form-control" 
+                            required onChange={evt => this.setState({confirmPassword: evt.target.value})}/>
                     </div>
                     <br /><br />
                     <div className="form-group">
@@ -118,13 +124,11 @@ class Registration extends Component{
                             Already have an account ? <NavLink to="/login">Login</NavLink>
                     </div>
                 </form>
-                </div>
-                
+                </div>             
                 <ToastContainer autoClose={1500} />
             </div>
         )
     }
-
 }
 
 export default Registration
