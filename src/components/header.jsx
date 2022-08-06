@@ -49,7 +49,7 @@ export class Header extends Component {
                   <td className='paddingTop'><NavLink to= '../' style={({ isActive }) =>isActive ? activeStyle : undefined } id='headerLink' >ADOPT</NavLink></td>
                   <td className='paddingTop'><NavLink to= '../googleMap' style={({ isActive }) =>isActive ? activeStyle : undefined }  id='headerLink'>MAP</NavLink></td> 
                   <td className='paddingTop'><NavLink to= '../donation' style={({ isActive }) =>isActive ? activeStyle : undefined }  id='headerLink'>DONATION</NavLink></td> 
-                  <td className='paddingTop'><NavLink to= '../dashboard' style={({ isActive }) =>isActive ? activeStyle : undefined }  id='headerLink'>DASHBOARD</NavLink></td>
+                  <td className='paddingTop'><NavLink to= '../dashboard' style={({ isActive }) =>isActive ? activeStyle : undefined }  id='headerLink'>BULLETIN</NavLink></td>
                   <td/><td/> 
                   {isLogin!=null && <td className='paddingTop'><NavLink to= '../manage' style={({ isActive }) =>isActive ? activeStyle : undefined } id='headerLink'>MANAGE</NavLink></td>}
                   {isLogin==null&& <td className='paddingTop'><NavLink to= '../Login' style={({ isActive }) =>isActive ? activeStyle : undefined }  id='headerLink'>LOGIN</NavLink></td>}

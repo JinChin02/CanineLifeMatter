@@ -33,6 +33,8 @@ class DisplayImage extends Component {
       DogNameInput:"",
       DogDescInput:"",
       DogVacInput:"",
+      buttonDisable:false,
+
     };
   }
 
@@ -45,32 +47,29 @@ class DisplayImage extends Component {
     }
   } 
 
-  // onImageChange = event => {
-  //   if (event.target.files && event.target.files[0]) {
-  //     let img = event.target.files[0];
-  //     console.log(event);
-  //     console.log(event.target.files);
-  //     console.log(event.target.files[0]);
-  //     this.setState({
-  //       image: img,
-  //     }); 
-  //   }
-  // };
 
-  // this is the demo method that how to upload the image 
-  // onClickUpload=()=>{
-  //   const data = new FormData()
-  //   data.append("file", this.state.image)
-  //   data.append("upload_preset", "DB4495")
-  //   data.append("cloud_name","dlbwhvhsg")
+  uploadDog=(e)=>{
   
 
-  //   axios.post("https://api.cloudinary.com/v1_1/dlbwhvhsg/image/upload",data)
-  //   .then((res)=> this.uploadImageUrl(res.data.secure_url)) 
-  //   .catch(e=>console.log(e.message) )
-  // }
+    let location = JSON.parse(sessionStorage.getItem("clickLocation")); 
+    if(this.state.DogNameInput.replace(/^\s+|\s+$/gm,'')===""|| this.state.DogNameInput.length===0){
+      toast("Please input a dog name", { type: "error" });
+      return;
+    } else if (location==null){
+      toast("Please select a place", { type: "error" });
+      return;
+    } else if (this.state.DogVacInput.replace(/^\s+|\s+$/gm,'')===""||this.state.DogVacInput.length===0){
+      toast("Please choose a vaccination state", { type: "error" });
+      return;
+    }else if (this.state.DogDescInput.replace(/^\s+|\s+$/gm,'')===""||this.state.DogDescInput.length===0){
+      toast("Please provide at least one dog description", { type: "error" });
+      return;
+    }
 
-  uploadDog=()=>{
+    this.setState({
+      buttonDisable:true,
+    });
+
     const data = new FormData()
     data.append("file", this.state.image)
     data.append("upload_preset", "DB4495")
@@ -92,40 +91,36 @@ class DisplayImage extends Component {
     let currentUserID = sessionStorage.getItem("userlogin");
     let location = JSON.parse(sessionStorage.getItem("clickLocation")); 
   
-    if(this.state.DogNameInput.replace(/^\s+|\s+$/gm,'')===""|| this.state.DogNameInput.length===0){
-      toast("Please input a dog name", { type: "error" });
-    } else if (location==null){
-      toast("Please select a place", { type: "error" });
-    } else if (this.state.DogVacInput.replace(/^\s+|\s+$/gm,'')===""||this.state.DogVacInput.length===0){
-      toast("Please choose a vaccination state", { type: "error" });
-    }else if (this.state.DogDescInput.replace(/^\s+|\s+$/gm,'')===""||this.state.DogDescInput.length===0){
-      toast("Please provide at least one dog description", { type: "error" });
-    } else {
-      let dog = {
-        dogname: this.state.DogNameInput,
-        breed:dogBreed,
-        longitude:location.lng,
-        latitude:location.lat,
-        vaccinationStatus:this.state.DogVacInput,
-        dogDescription:this.state.DogDescInput,
-        dogURL: imageUrl,
-        isAdopted:0
-      }
-  
-      axios.post("http://localhost:8080/uploadDog/dog/"+currentUserID, dog)
-      .then((res)=>{
-        console.log(res.data);
-        toast("Canine upload successful", { type: "true" }) 
-        setTimeout(()=>{this.props.navigate("/",{replace:false})},1000);
-      })
-      .catch(e=>console.log(e.message))
+    let dog = {
+      dogname: this.state.DogNameInput,
+      breed:dogBreed,
+      longitude:location.lng,
+      latitude:location.lat,
+      vaccinationStatus:this.state.DogVacInput,
+      dogDescription:this.state.DogDescInput,
+      dogURL: imageUrl,
+      isAdopted:0
     }
+
+    axios.post("http://localhost:8080/uploadDog/dog/"+currentUserID, dog)
+    .then((res)=>{
+      console.log(res.data);
+      toast("Canine upload successful", { type: "true" }) 
+      setTimeout(()=>{this.props.navigate("/",{replace:false})},1000);
+    })
+    .then((res)=>{
+      this.setState({
+        buttonDisable:false,
+      });
+    })
+    .catch(e=>{
+      console.log(e.message)
+      this.setState({
+        buttonDisable:false,
+      });
+    })
   }
 
-  // getDogImage = () =>{
-  //   axios.get("http://localhost:8080/getDog/44")
-  //   .then((res)=>this.setImage(decodeURIComponent(res.data.dogURL)))
-  // }
 
   setImage=(url)=>{
     // let decodeURL= decodeURI(url);
@@ -141,9 +136,6 @@ class DisplayImage extends Component {
     this.setState({open : false})
     if(sessionStorage.getItem("clickLocation")!=null){
       this.setState({LocationIsChosen:true})
-
-      // sample shows lat and lng
-    
     } 
   }
 
@@ -155,13 +147,6 @@ class DisplayImage extends Component {
       imageURL:image,
       image:img
     })
-
-    // console.log(data);
-    // console.log(data.target.files[0]);
-    // console.log(data.target.files[1]);
-    // axios.post("http://localhost:8080/imageProcessing","https://res.cloudinary.com/dlbwhvhsg/image/upload/v1656085594/labrador3_azpwsl.jpg")
-    // .then((res)=> console.log(res.data)); 
-   
   };
 
   handleChangeVac=(event)=>{
@@ -243,7 +228,7 @@ class DisplayImage extends Component {
         </Grid>
         <Grid container direction="row" justifyContent="center" alignItems="center" paddingTop={7}>
           <Grid item >
-            <Button variant="contained" size="large" onClick={this.uploadDog} >submit</Button>
+            <Button variant="contained" size="large" onClick={this.uploadDog}  disabled={this.state.buttonDisable}>submit</Button>
           </Grid>
         </Grid><br />
         <ToastContainer autoClose={1000}/>
