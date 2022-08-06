@@ -10,12 +10,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 class HomeSearchDisplay extends Component{
 
-
     putDogsToSession = (dogObj) =>{
-
         if(sessionStorage.getItem('userlogin')===null){
             toast("Please login first before proceeding",{type:"warning"})
             setTimeout(() => {this.props.navigate('/login', { replace: true })}, 1000)
@@ -23,9 +20,7 @@ class HomeSearchDisplay extends Component{
         else{
             sessionStorage.setItem("dogObj", dogObj)
             this.props.navigate('/adoption',{replace:true})
-        }
-
-        
+        }    
     }
 
     render(){
@@ -34,8 +29,7 @@ class HomeSearchDisplay extends Component{
             <div>
                 <div>            
                     <ThemeProvider theme={theme}>
-                        <CssBaseline />
-                        
+                        <CssBaseline />       
                         <main>
                             <Container sx={{ py: 4 }} maxWidth="lg">
                             <Grid container spacing={4}>

@@ -73,6 +73,9 @@ export default function DonationForm(){
             setOpen(false)
             try{
                 const {id} = paymentMethod
+
+                toast("Processing your donation, Please wait", { type: "info" })
+
                 const response = await axios.post("https://pay-node-server.herokuapp.com/donation", {
                     amount,
                     id
@@ -82,7 +85,7 @@ export default function DonationForm(){
                     toast("Success! Thank you for your donation", { type: "success" })
                 }
                 else{
-                    toast("Something went wrong", { type: "error" })
+                    toast("Something went wrong, Please try again", { type: "error" })
                 }
             }
             catch (error){

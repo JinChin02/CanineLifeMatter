@@ -35,10 +35,8 @@ class HomePage extends Component{
         if (Authentication.isLoggedIn()){
             axios.put("http://localhost:8080/CheckCleanUserPreviousDog/"+sessionStorage.getItem('userlogin'))
             .then((res)=>{
-                if (res.data===null||res.data==""){
-                    
+                if (res.data===null||res.data==""){  
                 } else {
-                    // toast("Your dogs "+res.data+" has been adopted",{type:"warning"});
                     this.setState({dogList:res.data})
                     this.handleOpen();
                 }
@@ -76,11 +74,13 @@ class HomePage extends Component{
                     {/* <CardMedia component="img" sx={{height : 450 }} image={require('../images/strays.jpg')} alt="main"/> */}
                     <Grid container className='mainImage' sx={{minHeight:470}}>
                         <Grid item>
-                            <Typography variant='h5' fontFamily={"monospace"} style={{color:'rgba(199, 192, 183, 0.5)',marginLeft:"3.9em", marginTop:"8em", marginBottom:'0.5em'}} align='left' >
+                            <Typography variant='h5' fontFamily={"monospace"} style={{color:'rgba(199, 192, 183, 0.5)',
+                                marginLeft:"3.9em", marginTop:"8em", marginBottom:'0.5em'}} align='left' >
                                 Togather we can <br />
                                 ________
                             </Typography>
-                            <Typography variant='h3' fontFamily={"monospace"} style={{color:'rgba(199, 192, 183, 0.5)',marginLeft:"1.9em", marginBottom:'0.5em'}} align='left' >
+                            <Typography variant='h3' fontFamily={"monospace"} style={{color:'rgba(199, 192, 183, 0.5)',
+                                marginLeft:"1.9em", marginBottom:'0.5em'}} align='left' >
                                 BUILD A COMMUNITY OF LOVING AND CARE
                             </Typography>
                         </Grid>
@@ -88,7 +88,6 @@ class HomePage extends Component{
                 </div>  
 
                 <Grid container spacing={3} wrap="nowrap" direction="row" justifyContent="center" alignItems="Top">
-
                     <Grid item ><Advert name="adImage1"/></Grid>
                     <Grid item xs={8} sx={{marginTop:2.5}}>
                     <div className="searchBody">
@@ -100,26 +99,21 @@ class HomePage extends Component{
                             </div>
                         </form>
                     </div>
-
                     <div>
                         {this.state.returnedStatus===0 &&  <HomeMainDisplayWithNav/>} 
                         {this.state.returnedStatus===200 && <HomeSearchDisplayWithNav data={this.state.returnedData}/>} 
                         {this.state.returnedStatus===404 && <HomeNotFound/>}         
                     </div>
-
                     </Grid>
                     <Grid item ><Advert name="adImage2"/></Grid>
                 </Grid>
-
                 <ToastContainer autoClose={1000} />
-
                 <Dialog
                       open={this.state.open}
                       onClose={this.handleClose}
                       aria-describedby="alert-dialog-slide-description"
                       fullWidth
                       maxWidth="md"
-                      
                     >
                       <DialogTitle id="alert-dialog-title" style={{paddingLeft:40, paddingRight:40}} >Notification</DialogTitle>
                       <Divider variant="middle" style={{ marginLeft: 40, marginRight:40 }}/>
@@ -128,8 +122,7 @@ class HomePage extends Component{
                         <br/><br />
                         Please check your email for more details.
                       </DialogContent>
-                  </Dialog>
-                
+                  </Dialog>    
             </div>
         )
     }

@@ -12,7 +12,6 @@ import LoadingPage from '../components/Loading';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 class HomeMainDisplay extends Component{
     constructor(props){
         super(props)
@@ -25,7 +24,6 @@ class HomeMainDisplay extends Component{
     onMouseOver = () => this.setState({ shadows: 3 });
     onMouseOut = () => this.setState({ shadows: 1 });
 
-  
     componentDidMount() {
         this.GetAllDogs();
        if (sessionStorage.getItem("dogObj")!=null){
@@ -48,8 +46,6 @@ class HomeMainDisplay extends Component{
             sessionStorage.setItem("dogObj", dogObj)
             this.props.navigate('/adoption',{replace:true})
         }
-
-        
     }
 
     render(){
@@ -61,11 +57,9 @@ class HomeMainDisplay extends Component{
             return(
                 <div>            
                     <ThemeProvider theme={theme}>
-                        <CssBaseline />
-                        
+                        <CssBaseline />    
                         <main>
                             {/* Hero unit */}
-                        
                             <Container sx={{ py: 4 }} maxWidth="lg">
                             {/* End hero unit */}
                             <Grid container spacing={4}>
@@ -95,9 +89,6 @@ class HomeMainDisplay extends Component{
                                        {dogs.dogDescription}
                                         </Typography>
                                     </CardContent>
-                                    {/* <CardActions>
-                                        <Button size="small" onClick={()=> this.putDogsToSession(JSON.stringify(dogs))}> <Link to='/adoption'>View Details</Link></Button>
-                                    </CardActions> */}
                                     </Card>
                                 </Grid>
                                 ))}
