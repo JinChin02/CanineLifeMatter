@@ -136,9 +136,6 @@ public class ImageProcessingController {
 			else {
 				return new ResponseEntity<String>( result ,HttpStatus.OK); 
 			}
-			
-			
-
 	}
 	
 
@@ -181,18 +178,13 @@ public class ImageProcessingController {
 			
 			if (temp[0].equals("image")) {
 				buf.append(temp[temp.length - 3] + "\n");
-				//System.out.println(temp.length);
 			}
-			if (temp.length==9) {
-				
+			if (temp.length==9) {	
 				buf.setLength(0);
 				buf.append("Not detected  ");
 			}
-			
-			
 		}
 		
-		//System.out.println(buf);
 		String result = buf.substring(0, buf.length() - 2);
 		
 		while (br2.readLine() != null)
@@ -202,9 +194,7 @@ public class ImageProcessingController {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
 		return result;
-			
-			
+
 	}
 }
