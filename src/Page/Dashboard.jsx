@@ -11,7 +11,11 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 import Typography from '@mui/material/Typography';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 import { useNavigate } from "react-router-dom";
 import Authentication from "../Utilities/Authentication";
@@ -22,7 +26,9 @@ export default function Dashboard (){
 
     const [comments, setComments] = useState("");
     const [open, setOpen] = React.useState(false);
+    const [open2, setOpen2] = React.useState(false);
     const [value, setValue] = React.useState('Controlled');
+    const [idDelete , setIdDelete] = React.useState(0);
 
     const navigate = useNavigate();
 
@@ -36,9 +42,13 @@ export default function Dashboard (){
     };
     
     const handleClose = () => {
-        setOpen(false);
-        setValue("");
+        setOpen(false)
+        setValue("")
     };
+
+    const deleteClose = () => {
+        setOpen2(false)
+    }
 
     const handleChange = (event) => {
         setValue(event.target.value);
@@ -46,7 +56,6 @@ export default function Dashboard (){
 
     const submitComment = () => {
         setOpen(false);
-        // value = comment;
         if (value !==""&&value!=="Controlled"){
             const d = new Date();
             let text = d.toString();
@@ -66,6 +75,13 @@ export default function Dashboard (){
         setValue("");
     }
 
+    const deleteClicked = () => {
+        setOpen2(false)
+        axios.delete(`http://localhost:8080/bulletins/${idDelete}`)
+        .then(res=>console.log(res.data))
+        setIdDelete(0)
+    }
+
     useEffect(() => {
         axios.get("http://localhost:8080/bulletins")
         .then((res)=>setComments(res.data));
@@ -77,17 +93,21 @@ export default function Dashboard (){
     } else {
         return (
             <div>
-                 <Typography gutterBottom variant="h3" component="h2" style={{marginLeft:20, marginTop:30, fontWeight:"bold"}}>
+                 <Typography gutterBottom variant="h3" component="h2" 
+                    style={{marginLeft:20, marginTop:30, fontWeight:"bold"}}>
                                 Bulletin Board
                 </Typography> 
                 <Grid container direction="row" justifyContent="flex-start" alignItems="center">
+
                 {comments.length!=0&& comments.map((comment)=>{
                         // <DashboardElement key={comment.id} userComment={comment} />
                         return (
                             <div key={comment.id}>
-                                <Paper style={{ padding: "30px 10px 10px 10px", marginLeft: 50, marginTop: 30, marginRight:30, backgroundColor:"rgba(0,0,0,0.2)"}}>
+                                <Paper style={{ padding: "30px 10px 10px 10px", marginLeft: 50, 
+                                marginTop: 30, marginRight:30, backgroundColor:"rgba(0,0,0,0.2)"}}>
                                     <Grid container wrap="nowrap" spacing={2} style={{ paddingRight:50}}>
-                                        <Grid justifyContent="left" item xs zeroMinWidth style={{paddingLeft:60}}>
+                                        <Grid justifyContent="left" item xs zeroMinWidth 
+                                            style={{paddingLeft:60}}>
                                             <h4 style={{ margin: 0, textAlign: "left" }}>@ {comment.owner.username}</h4>
                                             <Divider variant="fullWidth" style={{ margin: "10px 0" }}/>
                                             <p style={{ textAlign: "left" ,marginTop:20}}>
@@ -96,6 +116,9 @@ export default function Dashboard (){
                                             <p style={{ textAlign: "right", color: "gray",paddingRight:20 }}>
                                             Posted on {comment.date} ({comment.time})
                                             </p>
+                                            {sessionStorage.getItem('userlogin') === comment.owner.id.toString() 
+                                                && <p style={{textAlign:"right"}} onClick={() => 
+                                                {setOpen2(true); setIdDelete(comment.id)}}><DeleteForeverIcon /></p>}
                                         </Grid>
                                     </Grid>
                                 </Paper>
@@ -121,7 +144,23 @@ export default function Dashboard (){
                         <Button style={{marginRight:10}} onClick={submitComment}>Comment</Button>
                     </DialogActions>
                 </Dialog>
-                <ToastContainer autoClose={1500}/>       
+                
+                <Dialog open={open2} fullWidth maxWidth="md" onClose={deleteClose}>
+                    <DialogTitle id="alert-dialog-title">{"Delete Comment"} </DialogTitle>
+                    <DialogContent>
+                      <DialogContentText id="alert-dialog-slide-description">
+                        Are you sure to delete this comment ?
+                      </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                      <Button onClick={deleteClose}>No</Button>
+                      <Button onClick={deleteClicked} >Yes</Button>
+                    </DialogActions>
+                </Dialog>
+                
+                <ToastContainer autoClose={1500}/>    
+
+
             </div>
         )
     }

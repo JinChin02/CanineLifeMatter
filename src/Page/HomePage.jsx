@@ -55,8 +55,7 @@ class HomePage extends Component{
             await axios.post("http://localhost:8080/searchDog",this.state.searchString)
             .then(response=>{this.setState({returnedData:response.data, returnedStatus:response.status})})
             .catch(e=>this.setState({returnedStatus:404}))
-        }
-        
+        } 
     }
 
     handleOpen = () => {
@@ -80,8 +79,13 @@ class HomePage extends Component{
                                 ________
                             </Typography>
                             <Typography variant='h3' fontFamily={"monospace"} style={{color:'rgba(199, 192, 183, 0.5)',
-                                marginLeft:"1.9em", marginBottom:'0.5em'}} align='left' >
+                                marginLeft:"1.9em", marginBottom:'0.2em'}} align='left' >
                                 BUILD A COMMUNITY OF LOVING AND CARE
+
+                                <Typography variant='h6' fontFamily={"monospace"} style={{color:'rgba(199, 192, 183, 0.25)',
+                                marginLeft:"1.9em", marginBottom:'0.5em'}} align='right' >
+                                Adopt instead of buying
+                                </Typography>
                             </Typography>
                         </Grid>
                     </Grid>
