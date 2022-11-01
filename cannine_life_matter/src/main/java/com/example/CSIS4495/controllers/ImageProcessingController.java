@@ -96,21 +96,6 @@ public class ImageProcessingController {
 		}
 	}
 	
-
-//	@PostMapping("/uploadImage/dog/{id}")
-//	public ResponseEntity<Dog> uploadDogImage(@PathVariable("id") long id, @RequestBody String imageUrl)
-//			throws IOException {
-//		Optional<Dog> dogList = dogRepository.findById(id);
-//		if (dogList.isPresent()) {
-//			Dog dog = dogList.get();
-//			dog.setDogURL(imageUrl);
-//			System.out.println(imageUrl);
-//			dogRepository.save(dog);
-//			return new ResponseEntity<Dog>(dog, HttpStatus.OK);
-//		} else {
-//			return new ResponseEntity<Dog>(HttpStatus.NOT_FOUND);
-//		}
-//	}
 	
 	@GetMapping("/getDog/{id}")
 	public ResponseEntity<Dog> uploadDogImage(@PathVariable("id") long id){
@@ -122,79 +107,8 @@ public class ImageProcessingController {
 		}
 	}
 	
-	@PostMapping("/imageProcessing")
-	public ResponseEntity<String> imageProcessing(@RequestBody String imageURL) throws IOException {
 
-		 	System.out.println(imageURL);
-		    String decodeImageURlWithEqual =URLDecoder.decode(imageURL, StandardCharsets.UTF_8.toString());
-		 	String decodeImageURl=decodeImageURlWithEqual.substring(0,decodeImageURlWithEqual.length()-1);
-		 	System.out.println(decodeImageURl);
-			String result = getBreedByImage(decodeImageURl);
-			if(result == null) {
-				return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
-			}
-			else {
-				return new ResponseEntity<String>( result ,HttpStatus.OK); 
-			}
-	}
-	
 
 
 	
-	private String getBreedByImage(String imgUrl) throws IOException {
-		StringBuffer command = new StringBuffer();
-		command.append("cmd /c C:");
-		command.append("&& cd C:\\Users\\jerry\\Desktop\\4495\\yolov5-master");
-		command.append("&& activate");
-		command.append("&& conda activate yolov5");
-		command.append("&& python downloadImg.py " + imgUrl);
-		command.append("&& python detect.py --source dog_breed\\images\\temp.jpg --weights best.pt");
-
-		command.append("&& conda deactivate");
-		String arguments = command.toString();
-
-		Process p = Runtime.getRuntime().exec(arguments);
-		final InputStream is1 = p.getInputStream();
-		new Thread(new Runnable() {
-			public void run() {
-				BufferedReader br = new BufferedReader(new InputStreamReader(is1));
-				try {
-					String outputLine = null;
-					while ((outputLine = br.readLine()) != null) {
-					}
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}).start();
-		InputStream is2 = p.getErrorStream();
-		BufferedReader br2 = new BufferedReader(new InputStreamReader(is2));
-		StringBuilder buf = new StringBuilder();
-		String line = null;
-
-		while ((line = br2.readLine()) != null) {
-			System.out.println(line);
-			String[] temp = line.split("\\s+");
-			
-			if (temp[0].equals("image")) {
-				buf.append(temp[temp.length - 3] + "\n");
-			}
-			if (temp.length==9) {	
-				buf.setLength(0);
-				buf.append("Not detected  ");
-			}
-		}
-		
-		String result = buf.substring(0, buf.length() - 2);
-		
-		while (br2.readLine() != null)
-			;
-		try {
-			p.waitFor();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		return result;
-
-	}
 }
