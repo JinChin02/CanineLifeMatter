@@ -33,6 +33,7 @@ class DisplayImage extends Component {
       DogNameInput:"",
       DogDescInput:"",
       DogVacInput:"",
+      DogBreedInput:"",
       buttonDisable:false,
 
     };
@@ -77,23 +78,17 @@ class DisplayImage extends Component {
   
 
     axios.post("https://api.cloudinary.com/v1_1/dlbwhvhsg/image/upload",data)
-    .then((res)=> this.getDogBreedByImage(res.data.secure_url)) 
+    .then((res)=> this.putDogIntoDatabase(res.data.secure_url)) 
     .catch(e=> toast("Please select an image to upload or choose a smaller size", { type: "error" })  )
   }
 
-  getDogBreedByImage = (imageUrl)=>{
-    axios.post("http://localhost:8080/imageProcessing",imageUrl)
-    .then ((res)=>this.putDogIntoDatabase(res.data,imageUrl))
-    .catch(e=>console.log(e.message))
-  }
-
-  putDogIntoDatabase = (dogBreed,imageUrl) =>{
+  putDogIntoDatabase = (imageUrl) =>{
     let currentUserID = sessionStorage.getItem("userlogin");
     let location = JSON.parse(sessionStorage.getItem("clickLocation")); 
   
     let dog = {
       dogname: this.state.DogNameInput,
-      breed:dogBreed,
+      breed:this.state.DogBreedInput,
       longitude:location.lng,
       latitude:location.lat,
       vaccinationStatus:this.state.DogVacInput,
@@ -185,6 +180,15 @@ class DisplayImage extends Component {
                       id="dogUpload_description"   
                       placeholder="Dog Description"     
                       onChange={evt=>this.setState({DogDescInput:evt.target.value})} 
+                    />  
+              </Grid> 
+              <Grid item>
+                <TextField
+                      required
+                      label="dog breed"
+                      id="dogUpload_breed"   
+                      placeholder="Dog Breed"     
+                      onChange={evt=>this.setState({DogBreedInput:evt.target.value})} 
                     />  
               </Grid> 
               <Grid item>

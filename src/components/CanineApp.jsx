@@ -28,14 +28,12 @@ class CanineApp extends Component {
     const RegistrationWithNav = WithNavigation(Registration)
     const LogoutWithNav = WithNavigation(LogoutMessage)
     const HeaderWithNav = WithNavigation(Header)
-    const api = "AIzaSyBNn8vfymHui03uwp3VKl8_2EccQEu1F_g";
-
 
     return (
         <div className='CanineApp'>
             <Router>
                 <HeaderWithNav/>
-                    <LoadScript googleMapsApiKey={api}> 
+                    <LoadScript googleMapsApiKey={process.env.REACT_APP_GM_KEY}> 
                             <Routes>
                                 <Route path="/" element={<HomePage/>} /> 
                                 <Route path="/login" element={<LoginWithNav/>} />
