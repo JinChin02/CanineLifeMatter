@@ -34,12 +34,7 @@ function MainDisplay(props) {
         });
         break;
       case "200":
-        axios
-          .post("http://localhost:8080/searchDog", props.searchString)
-          .then((res) => {
-            setDogList(res.data);
-          })
-          .catch((e) => this.setState({ returnedStatus: 404 }));
+        setDogList(props.searchResult);
     }
   }, []);
 

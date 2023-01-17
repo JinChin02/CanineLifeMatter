@@ -109,7 +109,7 @@ class HomePage extends Component{
                         {this.state.returnedStatus===200 && <HomeSearchDisplayWithNav data={this.state.returnedData} status = "200"/>} 
                         {this.state.returnedStatus===404 && <HomeNotFound status = "404"/>}          */}
                         {this.state.returnedStatus===0 &&  <MainDisplay status = "0"/>} 
-                        {this.state.returnedStatus===200 && <MainDisplay searchString={this.state.searchString} status = "200"/>} 
+                        {this.state.returnedStatus===200 && <MainDisplay searchResult={this.state.returnedData} status = "200"/>} 
                         {this.state.returnedStatus===404 && <HomeNotFound status = "404"/>}        
                     </div>
                     </Grid>
