@@ -15,6 +15,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import Divider from "@mui/material/Divider";
+import MainDisplay from "../components/MainDisplay";
 
 const HomeMainDisplayWithNav = WithNavigation(HomeMainDisplay);
 const HomeSearchDisplayWithNav = WithNavigation(HomeSearchDisplay);
@@ -104,9 +105,12 @@ class HomePage extends Component{
                         </form>
                     </div>
                     <div>
-                        {this.state.returnedStatus===0 &&  <HomeMainDisplayWithNav/>} 
-                        {this.state.returnedStatus===200 && <HomeSearchDisplayWithNav data={this.state.returnedData}/>} 
-                        {this.state.returnedStatus===404 && <HomeNotFound/>}         
+                        {/* {this.state.returnedStatus===0 &&  <HomeMainDisplayWithNav status = "0"/>} 
+                        {this.state.returnedStatus===200 && <HomeSearchDisplayWithNav data={this.state.returnedData} status = "200"/>} 
+                        {this.state.returnedStatus===404 && <HomeNotFound status = "404"/>}          */}
+                        {this.state.returnedStatus===0 &&  <MainDisplay status = "0"/>} 
+                        {this.state.returnedStatus===200 && <MainDisplay searchString={this.state.searchString} status = "200"/>} 
+                        {this.state.returnedStatus===404 && <HomeNotFound status = "404"/>}        
                     </div>
                     </Grid>
                     <Grid item ><Advert name="adImage2"/></Grid>
