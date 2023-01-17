@@ -16,6 +16,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import Divider from "@mui/material/Divider";
 import MainDisplay from "../components/MainDisplay";
+import e from "cors";
 
 const HomeMainDisplayWithNav = WithNavigation(HomeMainDisplay);
 const HomeSearchDisplayWithNav = WithNavigation(HomeSearchDisplay);
@@ -48,11 +49,12 @@ class HomePage extends Component{
 
 
     handleSearch = async(event) =>{
-        event.preventDefault();
+        // event.preventDefault();
         if(this.state.searchString.length === 0){
             toast("Please fill in breed type to search",{type:"warning"})
         }
         else{
+            this.setState({ returnedStatus:0});
             await axios.post("http://localhost:8080/searchDog",this.state.searchString)
             .then(response=>{this.setState({returnedData:response.data, returnedStatus:response.status})})
             .catch(e=>this.setState({returnedStatus:404}))
@@ -100,7 +102,7 @@ class HomePage extends Component{
                             <div className="abc">
                                 <input type="text" name="searchString" className="searchBar" placeholder="Search by breed" 
                                     onChange={evt => this.setState({searchString: evt.target.value})} required/>
-                                <button type="submit" name="submit" className="searchButton"  onClick={this.handleSearch} >GO !</button>
+                                <button type="button" name="submit" className="searchButton"  onClick={this.handleSearch} >GO !</button>
                             </div>
                         </form>
                     </div>
@@ -109,7 +111,7 @@ class HomePage extends Component{
                         {this.state.returnedStatus===200 && <HomeSearchDisplayWithNav data={this.state.returnedData} status = "200"/>} 
                         {this.state.returnedStatus===404 && <HomeNotFound status = "404"/>}          */}
                         {this.state.returnedStatus===0 &&  <MainDisplay status = "0"/>} 
-                        {this.state.returnedStatus===200 && <MainDisplay searchResult={this.state.returnedData} status = "200"/>} 
+                        {this.state.returnedStatus===200 && <MainDisplay status = "200" dogListS={this.state.returnedData} />} 
                         {this.state.returnedStatus===404 && <HomeNotFound status = "404"/>}        
                     </div>
                     </Grid>

@@ -29,12 +29,15 @@ function MainDisplay(props) {
   useEffect(() => {
     switch (props.status) {
       case "0":
+        console.log("0 re-render");
         axios.get("http://localhost:8080/getAllDogs").then((res) => {
           setDogList(res.data);
         });
         break;
       case "200":
-        setDogList(props.searchResult);
+        console.log(props.dogListS);
+        setDogList(props.dogListS);
+        break;
     }
   }, []);
 
