@@ -32,7 +32,7 @@ const HomePage = () => {
           if (res.data === null || res.data == "") {
           } else {
             setDogList(res.data);
-            handleOpen();
+            handleOpen("OPEN");
           }
         })
         .catch((res) => console.log(res.message));
@@ -56,13 +56,18 @@ const HomePage = () => {
     }
   };
 
-  const handleOpen = () => {
-    setOpen(true);
+  const handleOpen = (isOpen) => {
+    switch (isOpen) {
+        case "OPEN":
+            setOpen(true);
+        break; 
+        case "CLOSED":
+            setOpen(false);
+        break;
+    }
   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+
 
   return (
     <div>
@@ -154,6 +159,7 @@ const HomePage = () => {
               <MainDisplay status="200" dogListS={returnedData} />
             )}
             {returnedStatus === 404 && <HomeNotFound status="404" />}
+            {/* <MainDisplay dogListS ={returnedData} status={returnedStatus}/> */}
            
           </div>
         </Grid>
@@ -164,7 +170,7 @@ const HomePage = () => {
       <ToastContainer autoClose={1000} />
       <Dialog
         open={open}
-        onClose={handleClose}
+        onClose={()=>handleOpen("CLOSED")}
         aria-describedby="alert-dialog-slide-description"
         fullWidth
         maxWidth="md"
