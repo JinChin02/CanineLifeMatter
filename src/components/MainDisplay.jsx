@@ -29,17 +29,16 @@ function MainDisplay(props) {
   useEffect(() => {
     switch (props.status) {
       case "0":
-        console.log("0 re-render");
         axios.get("http://localhost:8080/getAllDogs").then((res) => {
           setDogList(res.data);
         });
         break;
       case "200":
-        console.log(props.dogListS);
+        console.log("input");
         setDogList(props.dogListS);
         break;
     }
-  }, []);
+  },[props.dogListS]);
 
   const putDogsToSession = (dogObj) => {
     if (sessionStorage.getItem("userlogin") === null) {
