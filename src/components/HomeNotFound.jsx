@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import HomeMainDisplay from "./HomeMainDisplay";
+
 
 
 class HomeNotFound extends Component{
