@@ -3,7 +3,7 @@ import { FileUploader } from "react-drag-drop-files";
 
 const fileTypes = ["JPG", "PNG", "GIF"];
 
-function DragDrop(props) {
+const DragDrop = (props) => {
   // const [file, setFile] = useState(props.passData);
   const handleChange = (file) => {
     props.passData(URL.createObjectURL(file));

@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import { Button } from "@mui/material";
 import axios from "axios";
 
-export default function Donation() {
+const Donation = () => {
 
     const [amount, setAmount] = useState()
     const [product] = React.useState({
@@ -92,3 +92,6 @@ export default function Donation() {
     )
 
 }
+
+
+export default  Donation; 

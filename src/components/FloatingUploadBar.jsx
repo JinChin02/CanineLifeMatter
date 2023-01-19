@@ -4,7 +4,7 @@ import Fab from '@mui/material/Fab';
 import NavigationIcon from '@mui/icons-material/Navigation';
 import AddIcon from '@mui/icons-material/Add';
 
-export default function FloatingUploadBar(props) {
+const FloatingUploadBar = (props) => {
 
     const defineIcon = () => {
       if(props.name === "upload"){
@@ -23,3 +23,6 @@ export default function FloatingUploadBar(props) {
       </Box>
     );
   }
+
+
+  export default FloatingUploadBar; 

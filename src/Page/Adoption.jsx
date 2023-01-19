@@ -1,144 +1,178 @@
-import React, {Component} from "react";
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import CardMedia from '@mui/material/CardMedia';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import axios from 'axios';
-import { Navigate } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import React, { Component, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import CardMedia from "@mui/material/CardMedia";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import axios from "axios";
 
-class Adoption extends Component{
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import dogContext from "../context/dogContext";
 
-    constructor(props){
-        super(props);
-        this.state = {
-            dog : JSON.parse(sessionStorage.getItem("dogObj")),
-            open : false,
-            oldUser:"",
-        }
+const Adoption = (props) => {
+  const [dog, setDog] = useState(JSON.parse(sessionStorage.getItem("dogObj")));
+  const [open, setOpen] = useState(false);
+  const [oldUser, setOldUser] = useState("");
+
+  const navigate = useNavigate();
+
+  const dogNameDisplay = () => {
+    if (dog.dogname === null) {
+      return "Not Available";
+    } else {
+      return dog.dogname;
     }
-    
-    dogNameDisplay=()=>{
-        if(this.state.dog.dogname === null){
-            return "Not Available"
-        }
-        else{
-            return this.state.dog.dogname
-        }
+  };
+
+  const dogVacDisplay = () => {
+    if (dog.vaccinationStatus === null) {
+      return "Unvaccinated";
+    } else {
+      return "Vaccinated";
     }
+  };
 
-    dogVacDisplay=()=>{
-        if(this.state.dog.vaccinationStatus === null){
-            return "Unvaccinated"
-        }
-        else{
-            return "Vaccinated"
-        }
+  const ownership = () => {
+    if (sessionStorage.getItem("userlogin") !== dog.owner.id.toString()) {
+      return true;
+    } else {
+      return false;
     }
+  };
 
-    ownership=()=>{
-        if(sessionStorage.getItem('userlogin') !== this.state.dog.owner.id.toString()){
-            return true
-        }
-        else{
-            return false
-        }
-    }
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
-    handleClickOpen = () => {
-        this.setState({open : true})
-    }
+  const handleClose = () => {
+    setOpen(false);
+  };
 
-    handleClose = () => {
-        this.setState({open : false})
-    }
+  const handleYes = async (userId, dogId) => {
+    setOpen(false);
+    await axios
+      .post(`http://localhost:8080/adopt/${userId}/${dogId}`)
+      .then(
+        (response) =>
+          toast(
+            "Congratulations, you have adopted a new canine. You can check out the details in manage page."
+          ),
+        { type: "success" }
+      )
+      .then((res) => axios.get("http://localhost:8080/sendMail"))
+      .catch((e) => toast("Adoption failed", { type: "error" }));
+  };
 
+  const navigateToMap = () => {
+    // props.navigate("/googleMap");
+    navigate("/googleMap");
+  };
 
-    handleYes = async (userId, dogId) => {
-        this.setState({open : false})
-        await axios.post(`http://localhost:8080/adopt/${userId}/${dogId}`)
-        .then(response => toast("Congratulations, you have adopted a new canine. You can check out the details in manage page."),{ type: "success" })
-        .then(res=> axios.get("http://localhost:8080/sendMail"))
-        .catch(e=>toast("Adoption failed",{ type: "error" }))
-    }
+  const isNotYours = ownership();
+  return (
+    <div>
+      <Card
+        sx={{
+          maxWidth: 1000,
+          textAlign: "center",
+          margin: "auto",
+          background: "#eff9fa",
+        }}
+      >
+        <CardContent>
+          <Typography
+            gutterBottom
+            variant="h4"
+            component="h2"
+            color="text.secondary"
+          >
+            Details Information
+          </Typography>
+          <br />
+          <CardMedia
+            component="img"
+            sx={{ height: 800, width: 900, margin: "auto", fit: "contain" }}
+            image={decodeURIComponent(dog.dogURL)}
+            alt="random"
+          />
+          <Typography sx={{ mb: 1.5 }} color="text.secondary">
+            {"Dog Breed : "} {dog.breed}
+            <br />
+            {"Dog Name : "} {dogNameDisplay()}
+            <br />
+            {"Vaccination Status : "} {dogVacDisplay()}
+            <br />
+            {"Current Owner / Founder : "} {dog.owner.username}
+          </Typography>
+          <Typography variant="body2">
+            {dog.dogDescription}
+            <br />
+          </Typography>
+        </CardContent>
+        <CardActions>
+          {isNotYours && (
+            <Button
+              variant="contained"
+              size="large"
+              sx={{ margin: "auto" }}
+              onClick={handleClickOpen}
+            >
+              Adopt Now
+            </Button>
+          )}
+          <Button
+            variant="contained"
+            size="large"
+            sx={{ margin: "auto" }}
+            onClick={navigateToMap}
+          >
+            Location found
+          </Button>
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-slide-description"
+          >
+            <DialogTitle id="alert-dialog-title">
+              {"Adoption Confirmation"}
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-slide-description">
+                Are you sure that you want to take on the responsibilty to adopt
+                and take care of this canine ?
+                <br />
+                <strong>
+                  (Please take note that your personal information will be used
+                  to registered as the new owner)
+                </strong>
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose}>No, let me think again</Button>
+              <Button
+                onClick={() =>
+                  handleYes(sessionStorage.getItem("userlogin"), dog.id)
+                }
+                autoFocus
+              >
+                Yes, i'm sure
+              </Button>
+            </DialogActions>
+          </Dialog>
+        </CardActions>
+      </Card>
+      <ToastContainer autoClose={1500} />
+    </div>
+  );
+};
 
-
-    navigateToMap=()=>{
-        this.props.navigate("/googleMap");
-    }
-
-
-    render() {
-
-        const isNotYours = this.ownership()
-            return(
-                <div> 
-                        <Card sx={{ maxWidth:1000 ,textAlign:'center', margin:'auto', background:'#eff9fa' }}>
-                            <CardContent>
-                                <Typography gutterBottom variant="h4" component="h2" color="text.secondary">
-                                Details Information
-                                </Typography>
-                                <br/>
-                                <CardMedia
-                                    component="img"
-                                    sx={{height : 800, width : 900, margin:'auto', fit:"contain"}}
-                                    image={decodeURIComponent(this.state.dog.dogURL)}
-                                    alt="random"
-                                />
-                                <Typography sx={{ mb: 1.5}} color="text.secondary">
-                                    {"Dog Breed : "} {this.state.dog.breed}
-                                    <br />
-                                    {"Dog Name : "} {this.dogNameDisplay()}
-                                    <br/>
-                                    {"Vaccination Status : "} {this.dogVacDisplay()}
-                                    <br />
-                                    {"Current Owner / Founder : "} {this.state.dog.owner.username}
-                                </Typography>
-                                <Typography variant="body2">
-                                    {this.state.dog.dogDescription}
-                                <br />
-                            
-                                </Typography>
-                            </CardContent>
-                            <CardActions >
-                            {isNotYours && <Button variant="contained" size="large" sx={{margin:"auto"}} onClick={this.handleClickOpen} >Adopt Now</Button>}
-                            <Button variant="contained" size="large" sx={{margin:"auto"}} onClick={this.navigateToMap} >Location found</Button>
-                                <Dialog
-                                    open={this.state.open}
-                                    onClose={this.handleClose}
-                                    aria-labelledby="alert-dialog-title"
-                                    aria-describedby="alert-dialog-slide-description"
-                                >
-                                    <DialogTitle id="alert-dialog-title">
-                                    {"Adoption Confirmation"}
-                                    </DialogTitle>
-                                    <DialogContent>
-                                    <DialogContentText id="alert-dialog-slide-description">
-                                        Are you sure that you want to take on the responsibilty to adopt and take care of this canine ? 
-                                        <br />
-                                        <strong>(Please take note that your personal information will be used to registered as the new owner)</strong>
-                                    </DialogContentText>
-                                    </DialogContent>
-                                    <DialogActions>
-                                    <Button onClick={this.handleClose}>No, let me think again</Button>
-                                    <Button onClick={()=>this.handleYes( sessionStorage.getItem('userlogin') ,this.state.dog.id)} autoFocus>Yes, i'm sure</Button>
-                                    </DialogActions>
-                                </Dialog>
-                            </CardActions>
-                    </Card>
-                    <ToastContainer autoClose={1500} />
-                </div>
-            )
-       
-    }
-}
-
-export default Adoption
+export default Adoption;

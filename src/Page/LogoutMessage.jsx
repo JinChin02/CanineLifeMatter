@@ -1,37 +1,36 @@
-import React, {Component} from "react";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import React from "react";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router";
 
-class LogoutMessage extends Component{
 
-    time = () => {
-        setTimeout(()=>{this.props.navigate("/"); },400)
-    }
+const LogoutMessage = (props) => {
 
-    noTime = () =>{
-        setTimeout(()=>{this.props.navigate("/")},0)
-    }
+  const navigate = useNavigate();
 
-    render(){
-        if(sessionStorage.getItem('userlogin') !== null){
-            return (
-                <div>
-                    {this.noTime()}
-                </div>
-            )
-        }else{
-            return(     
-                <div>
-                    <div >
-                         <h2 className="fillSpaceL" > You have successfully logout </h2>
-                         {this.time()}
-                    </div>
-                    {/* <ToastContainer autoClose={1000} />  */}
-                </div>
-            )
-        }
-       
-    }
-}
+  const time = () => {
+    setTimeout(() => {
+      navigate("/");
+    }, 1000);
+  };
 
-export default LogoutMessage
+  const noTime = () => {
+    setTimeout(() => {
+      navigate("/");
+    }, 0);
+  };
+
+  if (sessionStorage.getItem("userlogin") !== null) {
+    return <div>{noTime()}</div>;
+  } else {
+    return (
+      <div>
+        <div>
+          <h2 className="fillSpaceL"> You have successfully logout </h2>
+          {time()}
+        </div>
+      </div>
+    );
+  }
+};
+
+export default LogoutMessage;

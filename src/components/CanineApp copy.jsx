@@ -18,20 +18,26 @@ import HospitalUpload from "../Page/HospitalUpload";
 import dogContext from "../context/dogContext";
 
 const CanineApp = () => {
+  const LoginWithNav = WithNavigation(Login);
+  const ImageUploadWithNav = WithNavigation(ImageUpload);
+  const RegistrationWithNav = WithNavigation(Registration);
+  const LogoutWithNav = WithNavigation(LogoutMessage);
+  const HeaderWithNav = WithNavigation(Header);
+
   let selecteddog = useRef(null);
 
   return (
     <div className="CanineApp">
       <BrowserRouter>
-        <Header/>
+        <HeaderWithNav />
         <LoadScript googleMapsApiKey={process.env.REACT_APP_GM_KEY}>
           <dogContext.Provider value={selecteddog}>
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Registration />} />
-              <Route path="/imageUpload" element={<ImageUpload />} />
-              <Route path="/logoutMessage" element={<LogoutMessage />} />
+              <Route path="/login" element={<LoginWithNav />} />
+              <Route path="/register" element={<RegistrationWithNav />} />
+              <Route path="/imageUpload" element={<ImageUploadWithNav />} />
+              <Route path="/logoutMessage" element={<LogoutWithNav />} />
               <Route path="/googleMap" element={<Map />} />
               <Route path="/adoption" element={<Adoption />} />
               <Route path="/donation" element={<Donation />} />

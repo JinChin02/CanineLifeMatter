@@ -1,4 +1,4 @@
-import React, { useState,useEffect} from 'react'
+import React, { useState,useEffect,useContext} from 'react'
 import {GoogleMap,MarkerF,InfoWindow} from '@react-google-maps/api';
 import axios from "axios";
 import Card from '@mui/material/Card';
@@ -6,10 +6,11 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import LoadingPage from "../components/Loading";
+import dogContext from '../context/dogContext';
 
 
 
- function Map (props){
+ const Map = (props) => {
 
 
     const [location,setLocation]=useState(null);
@@ -18,6 +19,8 @@ import LoadingPage from "../components/Loading";
     const [dog,setDog]=useState("");
     const [userLocation,setuUserLocation]=useState(null);
     const [clickLocation, setClickLoaction]= useState("");
+
+    let selecteddog = useContext(dogContext);
 
        
     useEffect(()=>{
@@ -48,6 +51,13 @@ import LoadingPage from "../components/Loading";
             setDog(dogObj);
             setLocation({lat: dogObj.latitude , lng: dogObj.longitude});     
         }
+
+        // if (selecteddog.current != null){
+        //     let dogObj = selecteddog.current; 
+        //     console.log(dogObj);
+        //     setDog(dogObj);
+        //     setLocation({lat: dogObj.latitude , lng: dogObj.longitude}); 
+        // }
         
     }
 

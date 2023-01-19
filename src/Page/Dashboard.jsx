@@ -22,7 +22,7 @@ import Authentication from "../Utilities/Authentication";
 import { ToastContainer,toast } from 'react-toastify';
 import { margin, padding } from "@mui/system";
 
-export default function Dashboard (){
+const Dashboard = () => {
 
     const [comments, setComments] = useState("");
     const [open, setOpen] = React.useState(false);
@@ -166,3 +166,5 @@ export default function Dashboard (){
     }
 
 }
+
+export default Dashboard; 

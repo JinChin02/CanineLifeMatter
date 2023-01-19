@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router";
 
 import axios from "axios";
@@ -13,11 +13,14 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import LoadingPage from "../components/Loading";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import dogContext from "../context/dogContext";
 
-function MainDisplay(props) {
+const MainDisplay = (props) => {
   const navigate = useNavigate();
   const [dogList, setDogList] = useState([]);
   const [shadows, setShadow] = useState(1);
+
+  let setSelectedDog = useContext(dogContext);
 
   const onMouseOver = () => {
     setShadow(3);
@@ -38,7 +41,7 @@ function MainDisplay(props) {
         setDogList(props.dogListS);
         break;
     }
-  },[props.dogListS]);
+  }, [props.dogListS]);
 
   const putDogsToSession = (dogObj) => {
     if (sessionStorage.getItem("userlogin") === null) {
@@ -48,6 +51,8 @@ function MainDisplay(props) {
       }, 1000);
     } else {
       sessionStorage.setItem("dogObj", dogObj);
+      setSelectedDog.current = dogObj;
+
       navigate("/adoption", { replace: true });
     }
   };
@@ -76,6 +81,7 @@ function MainDisplay(props) {
                         flexDirection: "column",
                       }}
                       onClick={() => putDogsToSession(JSON.stringify(dogs))}
+                      // onClick={() => putDogsToSession(dogs)}
                       onMouseOver={onMouseOver}
                       onMouseOut={onMouseOut}
                     >
@@ -104,6 +110,6 @@ function MainDisplay(props) {
       </div>
     );
   }
-}
+};
 
 export default MainDisplay;
