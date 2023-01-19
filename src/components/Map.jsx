@@ -1,163 +1,206 @@
-import React, { useState,useEffect,useContext} from 'react'
-import {GoogleMap,MarkerF,InfoWindow} from '@react-google-maps/api';
+import React, { useState, useEffect, useContext } from "react";
+import { GoogleMap, MarkerF, InfoWindow } from "@react-google-maps/api";
 import axios from "axios";
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
 import LoadingPage from "../components/Loading";
-import dogContext from '../context/dogContext';
+import dogContext from "../context/dogContext";
+import { Button } from "@mui/material";
+import userClickContext from "../context/userClickContext";
 
+const Map = (props) => {
+  const [location, setLocation] = useState(null);
+  const [clinicObjArray, setClinicArray] = useState([]);
+  const [showingInfoWindow, setShowingInfoWindow] = useState(0);
+  const [dog, setDog] = useState("");
+  const [userLocation, setuUserLocation] = useState(null);
+  const [clickLocation, setClickLoaction] = useState("");
 
+  let selecteddog = useContext(dogContext);
+  let userSelectedLocation = useContext(userClickContext);
 
- const Map = (props) => {
+  useEffect(() => {
+    getUserLocation();
+    getDogLoaciton();
+    getAllMarkerLocation();
+    // selecteddog.current = null;
+  }, []);
 
-
-    const [location,setLocation]=useState(null);
-    const [clinicObjArray,setClinicArray]=useState([]);
-    const [showingInfoWindow,setShowingInfoWindow]=useState(0);
-    const [dog,setDog]=useState("");
-    const [userLocation,setuUserLocation]=useState(null);
-    const [clickLocation, setClickLoaction]= useState("");
-
-    let selecteddog = useContext(dogContext);
-
-       
-    useEffect(()=>{
-        getUserLocation(); 
-        getDogLoaciton();  
-        getAllMarkerLocation();
-    },[]);
-
-    const getUserLocation=()=>{
-        if (navigator.geolocation){
-            navigator.geolocation.getCurrentPosition((position)=>{
-                let lati =  position.coords.latitude;
-                let lngi = position.coords.longitude;
-                setuUserLocation({lat:lati,lng:lngi});
-                if (sessionStorage.getItem("dogObj")==null){
-                    setLocation({lat:lati,lng:lngi})
-                }
-            })
-
-        }else {
-            alert("GEO is not supported in this browser");
+  const getUserLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        let lati = position.coords.latitude;
+        let lngi = position.coords.longitude;
+        setuUserLocation({ lat: lati, lng: lngi });
+        if (selecteddog.current == null) {
+          setLocation({ lat: lati, lng: lngi });
         }
+      });
+    } else {
+      alert("GEO is not supported in this browser");
     }
+  };
 
-    const getDogLoaciton=()=>{
-        if (sessionStorage.getItem("dogObj")!=null){    
-            let dogObj = JSON.parse(sessionStorage.getItem("dogObj"));
-            setDog(dogObj);
-            setLocation({lat: dogObj.latitude , lng: dogObj.longitude});     
-        }
-
-        // if (selecteddog.current != null){
-        //     let dogObj = selecteddog.current; 
-        //     console.log(dogObj);
-        //     setDog(dogObj);
-        //     setLocation({lat: dogObj.latitude , lng: dogObj.longitude}); 
-        // }
-        
+  const getDogLoaciton = () => {
+    if (selecteddog.current != null) {
+      console.log("in");
+      let dogObj = selecteddog.current;
+      setDog(dogObj);
+      setLocation({ lat: dogObj.latitude, lng: dogObj.longitude });
     }
+  };
 
+  const getAllMarkerLocation = async () => {
+    await axios
+      .get("http://localhost:8080/clinic")
+      .then((res) => setClinicArray(res.data));
+  };
 
+  const onMarkerClick = (id) => {
+    setShowingInfoWindow(id);
+  };
 
-    const getAllMarkerLocation= async()=>{
-        await axios.get("http://localhost:8080/clinic")
-        .then((res)=>setClinicArray(res.data));
-    }
+  const onInfoWindowClose = () => {
+    setShowingInfoWindow(false);
+  };
 
-    
-
-  
-    const onMarkerClick = (id) => {
-        setShowingInfoWindow(id);
-    };
-    
-    const onInfoWindowClose = () =>{
-        setShowingInfoWindow(false);
-    }
-
-    const onMapClick=(e)=>{
-        setClickLoaction({lat:e.latLng.lat() , lng:e.latLng.lng()});
-        sessionStorage.setItem("clickLocation",JSON.stringify({lat:e.latLng.lat() , lng:e.latLng.lng()}) );
-    }
- 
-
+  const onMapClick = (e) => {
+    setClickLoaction({ lat: e.latLng.lat(), lng: e.latLng.lng() });
+    // sessionStorage.setItem(
+    //   "clickLocation",
+    //   JSON.stringify({ lat: e.latLng.lat(), lng: e.latLng.lng() })
+    // );
    
-    // return part 
-    if (clinicObjArray.length===0 ){
-        return (<div><LoadingPage/></div>);
-    } else 
-    {   const google = window.google;
-        return (
-            // <div style={componentSize} > 
-            <div>
-                <GoogleMap  center={location}  zoom={13} mapContainerClassName="map-container" onClick={onMapClick} >
-                <MarkerF key="user" size="large" position={userLocation}  icon={"https://www.robotwoods.com/dev/misc/bluecircle.png"} ></MarkerF> 
-                {clickLocation!=="" && <MarkerF key={"selectedLocation"} size="large" position={clickLocation}></MarkerF>}
-                {clinicObjArray.map((eachEle)=>
-                <MarkerF key={eachEle.id} size="large" position={{lat:eachEle.lat , lng:eachEle.lng}} onClick={()=>onMarkerClick(eachEle.id)} icon="https://res.cloudinary.com/dlbwhvhsg/image/upload/v1656696738/hos_Icon-removebg_small_lkarnz.png">
-                    {showingInfoWindow === eachEle.id && 
-                    <div>
-               
-                    <InfoWindow position={{lat:eachEle.lat , lng:eachEle.lng}} onCloseClick={onInfoWindowClose}>
-                    <Card sx={{ minWidth: 275, maxWidth: 275}}>
-                    <CardContent>
-                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                        Hospital name: 
+    userSelectedLocation.current = { lat: e.latLng.lat(), lng: e.latLng.lng()};
+  };
+
+  const clearDog = () =>{
+    setDog("");
+    selecteddog.current = null; 
+  }
+
+  // return part
+  if (clinicObjArray.length === 0) {
+    return (
+      <div>
+        <LoadingPage />
+      </div>
+    );
+  } else {
+    const google = window.google;
+    return (
+      // <div style={componentSize} >
+      <div className="center">
+        <GoogleMap
+          center={location}
+          zoom={13}
+          mapContainerClassName="map-container"
+          onClick={onMapClick}
+        >
+          <MarkerF
+            key="user"
+            size="large"
+            position={userLocation}
+            icon={"https://www.robotwoods.com/dev/misc/bluecircle.png"}
+          ></MarkerF>
+          {clickLocation !== "" && (
+            <MarkerF
+              key={"selectedLocation"}
+              size="large"
+              position={clickLocation}
+            ></MarkerF>
+          )}
+          {clinicObjArray.map((eachEle) => (
+            <MarkerF
+              key={eachEle.id}
+              size="large"
+              position={{ lat: eachEle.lat, lng: eachEle.lng }}
+              onClick={() => onMarkerClick(eachEle.id)}
+              icon="https://res.cloudinary.com/dlbwhvhsg/image/upload/v1656696738/hos_Icon-removebg_small_lkarnz.png"
+            >
+              {showingInfoWindow === eachEle.id && (
+                <div>
+                  <InfoWindow
+                    position={{ lat: eachEle.lat, lng: eachEle.lng }}
+                    onCloseClick={onInfoWindowClose}
+                  >
+                    <Card sx={{ minWidth: 275, maxWidth: 275 }}>
+                      <CardContent>
+                        <Typography
+                          sx={{ fontSize: 14 }}
+                          color="text.secondary"
+                          gutterBottom
+                        >
+                          Hospital name:
                         </Typography>
                         <Typography variant="h5" component="div">
-                        {eachEle.name}
+                          {eachEle.name}
                         </Typography>
                         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                        {eachEle.address}
+                          {eachEle.address}
                         </Typography>
                         <Typography variant="body2">
-                        {eachEle.description}
+                          {eachEle.description}
                         </Typography>
+                      </CardContent>
+                    </Card>
+                  </InfoWindow>
+                </div>
+              )}
+            </MarkerF>
+          ))}
+
+          {dog != null && (
+            <MarkerF
+              key={dog.id}
+              size="large"
+              position={{ lat: dog.latitude * 1, lng: dog.longitude * 1 }}
+              onClick={() => onMarkerClick(dog.id)}
+              icon="https://res.cloudinary.com/dlbwhvhsg/image/upload/v1656459823/dogIcon_pcveui.png"
+            >
+              {showingInfoWindow === dog.id && (
+                <InfoWindow
+                  position={{ lat: dog.latitude, lng: dog.longitude }}
+                  onCloseClick={onInfoWindowClose}
+                >
+                  <Card sx={{ minWidth: 275, maxWidth: 275 }}>
+                    <CardContent>
+                      <Typography
+                        sx={{ fontSize: 14 }}
+                        color="text.secondary"
+                        gutterBottom
+                      >
+                        Dog name:
+                      </Typography>
+                      <Typography variant="h5" component="div">
+                        {dog.dogname}
+                      </Typography>
+                      <Typography sx={{ mb: 0.6 }} color="text.secondary">
+                        Breed: {dog.breed}
+                      </Typography>
+                      <Typography variant="body2">
+                        {dog.dogDescription}
+                      </Typography>
                     </CardContent>
-                    </Card>    
-                    </InfoWindow>
-                    </div>}
-                </MarkerF> 
-                )}
+                    <CardMedia
+                      component="img"
+                      height="194"
+                      image={decodeURIComponent(dog.dogURL)}
+                      alt="Paella dish"
+                    />
+                  </Card>
+                </InfoWindow>
+              )}
+            </MarkerF>
+          )}
+        </GoogleMap>
+        <br/>
+        {dog&& <Button variant="contained" onClick={clearDog}>Clean dogs</Button>} 
+      </div>
+    );
+  }
+};
 
-                {dog!=null&&
-                <MarkerF key={dog.id} size="large" position={{lat:dog.latitude*1,lng:dog.longitude*1}} onClick={()=>onMarkerClick(dog.id)}
-                icon="https://res.cloudinary.com/dlbwhvhsg/image/upload/v1656459823/dogIcon_pcveui.png" >
-                    {showingInfoWindow === dog.id && 
-                    <InfoWindow  position={{lat:dog.latitude , lng:dog.longitude}} onCloseClick={onInfoWindowClose}>
-                        <Card sx={{ minWidth: 275, maxWidth: 275}}>
-                            <CardContent>
-                                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                Dog name: 
-                                </Typography>
-                                <Typography variant="h5" component="div">
-                                {dog.dogname}
-                                </Typography>
-                                <Typography sx={{ mb: 0.6 }} color="text.secondary">
-                                Breed: {dog.breed}
-                                </Typography>
-                                <Typography variant="body2">
-                                {dog.dogDescription}
-                                </Typography>
-                            </CardContent>
-                                <CardMedia
-                                    component="img"
-                                    height="194"
-                                    image={decodeURIComponent(dog.dogURL)}
-                                    alt="Paella dish"
-                                />
-                        </Card>    
-                    </InfoWindow>}
-                </MarkerF> 
-                }
-                </GoogleMap>
-            </div>
-        )
-    }
-}
-
-export default Map
+export default Map;

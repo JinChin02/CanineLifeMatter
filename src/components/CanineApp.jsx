@@ -16,29 +16,33 @@ import Dashboard from "../Page/Dashboard";
 import Header from "./Header";
 import HospitalUpload from "../Page/HospitalUpload";
 import dogContext from "../context/dogContext";
+import userClickContext from "../context/userClickContext";
 
 const CanineApp = () => {
   let selecteddog = useRef(null);
+  let userSelectedLocation = useRef(null);
 
   return (
     <div className="CanineApp">
       <BrowserRouter>
-        <Header/>
+        <Header />
         <LoadScript googleMapsApiKey={process.env.REACT_APP_GM_KEY}>
           <dogContext.Provider value={selecteddog}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Registration />} />
-              <Route path="/imageUpload" element={<ImageUpload />} />
-              <Route path="/logoutMessage" element={<LogoutMessage />} />
-              <Route path="/googleMap" element={<Map />} />
-              <Route path="/adoption" element={<Adoption />} />
-              <Route path="/donation" element={<Donation />} />
-              <Route path="/manage" element={<Manage />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/hospitalUpload" element={<HospitalUpload />} />
-            </Routes>
+            <userClickContext.Provider value = {userSelectedLocation}>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Registration />} />
+                <Route path="/imageUpload" element={<ImageUpload />} />
+                <Route path="/logoutMessage" element={<LogoutMessage />} />
+                <Route path="/googleMap" element={<Map />} />
+                <Route path="/adoption" element={<Adoption />} />
+                <Route path="/donation" element={<Donation />} />
+                <Route path="/manage" element={<Manage />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/hospitalUpload" element={<HospitalUpload />} />
+              </Routes>
+            </userClickContext.Provider>
           </dogContext.Provider>
         </LoadScript>
         <Footer />

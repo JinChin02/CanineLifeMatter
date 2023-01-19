@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import Map from "../components/Map";
@@ -19,6 +19,8 @@ import DialogContent from "@mui/material/DialogContent";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import { ToastContainer, toast } from "react-toastify";
 
+import userClickContext from "../context/userClickContext";
+
 const DisplayImage = (props) => {
 
   const[image,addImage] = useState(null); 
@@ -36,6 +38,7 @@ const DisplayImage = (props) => {
   
 
   const navigate = useNavigate();
+  const userSelectedLocation = useContext(userClickContext);
 
   useEffect(()=>{
     if (sessionStorage.getItem("userlogin") === null) {
@@ -43,14 +46,14 @@ const DisplayImage = (props) => {
         navigate('login');
       }, 0);
     }
-    if (sessionStorage.getItem("clickLocation")) {
-      sessionStorage.removeItem("clickLocation");
+    if (userSelectedLocation) {
+      userSelectedLocation.current = null ;
     }
   },[])
 
 
   const uploadDog = (e) => {
-    let location = JSON.parse(sessionStorage.getItem("clickLocation"));
+    let location = userSelectedLocation.current;
     if (
       DogNameInput.replace(/^\s+|\s+$/gm, "") === "" ||
       DogNameInput.length === 0
@@ -74,7 +77,7 @@ const DisplayImage = (props) => {
       return;
     }
 
-    setbuttonDisable(true);
+    // setbuttonDisable(true);
 
     const data = new FormData();
     data.append("file", image);
@@ -93,7 +96,7 @@ const DisplayImage = (props) => {
 
   const putDogIntoDatabase = (imageUrl) => {
     let currentUserID = sessionStorage.getItem("userlogin");
-    let location = JSON.parse(sessionStorage.getItem("clickLocation"));
+    let location = userSelectedLocation.current ;
 
     let dog = {
       dogname: DogNameInput,
@@ -112,7 +115,7 @@ const DisplayImage = (props) => {
         console.log(res.data);
         toast("Canine upload successful", { type: "true" });
         setTimeout(() => {
-          props.navigate("/", { replace: false });
+          navigate("/");
         }, 1000);
       })
       .then((res) => {
@@ -136,7 +139,7 @@ const DisplayImage = (props) => {
 
   const handleClose = () => {
     setOpen(false);
-    if (sessionStorage.getItem("clickLocation") != null) {
+    if (!userSelectedLocation.current) {
       setLocationIsChosen(true);
     }
   };

@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useContext} from 'react'
 
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -14,6 +14,7 @@ import Snackbar from '@mui/material/Snackbar';
 import axios from 'axios';
 import MuiAlert from '@mui/material/Alert';
 import { useNavigate } from "react-router-dom";
+import userClickContext from '../context/userClickContext';
 
 
 
@@ -29,12 +30,13 @@ const [locationIsChosen,setLocationIsChosen]= useState(false);
 const [warningStatement, setWarningStatement]=useState(null); // this is going to input array
 const [snackIsOpen, setSnackIsOpen] = useState(false);
 
+const selectedLocation = useContext(userClickContext);
 
-let isValidForm = true;
+
 let navigate = useNavigate();
 
 useEffect(()=>{
-    sessionStorage.removeItem("clickLocation");
+    selectedLocation.current = null ;
     setWarningStatement(null);
     setLocationIsChosen(false);
 },[])
@@ -44,7 +46,8 @@ const handleOpen = () =>{
 }
 const handleClose=()=>{
     setWindowOpen(false);
-    if(sessionStorage.getItem("clickLocation")!=null){
+    if(selectedLocation.current){
+        console.log(selectedLocation.current);
         setLocationIsChosen(true);
     } 
 }
@@ -55,6 +58,9 @@ const onlyNumbers = (str) => {
 
 
 const verifyForm = () =>{
+
+    let isValidForm = true;
+
     let warningArray = [];
     if (clinicName.replace(/^\s+|\s+$/gm,'')===""||clinicName.length===0){
         isValidForm=false;
@@ -63,13 +69,13 @@ const verifyForm = () =>{
     if (phoneNumber.replace(/^\s+|\s+$/gm,'')===""||phoneNumber.length===0){
         isValidForm=false;
         warningArray.push("Please input a phone number before uploading");
-    }else if (onlyNumbers(phoneNumber.replace(/^\s+|\s+$/gm,''))==false){
+    } else if (onlyNumbers(phoneNumber.replace(/^\s+|\s+$/gm,''))==false){
         isValidForm=false;
         warningArray.push("Please only input digits in phone number");
     } 
 
 
-    if (sessionStorage.getItem("clickLocation")===null){ 
+    if (selectedLocation.current===null){ 
         isValidForm=false;
         warningArray.push("Please choose a location before uploading");
     }
@@ -83,11 +89,12 @@ const verifyForm = () =>{
         warningArray.push("Please provide a clinic informataion before submiting");
     }
     setWarningStatement(warningArray);
+    return isValidForm;
 }
 
 const uploadHospital = () =>{
-    verifyForm();
-    let coordinate = JSON.parse( sessionStorage.getItem("clickLocation"));
+    let isValidForm = verifyForm();
+    let coordinate = selectedLocation.current;
     if ( isValidForm === true){
         //create clinic obj
         let newClinic = {
@@ -99,10 +106,9 @@ const uploadHospital = () =>{
             description: description
         };
         axios.post("http://localhost:8080/uploadClinic",newClinic)
-        .then((e)=>console.log(e.data))
         .catch((e)=>console.log(e.message));
         
-        navigate("/",{replace:true});
+        navigate("/");
     } else {
         setSnackIsOpen(true);
     }

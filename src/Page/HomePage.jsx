@@ -40,15 +40,13 @@ const HomePage = () => {
   }, []);
 
   const handleSearch = (event) => {
- 
     // event.preventDefault();
     if (searchString.length === 0) {
       toast("Please fill in breed type to search", { type: "warning" });
     } else {
-       
       axios
         .post("http://localhost:8080/searchDog", searchString)
-        .then((res) => { 
+        .then((res) => {
           setReturnedData([...res.data]);
           setReturnedStatus(res.status);
         })
@@ -58,16 +56,14 @@ const HomePage = () => {
 
   const handleOpen = (isOpen) => {
     switch (isOpen) {
-        case "OPEN":
-            setOpen(true);
-        break; 
-        case "CLOSED":
-            setOpen(false);
+      case "OPEN":
+        setOpen(true);
+        break;
+      case "CLOSED":
+        setOpen(false);
         break;
     }
   };
-
-
 
   return (
     <div>
@@ -100,18 +96,18 @@ const HomePage = () => {
               align="left"
             >
               BUILD A COMMUNITY OF LOVING AND CARE
-              <Typography
-                variant="h6"
-                fontFamily={"monospace"}
-                style={{
-                  color: "rgba(199, 192, 183, 0.25)",
-                  marginLeft: "1.9em",
-                  marginBottom: "0.5em",
-                }}
-                align="right"
-              >
-                Adopt instead of buying
-              </Typography>
+            </Typography>
+            <Typography
+              variant="h6"
+              fontFamily={"monospace"}
+              style={{
+                color: "rgba(199, 192, 183, 0.25)",
+                marginLeft: "1.9em",
+                marginBottom: "0.5em",
+              }}
+              align="right"
+            >
+              Adopt instead of buying
             </Typography>
           </Grid>
         </Grid>
@@ -160,7 +156,6 @@ const HomePage = () => {
             )}
             {returnedStatus === 404 && <HomeNotFound status="404" />}
             {/* <MainDisplay dogListS ={returnedData} status={returnedStatus}/> */}
-           
           </div>
         </Grid>
         <Grid item>
@@ -170,7 +165,7 @@ const HomePage = () => {
       <ToastContainer autoClose={1000} />
       <Dialog
         open={open}
-        onClose={()=>handleOpen("CLOSED")}
+        onClose={() => handleOpen("CLOSED")}
         aria-describedby="alert-dialog-slide-description"
         fullWidth
         maxWidth="md"

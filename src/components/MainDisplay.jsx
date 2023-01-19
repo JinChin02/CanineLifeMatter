@@ -37,23 +37,32 @@ const MainDisplay = (props) => {
         });
         break;
       case "200":
-        console.log("input");
         setDogList(props.dogListS);
         break;
     }
   }, [props.dogListS]);
 
-  const putDogsToSession = (dogObj) => {
+  // const putDogsToSession = (dogObj) => {
+  //   if (sessionStorage.getItem("userlogin") === null) {
+  //     toast("Please login first before proceeding", { type: "warning" });
+  //     setTimeout(() => {
+  //       navigate("/login", { replace: true });
+  //     }, 1000);
+  //   } else {
+  //     sessionStorage.setItem("dogObj", dogObj);
+  //     navigate("/adoption", { replace: true });
+  //   }
+  // };
+
+  const putDogsToContext = (dogObj) => {
     if (sessionStorage.getItem("userlogin") === null) {
       toast("Please login first before proceeding", { type: "warning" });
       setTimeout(() => {
-        navigate("/login", { replace: true });
+        navigate("/login");
       }, 1000);
     } else {
-      sessionStorage.setItem("dogObj", dogObj);
       setSelectedDog.current = dogObj;
-
-      navigate("/adoption", { replace: true });
+      navigate("/adoption");
     }
   };
 
@@ -80,7 +89,10 @@ const MainDisplay = (props) => {
                         display: "flex",
                         flexDirection: "column",
                       }}
-                      onClick={() => putDogsToSession(JSON.stringify(dogs))}
+                      onClick={() => {
+                        // putDogsToSession(JSON.stringify(dogs));
+                        putDogsToContext(dogs);
+                      }}
                       // onClick={() => putDogsToSession(dogs)}
                       onMouseOver={onMouseOver}
                       onMouseOut={onMouseOut}

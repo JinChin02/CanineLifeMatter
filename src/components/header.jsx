@@ -11,14 +11,13 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 
 const Header = (props) => {
-
   const [open, setopen] = useState(false);
   const navigate = useNavigate();
 
   const logOut = () => {
     setopen(false);
     Authentication.logout();
-  
+
     navigate("../logoutMessage");
   };
 

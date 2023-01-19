@@ -2,9 +2,7 @@ import React from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router";
 
-
 const LogoutMessage = (props) => {
-
   const navigate = useNavigate();
 
   const time = () => {
