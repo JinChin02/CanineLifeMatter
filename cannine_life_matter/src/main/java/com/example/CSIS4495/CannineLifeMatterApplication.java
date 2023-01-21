@@ -162,8 +162,9 @@ public class CannineLifeMatterApplication {
 			dog8.setDogURL("https%3A%2F%2Fres.cloudinary.com%2Fdlbwhvhsg%2Fimage%2Fupload%2Fv1656085594%2Flabrador3_azpwsl.jpg");	
 			dog8.setOwner(user1);
 			dog8.setIsAdopted(0);
-			dog8.setLatitude(49.21689489840684);
-			dog8.setLongitude(-122.92689110437357);
+			
+			dog8.setLatitude(49.039240);
+			dog8.setLongitude( -122.280904);
 			dog8.setDogDescription("A lovely labrador.");
 			dog8.setVaccinationStatus("YES");	
 			dogRepository.save(dog8);	
@@ -174,8 +175,9 @@ public class CannineLifeMatterApplication {
 			dog9.setDogURL("https%3A%2F%2Fres.cloudinary.com%2Fdlbwhvhsg%2Fimage%2Fupload%2Fv1656085576%2Fchihuahua2_jd8gv1.jpg");	
 			dog9.setOwner(user1);
 			dog9.setIsAdopted(0);
-			dog9.setLatitude(49.22227250710195);
-			dog9.setLongitude( -122.89984175539256);
+		
+			dog9.setLatitude(49.048268);
+			dog9.setLongitude(-122.321058);
 			dog9.setDogDescription("A lovely chihuahua.");
 			dog9.setVaccinationStatus("YES");
 			dogRepository.save(dog9);	
