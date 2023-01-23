@@ -46,29 +46,59 @@ public class DogSearchController {
 		return tempArray;
 	}
 
+//	@GetMapping("/searchDogs/{lat}/{lng}")
+//	public ResponseEntity<List<Dog>> searchDogs(@PathVariable("lat") double lat, @PathVariable("lng") double lng) {
+//
+//		System.out.println("lat:" + lat + " lng:" + lng);
+//
+//		double MaxLat = lat + 0.3;
+//		double MinLat = lat - 0.3;
+//
+//		double MaxLng = lng + 0.3;
+//		double MinLng = lng - 0.3;
+//
+//		List<Dog> dogList = dogRepository.findAll();
+//		List<Dog> validDogs = new ArrayList();
+//
+//		for (Dog dog : dogList) {
+//			if (dog.getLatitude() >= MinLat && dog.getLatitude() <= MaxLat && dog.getLongitude() >= MinLng
+//					&& dog.getLongitude() <= MaxLng) {
+//				validDogs.add(dog);
+//			}
+//		}
+//		
+//
+//		return new ResponseEntity<List<Dog>>(validDogs, HttpStatus.OK);
+//	}
+	
 	@GetMapping("/searchDogs/{lat}/{lng}")
 	public ResponseEntity<List<Dog>> searchDogs(@PathVariable("lat") double lat, @PathVariable("lng") double lng) {
 
 		System.out.println("lat:" + lat + " lng:" + lng);
-
-		double MaxLat = lat + 0.3;
-		double MinLat = lat - 0.3;
-
-		double MaxLng = lng + 0.3;
-		double MinLng = lng - 0.3;
-
-		List<Dog> dogList = dogRepository.findAll();
-		List<Dog> validDogs = new ArrayList();
-
-		for (Dog dog : dogList) {
-			if (dog.getLatitude() >= MinLat && dog.getLatitude() <= MaxLat && dog.getLongitude() >= MinLng
-					&& dog.getLongitude() <= MaxLng) {
-				validDogs.add(dog);
-			}
-		}
 		
+		try {
+			
+			double MaxLat = lat + 0.3;
+			double MinLat = lat - 0.3;
 
-		return new ResponseEntity<List<Dog>>(validDogs, HttpStatus.OK);
+			double MaxLng = lng + 0.3;
+			double MinLng = lng - 0.3;
+			
+			List<Dog> validDogs = dogRepository.findDogsInRange(MaxLat , MinLat, MaxLng, MinLng);
+			
+			return new ResponseEntity<List<Dog>>(validDogs, HttpStatus.OK);
+			
+			
+			
+		} catch (Exception e) {
+			return new ResponseEntity<List<Dog>>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+		
+		
+		
+		
+		
 	}
 
 }
