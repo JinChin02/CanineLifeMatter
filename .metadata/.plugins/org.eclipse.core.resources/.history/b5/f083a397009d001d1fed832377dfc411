@@ -1,0 +1,39 @@
+package com.example.CSIS4495.model;
+
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.ManyToAny;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+@Table(name="message")
+public class Message {
+	
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY, optional = true)
+	private int senderID; 
+	
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY, optional = true)
+	private int recieverID; 
+	
+	@Column(name = "message")
+	private String message;
+	
+	@Column(name = "localDateTime")
+	private LocalDateTime localDateTime; 
+	
+	
+	
+
+}

@@ -11,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.apache.catalina.filters.AddDefaultCharsetFilter;
+import org.springframework.core.annotation.MergedAnnotation.Adapt;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.ArrayList;
@@ -59,6 +62,14 @@ public class User {
 	
 	@Column(name = "notification")
 	private String notification; 
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "message")
+	private Set<Message> reveiveMessages = new HashSet<>();
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "message")
+	private Set<Message> sentMessages = new HashSet<>();
 
 	
 	public User() {
@@ -170,5 +181,14 @@ public class User {
 	}
 	public void cleanNotification() {
 		this.notification = null;
+	}
+	
+	public void addReceiveMessages(Message message) {
+		this.reveiveMessages.add(message);
+		message.setReciever(this);
+	}
+	public void addSentMessage (Message message) {
+		this.sentMessages.add(message);
+		message.setSender(this);
 	}
 }

@@ -1,0 +1,9 @@
+package com.example.CSIS4495.config;
+
+import org.springframework.web.socket.config.annotation.AbstractWebSocketMessageBrokerConfigurer;
+
+
+public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer{
+	
+	
+}

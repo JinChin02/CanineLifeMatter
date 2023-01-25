@@ -1,0 +1,6 @@
+package com.example.CSIS4495.config;
+
+public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer{
+	
+
+}

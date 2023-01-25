@@ -1,5 +1,7 @@
 package com.example.CSIS4495;
 
+import java.time.LocalDateTime;
+
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,6 +14,8 @@ import com.example.CSIS4495.model.Clinic;
 import com.example.CSIS4495.model.ClinicRepository;
 import com.example.CSIS4495.model.Dog;
 import com.example.CSIS4495.model.DogRepository;
+import com.example.CSIS4495.model.Message;
+import com.example.CSIS4495.model.MessageRepository;
 import com.example.CSIS4495.model.User;
 import com.example.CSIS4495.model.UserRepository;
 
@@ -25,7 +29,9 @@ public class CannineLifeMatterApplication {
 	}
 	
 	@Bean
-	ApplicationRunner init(DogRepository dogRepository, UserRepository userRepository, ClinicRepository clinicRepository,BulletinRepository bulletinRepository) {
+	ApplicationRunner init(DogRepository dogRepository, UserRepository userRepository, 
+			ClinicRepository clinicRepository,BulletinRepository bulletinRepository,
+			MessageRepository messageRepository) {
 		return args->{
 			
 			bCryptPasswordEncoder = new BCryptPasswordEncoder(10);
@@ -33,6 +39,15 @@ public class CannineLifeMatterApplication {
 			userRepository.deleteAll();
 			dogRepository.deleteAll();
 			clinicRepository.deleteAll();
+			messageRepository.deleteAll();
+			
+			
+			// message input 
+			Message message1 = new Message();
+			message1.setLocalDateTime(LocalDateTime.now());
+			message1.setMessage("Hello my friend");
+		
+			
 			
 
 			// user input
@@ -43,8 +58,9 @@ public class CannineLifeMatterApplication {
 			user1.setIsAdmin(1);
 			user1.setPhoneNumber("7781231234");
 			user1.setAddress("12118 95a Ave, Surrey, BC V3V 1P8");
-			userRepository.save(user1);	
+			user1.addSentMessage(message1);
 			
+			userRepository.save(user1);	
 			
 
 			User user2= new User();
@@ -54,8 +70,11 @@ public class CannineLifeMatterApplication {
 			user2.setIsAdmin(0);
 			user2.setPhoneNumber("7781233456");
 			user2.setAddress("6688 Southoaks Crescent, Burnaby, BC V5E 4M7");
+			user2.addReceiveMessages(message1);
+			
 			userRepository.save(user2);	
 			
+			messageRepository.save(message1);
 			
 			
 			User user3= new User();
@@ -67,6 +86,9 @@ public class CannineLifeMatterApplication {
 			user3.setPhoneNumber("7784434565");
 			userRepository.save(user3);
 			userRepository.findAll().forEach(System.out::println);
+			
+			
+	
 			
 			
 			

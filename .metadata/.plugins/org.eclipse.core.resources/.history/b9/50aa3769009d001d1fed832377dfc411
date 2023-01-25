@@ -1,0 +1,28 @@
+package com.example.CSIS4495.model;
+
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="message")
+public class Message {
+	
+	
+	private int senderID; 
+	
+	private int recieverID; 
+	
+	@Column(name = "message")
+	private String message;
+	
+	@Column(name = "localDateTime")
+	private LocalDateTime localDateTime; 
+	
+	
+	
+
+}
